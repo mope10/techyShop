@@ -1,0 +1,31 @@
+.footer {
+    background-color:#343A40;
+    color:white;
+    font-family: 'Segoe UI';
+    width:100% !important;
+    .container {
+        padding-top:50px;
+        h4 {
+            font-weight:400;
+        }   
+       
+        .fab {
+            font-family: FontAwesome !important;
+            font-style: normal !important;
+            margin-right:30px;
+            
+        }
+        .top-row {
+            margin-bottom:50px;
+            .addressInfo {
+                text-align:right;
+            }
+        }
+        .bottom-row {
+            .col-6 {
+                margin-bottom: 30px;
+            }
+        }
+    }
+}
+  

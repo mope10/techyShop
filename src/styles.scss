@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+a:hover {
+    cursor:pointer;
+}
+.wrapper {
+    margin-top: 56px;
+    min-width:500px;
+}
+
+
+.link-custom {
+    padding:5px 15px;
+    background-color: #343A40;
+    color:white !important;
+    border-radius:5px;
+    min-width:120px;
+    text-align:center;
+}
+.link-custom:hover {
+    color: #343A40 !important;
+    background-color:#bbb;
+    transition-duration: 100ms;
+
+}
+.link-custom:active {
+    background-color:#777;
+}

@@ -1,0 +1,129 @@
+#new-products {
+    box-shadow: 0 30px 50px rgba(155,155,155,0.5);
+    .carousel-item {
+        max-height: 300px !important;
+    }
+}
+
+.categories {
+    margin-top: 30px;
+    color: #343A40;
+    margin-bottom: 30px;
+    h1 {
+        text-align:center;
+    }
+    hr {
+        border:1px solid #343A40;
+        margin: 30px 30px;
+        box-shadow: 0 50px 50px rgba(155, 155, 155, 0.281);
+    }
+    .cat {
+        display:block;
+        padding:20px;
+        font-weight: 500;
+        color:white;
+        text-align:right;
+        margin-bottom:10px;
+        text-transform: capitalize;
+        box-shadow: 0 0 25px rgba(155,155,155,0.5);
+        border-radius: 5px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height:100px;
+        background-image: url("https://o.aolcdn.com/images/dims?quality=100&image_uri=https%3A%2F%2Fs.aolcdn.com%2Fhss%2Fstorage%2Fmidas%2Ff3d9378e3f93e2d2dc80da3cd07b58bd%2F206310290%2Fgigabyte-aero-15x-laptop-gaming-lightweight-buyers-guide-2018-04-22-01-ed.jpg&client=amp-blogside-v2&signature=a1abc939a9f5e572276953920d5fe2f225bae6fb");
+        p {
+            padding: 2px 10px;
+            box-shadow: 0 0 25px rgba(155,155,155,0.5);
+            background-color: #343A40;
+            border-radius: 15px;
+            display:inline-block;
+            
+        }
+        
+    }
+    .cat:hover {
+        cursor:pointer;
+        p {
+            color: #343A40;
+            background-color:white;
+            transition-duration: 100ms;
+        }
+    }
+    .cat:active {
+        p {
+            background-color:#bbb;
+        }
+    }
+    .laptop {
+        
+        
+    }
+    .mobile {
+         
+    }
+    .accessories {
+    
+    }
+    .gaming {
+
+    }
+    .lcd {
+
+    }
+    .speakers {
+        
+    }
+    
+}
+.popular {
+    text-align:center;
+    h1 {
+        margin-bottom: 30px;
+    }
+    .top-tabs {
+        margin-bottom:30px;
+        .nav-link {
+            color: #343A40;
+        }
+        .active {
+            background-color: #343A40;
+            color:white;
+        }
+    }
+}
+
+.product-view {
+    .top-bar {
+        height:40px;
+        a {
+            float:right;
+        }
+        h2 {
+            display: inline-block;
+        }
+    }
+    hr {
+        border:1px solid #343A40;
+    }
+    .item-card {
+        display:inline-block;
+        margin-bottom: 30px;
+        padding: 15px;
+        
+        img {
+            height:200px;
+            display:block;
+            margin:0 auto;
+        }
+        p {
+            margin-bottom:5px;
+        }
+        .details {
+            font-size: 13px;
+        }
+        .price {
+            font-weight: 500;
+        }
+    }
+    
+} 
