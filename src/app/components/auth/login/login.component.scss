@@ -1,0 +1,31 @@
+.loginForm {
+    background-color:white;
+    width: 400px;
+    margin: 100px 50px 50px auto;
+    // border-radius: 5px;
+    height: 500px;
+    box-shadow: 0 0 25px rgba(155,155,155,0.5);
+    padding:50px;
+    border-top: 2px solid #343A40;
+    border-bottom: 2px solid #343A40;
+    font-weight: 500;
+    .ng-valid[required], .ng-valid.required  {
+        border-left: 5px solid #42A948; /* green */
+      }
+      
+    .ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+    }
+    .form-group {
+        margin-bottom: 30px;
+    }
+    input {
+        border-radius: 0px;
+    }
+    .button-login,.button-register {
+        padding-top: 20px;
+        text-align:center;
+        margin-bottom: 30px;
+        
+    }
+}

@@ -11,6 +11,8 @@
     margin-bottom: 30px;
     h1 {
         text-align:center;
+        letter-spacing: 15px;
+        font-weight: 400;
     }
     hr {
         border:1px solid #343A40;
@@ -79,6 +81,8 @@
     text-align:center;
     h1 {
         margin-bottom: 30px;
+        letter-spacing: 15px;
+        font-weight: 400;
     }
     .top-tabs {
         margin-bottom:30px;
@@ -108,8 +112,12 @@
     .item-card {
         display:inline-block;
         margin-bottom: 30px;
+        width: 100%;
+        border-top: 2px solid #343A40;
+        border-bottom: 2px solid #343A40;
         padding: 15px;
-        
+        box-shadow: 0 0 25px rgba(155,155,155,0.5);
+        background-color:white;
         img {
             height:200px;
             display:block;

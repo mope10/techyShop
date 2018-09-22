@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'web-project-fe';
+  title = 'Tech Shop';
+  
+  constructor(private location: Location) {
+
+  }
+
+  footerApproval(): boolean {
+
+    if (
+      this.location.path() === ""          ||
+      this.location.path() === "/aboutUs"  ||
+      this.location.path() === "/store"
+    ) {
+      return true;
+    }
+    else {
+      return false;
+    }
+
+  }
+ 
 }

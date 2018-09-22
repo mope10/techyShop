@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,body,.wrapper {
+    background-color: #eee;
+}
+
 a:hover {
     cursor:pointer;
 }
@@ -9,19 +14,29 @@ a:hover {
 
 
 .link-custom {
-    padding:5px 15px;
+    padding:5px 30px;
     background-color: #343A40;
     color:white !important;
     border-radius:5px;
-    min-width:120px;
+    width:120px !important;
     text-align:center;
 }
+
 .link-custom:hover {
     color: #343A40 !important;
     background-color:#bbb;
     transition-duration: 100ms;
+    text-decoration: none !important;
 
+}
+.link-custom[disabled] {
+    background-color: #343A40;
+    color:white !important;
 }
 .link-custom:active {
     background-color:#777;
+}
+
+hr {
+    border: 1px solid #343A40 !important;
 }
