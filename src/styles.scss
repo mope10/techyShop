@@ -40,3 +40,16 @@ a:hover {
 hr {
     border: 1px solid #343A40 !important;
 }
+input {
+    border-radius: 0px !important;  
+}
+input:focus {
+    box-shadow:none !important;
+}
+button:focus { 
+    box-shadow: none !important;
+}
+
+.incorrect {
+    color: #a94442;
+}
