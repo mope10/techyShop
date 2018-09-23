@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
   savePassword(password: string,rePassword:string) {
     this.password = password;
     if(rePassword) {
-      if (this.password === password) {
+      if (this.password === rePassword) {
         this.validityStatement = "fa fa-check"
         this.validity = true;
       }
@@ -31,15 +31,18 @@ export class RegisterComponent implements OnInit {
     }
   }
   comparePassword(password: string) {
-    if (this.password === password) {
-      this.validity = true;
-      this.validityStatement="fa fa-check";
-
+    if (password) {
+      if (this.password === password) {
+        this.validity = true;
+        this.validityStatement="fa fa-check";
+  
+      }
+      else {
+        this.validity = false;
+        this.validityStatement = "fa fa-times"
+      }
     }
-    else {
-      this.validity = false;
-      this.validityStatement = "fa fa-times"
-    }
+    
     
   }
   createForm() {

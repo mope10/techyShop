@@ -1,37 +1,42 @@
-<div class="loginForm">
-    <form [formGroup]="loginForm" autocomplete="off">
-        <div class="form-group">
-          <label for="email">Email address: </label>
-          <input type="email" formControlName="email" name="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Enter email">
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-          <div *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)" class="incorrect">
-              <div *ngIf="loginForm.controls['email'].errors.required">
-                  email is required.
-              </div>
-              <div *ngIf="loginForm.controls['email'].errors.email">
-                  Not an Email
-              </div>
-          </div>
+<div class="row">
+    <div class="col-md-4 offset-md-7">
+        <div class="loginForm">
+            <form [formGroup]="loginForm" autocomplete="off">
+                <div class="form-group">
+                  <label for="email">Email address: </label>
+                  <input type="email" formControlName="email" name="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Enter email">
+                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                  <div *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)" class="incorrect">
+                      <div *ngIf="loginForm.controls['email'].errors.required">
+                          email is required.
+                      </div>
+                      <div *ngIf="loginForm.controls['email'].errors.email">
+                          Not an Email
+                      </div>
+                  </div>
+                </div>
+        
+                <div class="form-group">
+                  <label for="Password: " >Password: </label>
+                  <input type="password" formControlName="password"name="password" class="form-control" id="password" aria-describedby="emailHelp" placeholder="Enter password">
+                  <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)" class="incorrect">
+                      <div *ngIf="loginForm.controls['password'].errors.required">
+                          password is required.
+                      </div>
+                  </div>
+                </div>
+                <div class="button-login">
+                  <button class="link-custom btn" [disabled]="loginForm.invalid">Login</button>
+                </div>
+            </form>
+            <hr> 
+            <div class="button-register">
+                <p>New to Tech Shop</p>
+                <button class="btn link-custom" routerLink="/register">Sign Up</button>
+            </div>
         </div>
-
-        <div class="form-group">
-          <label for="Password: " >Password: </label>
-          <input type="password" formControlName="password"name="password" class="form-control" id="password" aria-describedby="emailHelp" placeholder="Enter password">
-          <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)" class="incorrect">
-              <div *ngIf="loginForm.controls['password'].errors.required">
-                  password is required.
-              </div>
-          </div>
-        </div>
-        <div class="button-login">
-          <button class="link-custom btn" [disabled]="loginForm.invalid">Login</button>
-        </div>
-    </form>
-    <hr> 
-    <div class="button-register">
-        <p>New to Tech Shop</p>
-        <button class="btn link-custom" routerLink="/register">Sign Up</button>
     </div>
 </div>
+
 
 
