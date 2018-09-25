@@ -9,6 +9,13 @@ import { StoreComponent} from "./components/pages/store/store.component";
 //Authentication
 import {LoginComponent} from "./components/auth/login/login.component";
 import {RegisterComponent} from "./components/auth/register/register.component";
+
+//Admin-dsahboard
+import { AdminHomeComponent} from "./components/admin-dashboard/admin-home/admin-home.component"; 
+import { AdminOrdersComponent} from "./components/admin-dashboard/admin-orders/admin-orders.component";
+import { AdminInventoryComponent} from "./components/admin-dashboard/admin-inventory/admin-inventory.component";
+import {AdminSettingsComponent} from "./components/admin-dashboard/admin-settings/admin-settings.component"
+ 
 const routes: Routes = [
     
     //pages
@@ -16,7 +23,16 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent},
     { path: 'register', component: RegisterComponent},
     { path: 'aboutUs', component: AboutUsComponent},
-    { path: 'store', component: StoreComponent}
+    { path: 'store', component: StoreComponent},
+
+    //Buyer Panel
+
+    { path: 'admin',children:[
+        { path: 'home', component: AdminHomeComponent},
+        { path: 'orders', component: AdminOrdersComponent},
+        { path: 'inventory', component: AdminInventoryComponent},
+        { path: 'settings', component: AdminSettingsComponent}
+    ]}
 
 ]
 @NgModule ({

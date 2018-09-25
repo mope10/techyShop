@@ -12,6 +12,11 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { AboutUsComponent } from './components/pages/about-us/about-us.component';
 import { StoreComponent } from './components/pages/store/store.component';
+import { AccountHeaderComponent } from './components/ui/account-header/account-header.component';
+import { AdminHomeComponent } from './components/admin-dashboard/admin-home/admin-home.component';
+import { AdminOrdersComponent } from './components/admin-dashboard/admin-orders/admin-orders.component';
+import { AdminInventoryComponent } from './components/admin-dashboard/admin-inventory/admin-inventory.component';
+import { AdminSettingsComponent } from './components/admin-dashboard/admin-settings/admin-settings.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +28,12 @@ import { StoreComponent } from './components/pages/store/store.component';
     LoginComponent,
     RegisterComponent,
     AboutUsComponent,
-    StoreComponent
+    StoreComponent,
+    AccountHeaderComponent,
+    AdminHomeComponent,
+    AdminOrdersComponent,
+    AdminInventoryComponent,
+    AdminSettingsComponent
   ],
   imports: [
     BrowserModule,
