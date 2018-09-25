@@ -1,0 +1,30 @@
+.profile-info {
+    margin-right: 5px;
+    img {
+        max-width: 40px;
+        border-radius: 50%;
+        border: 2px solid white;
+
+
+    }
+    p {
+        color: white;
+        margin-bottom: 0px;
+        font-size: 13px;
+    }
+    
+}
+.dropdown-menu {
+    margin-top: 10px;
+}
+
+.profile-info:hover {
+    cursor: pointer;
+    background-color: white;
+    color: #343A40;
+    border-radius: 25px;
+    p {
+        color: #343A40;
+    }
+    
+}

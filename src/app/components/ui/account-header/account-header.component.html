@@ -2,14 +2,22 @@
   <a class="navbar-brand" routerLink=""><i class="fa fa-shopping-bag" aria-hidden="true"></i> Tech Shop</a>
 
   <ul class="navbar-nav ml-auto">
-    <li class="nav-item">
-      <a class="nav-link" >Home</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link disabled">Disabled</a>
+    <li class="nav-item dropdown">
+
+      <div class="profile-info row" data-toggle="dropdown">
+        <div class="col-3">
+          <img src="../../../../assets/photos/profile-pics/awwal.jpg" alt="">
+        </div>
+        <div class="col-9">
+          <p>Mustafa Siddiqui</p>
+          <p>Store Owner</p>
+        </div>
+      </div>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item"><i class="fa fa-cog" aria-hidden="true"></i> Settings</a>
+      </div>
     </li>
   </ul>
     
