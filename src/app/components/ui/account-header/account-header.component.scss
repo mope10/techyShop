@@ -16,6 +16,10 @@
 }
 .dropdown-menu {
     margin-top: 10px;
+    .dropdown-item:active {
+        color: white;
+        background-color: #343A40;
+    }
 }
 
 .profile-info:hover {
@@ -23,8 +27,13 @@
     background-color: white;
     color: #343A40;
     border-radius: 25px;
+    transition-duration: 300ms;
     p {
         color: #343A40;
     }
+    
+}
+.profile-info:active {
+    background-color: #ccc;
     
 }
