@@ -1,0 +1,12 @@
+.custom-tabs {
+    #pending-tab.active {
+        border-bottom: 2px solid #A94442 !important;
+    }
+    #processing-tab.active {
+        border-bottom: 2px solid#007BFF !important;
+    }
+    #completed-tab.active {
+
+        border-bottom: 2px solid #42A948 !important;
+    }
+}

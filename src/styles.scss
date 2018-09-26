@@ -64,3 +64,42 @@ input:focus {
     letter-spacing: 15px;
     font-weight: 300;
 }
+
+.custom-body {
+
+    background-color: white;
+    box-shadow: 0 0 25px rgba(155,155,155,0.5);
+    padding: 30px;
+    min-width:550px;
+
+}
+
+.custom-tabs {
+
+    .nav-item {
+
+        .nav-link {
+            border:0;
+            margin-bottom:20px;
+            color: #343A40;
+        }
+        .active {
+            border-bottom: 2px solid #343A40 !important;
+            font-weight: 500;
+
+        }
+        .form-group {
+            border-bottom: 2px solid #343A40;
+            input {
+                border:0;
+            }
+            form {
+                display: inline-block !important;
+            }
+            
+        }
+       
+
+    }
+
+}
