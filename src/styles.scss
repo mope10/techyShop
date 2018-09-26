@@ -103,3 +103,13 @@ input:focus {
     }
 
 }
+
+table {
+    thead {
+        
+            border-top: 2px solid #343A40;
+        th {
+            border-bottom: 2px solid #343A40 !important;
+        }        
+    }
+}
