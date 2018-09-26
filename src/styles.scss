@@ -34,6 +34,7 @@ a:hover {
     background-color:#bbb;
     transition-duration: 100ms;
     text-decoration: none !important;
+    cursor: pointer;
 
 }
 .link-custom[disabled] {
@@ -43,7 +44,9 @@ a:hover {
 .link-custom:active {
     background-color:#777;
 }
-
+.link-custom:focus {
+    box-shadow: none !important;
+}
 hr {
     border: 1px solid #343A40 !important;
 }
@@ -102,4 +105,14 @@ input:focus {
 
     }
 
+}
+
+table {
+    thead {
+        
+            border-top: 2px solid #343A40;
+        th {
+            border-bottom: 2px solid #343A40 !important;
+        }        
+    }
 }
