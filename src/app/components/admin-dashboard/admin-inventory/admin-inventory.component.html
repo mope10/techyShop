@@ -1,5 +1,5 @@
 <div class="custom-body">
-    <ul class="nav nav-tabs custom-tabs" id="myTab" role="tablist">
+    <ul class="nav nav-tabs custom-tabs justify-content-center" id="myTab" role="tablist">
         <li class="nav-item">
           <a class="nav-link active" id="laptop-tab" data-toggle="tab" href="#laptop" role="tab" aria-controls="laptop" aria-selected="true">Laptop</a>
         </li>
@@ -18,16 +18,24 @@
         <li class="nav-item">
           <a class="nav-link" id="speaker-tab" data-toggle="tab" href="#speaker" role="tab" aria-controls="speaker" aria-selected="false">Speaker</a>
         </li> 
-        <li class="ml-auto nav-item">
-          <div class="form-group">
-              <form>
-                <input class="form-control" type="text" placeHolder="Search">
-              </form>
-              <i class="fa fa-search"></i>
-          </div>
           
-        </li>   
+          
+      
        </ul>
+       <div class="row">
+         <div class="col-6">
+             <button class="btn link-custom">Add Item</button>
+         </div>
+         <div class="col-6">
+          <div class="form-group">
+            <form>
+              <input class="form-control" type="text" placeHolder="Search">
+            </form>
+            <i class="fa fa-search"></i>
+           </div>
+         </div>
+       </div>
+       
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="laptop" role="tabpanel" aria-labelledby="laptop-tab">
         <div class="table-responsive">

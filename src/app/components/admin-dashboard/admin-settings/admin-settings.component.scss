@@ -1,0 +1,22 @@
+.settings {
+    margin-top: 50px;
+    .account-info {
+        .edit {
+            text-align: right;
+            padding-top: 5px;
+        }
+    }
+    
+    .account-img {
+        text-align:center;
+        button {
+            margin-top: 30px;
+        }
+        img {
+            width: 100%;
+            min-width: 200px;
+            margin-top: -120px;
+            border-radius: 50%;
+        }
+    }
+}   

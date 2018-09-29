@@ -25,7 +25,7 @@ a:hover {
     background-color: #343A40;
     color:white !important;
     border-radius:5px;
-    width:120px !important;
+    min-width:120px !important;
     text-align:center;
 }
 
@@ -78,7 +78,7 @@ input:focus {
 }
 
 .custom-tabs {
-
+    border-bottom: 0 !important;
     .nav-item {
 
         .nav-link {
