@@ -116,3 +116,62 @@ table {
         }        
     }
 }
+
+.special-button {
+    box-shadow: 0 0 15px rgba(155,155,155,0.5);
+    text-align: center;
+    background-color: white; 
+    border-top: 2px solid #343A40;
+    border-bottom: 2px solid #343A40;
+    .special-button-parts {
+        height: 50px;
+        .part {    
+        width: 20%;
+        height: 100%;
+        border-radius: 30px;
+        }
+        .right {
+            margin-left: auto;
+        }
+        .part-special {
+            width: 40%;
+            margin:0 auto;
+            p {
+                margin-bottom: 0px;
+                padding-top: 10px;
+                border-radius: 15px;
+
+
+            }
+        }
+
+    }
+
+}
+.special-button:hover {
+    cursor: pointer;
+    
+    .special-button-parts {
+        padding: 0px;
+        .part,.part-special{
+        border-radius: 0px;
+        color: white;
+        background-color: #343A40;
+        transition: 200ms;
+        width: 100%;
+        height: 100%;
+        letter-spacing: 7px;
+        }
+        .part {
+            background-color: rgba(52, 58, 64, 0.274); 
+        }
+
+    }
+}
+.special-button:active {
+    .special-button-parts{
+        .part,.part-special {
+            background-color: rgba(52, 58, 64, 0.432);
+        }
+    }
+}
