@@ -1,0 +1,32 @@
+.form-group {
+    display: block;
+    padding-bottom: 6px;
+    text-align: right;
+    padding: 5px;
+    .form-control { 
+        display: inline-block;
+        width: 33%;
+        margin-left: auto;
+    }
+}
+.top-bar {
+    background-color: #343A40;
+}
+.search-bar {
+    background-color: #343A40;  
+}
+
+.fa-search {
+    color: white;
+}
+.link-custom {
+    margin: 10px;
+    box-sizing: border-box;
+    background-color: #343A40;
+    border-color:white;
+    color: white;
+}
+.link-custom:hover {
+    color: wheat !important;
+    border-color: wheat;
+}
