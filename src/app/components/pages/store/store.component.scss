@@ -1,32 +1,49 @@
 .form-group {
     display: block;
-    padding-bottom: 6px;
-    text-align: right;
+    text-align: center;
     padding: 5px;
+    margin-top:70px !important;
+    .border-bottom {
+        display: inline-block;
+        width:50%;
+        border-bottom: 2px solid white !important;
+        padding: 0px;
+    }
     .form-control { 
         display: inline-block;
-        width: 33%;
-        margin-left: auto;
+        width: 90%  ;
+        margin-right:auto;
+        color:white;
+        background-color: #343A40;
+        border: none;
+    }
+    .form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: white; //SEARCH BAR PLACEHOLDER COLOR
+        opacity: 1; /* Firefox */
+    }
+    .form-control::-ms-input-placeholder { /* Microsoft Edge */
+        color: white; //SEARCH BAR PLACEHOLDER COLOR
     }
 }
 .top-bar {
     background-color: #343A40;
-}
-.search-bar {
-    background-color: #343A40;  
+    margin: 50px;
+    height: auto;
 }
 
+
 .fa-search {
+    width:5%;
     color: white;
+    box-sizing: inline-block;
 }
 .link-custom {
     margin: 10px;
-    box-sizing: border-box;
-    background-color: #343A40;
-    border-color:white;
-    color: white;
+    background-color: white ;   //CATEGORY BUTTON COLOR 
+    border-color:#343A40;   //CATEGORY BUTTON COLOR 
+    color: #343A40 !important;  //CATEGORY BUTTON TEXT COLOR 
 }
 .link-custom:hover {
-    color: wheat !important;
-    border-color: wheat;
+    color: orangered !important;
+    border-color: orangered; //TO CHANGE CATEGORY BUTTON HOVER COLOR
 }
