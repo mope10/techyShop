@@ -1,9 +1,123 @@
 #new-products {
-    box-shadow: 0 30px 50px rgba(155,155,155,0.5);
+    // box-shadow: 0 30px 50px rgba(155,155,155,0.5);
     .carousel-item {
-        max-height: 500px !important;
+        max-height: 480px !important;
     }
 }
+body{
+    background-color: white;
+}
+
+.category-card{
+    height: 200px;
+    border-radius: 9px;
+    margin-bottom: 20px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 0px;
+    transition:0.7s;
+
+}
+#category01{
+    background-image: url("../../../../assets/photos/background-img-category-cards/category_01_02.jpg");
+}
+
+#category02{
+    background-image: url("../../../../assets/photos/background-img-category-cards/category_02.jpg");
+}
+
+#category03{
+    background-image: url("../../../../assets/photos/background-img-category-cards/category_03.jpg");
+}
+
+#category04{
+    background-image: url("../../../../assets/photos/background-img-category-cards/category_04.jpeg");
+}
+
+#category05{
+    background-image: url("../../../../assets/photos/background-img-category-cards/category_05.jpg");
+}
+#category06{
+    background-image: url("../../../../assets/photos/background-img-category-cards/category_06.jpg");
+}
+
+.category-card:last-child{
+    margin-right: 0px;
+}
+.category-card:hover{
+    transform: translate(0px,-5px);
+    box-shadow: 0px 3px 14px rgba(139, 139, 139, 0.5);
+}
+.catBack{
+    height: 100%;
+    width: 100%;
+    color: white;
+    font-weight: 500;
+    justify-content: center;
+    font-size: 17px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    padding-top: 100px;
+
+}
+.cat01BackColor{
+    background: rgba(0, 60, 255, 0.31);
+    transition:1s;
+
+}
+.cat02BackColor{
+    background: rgba(7, 185, 0, 0.31);
+    transition:1s;
+
+}
+.cat03BackColor{
+    background: rgba(255,69,0,0.31);
+    transition:1s;
+
+}
+.cat04BackColor{
+    background: rgba(95, 36, 2,0.31);
+    transition:1s;
+
+}
+.cat05BackColor{
+    background: rgba(255, 0, 140,0.31);
+    transition:1s;
+
+}
+.cat06BackColor{
+    background: rgba(255, 217, 0,0.31);
+    transition:1s;
+
+}
+
+
+// Hover
+.cat01BackColor:hover{
+    background: rgba(0, 60, 255,0.7);
+}
+.cat02BackColor:hover{
+    background: rgba(7, 185, 0,0.7);
+}
+.cat03BackColor:hover{
+    background: rgba(255,69,0,0.7);
+}
+.cat04BackColor:hover{
+    background: rgba(95, 36, 2,0.8);
+}
+.cat05BackColor:hover{
+    background: rgba(255, 0, 140,0.7);
+}
+.cat06BackColor:hover{
+    background: rgba(255, 217, 0,0.7);
+}
+// Hover_Ends
+
+
+
+
+
 
 .categories {
     margin-top: 30px;
@@ -13,24 +127,21 @@
         font-weight: 400;
     }
     hr {
-        border:1px solid #343A40;
-        margin: 30px 30px;
-        box-shadow: 0 50px 50px rgba(155, 155, 155, 0.281);
+        border:3px solid orangered !important;
+        border-radius: 15px;
+        margin-left:48%;
+        margin-right:48%;
+        margin-bottom: 45px !important; 
+        // box-shadow: 0 50px 50px rgba(155, 155, 155, 0.281);
     }
     .cat {
         display:block;
-        padding:20px;
         font-weight: 500;
         color:white;
-        text-align:right;
-        margin-bottom:10px;
         text-transform: capitalize;
         box-shadow: 0 0 25px rgba(155,155,155,0.5);
-        border-radius: 5px;
         background-size: cover;
         background-repeat: no-repeat;
-        height:100px;
-        background-image: url("https://o.aolcdn.com/images/dims?quality=100&image_uri=https%3A%2F%2Fs.aolcdn.com%2Fhss%2Fstorage%2Fmidas%2Ff3d9378e3f93e2d2dc80da3cd07b58bd%2F206310290%2Fgigabyte-aero-15x-laptop-gaming-lightweight-buyers-guide-2018-04-22-01-ed.jpg&client=amp-blogside-v2&signature=a1abc939a9f5e572276953920d5fe2f225bae6fb");
         p {
             padding: 2px 10px;
             box-shadow: 0 0 25px rgba(155,155,155,0.5);
@@ -55,11 +166,10 @@
         }
     }
     .laptop {
-        
-        
+
     }
     .mobile {
-         
+
     }
     .accessories {
     
@@ -75,13 +185,21 @@
     }
     
 }
+#orangeLine {
+    border:3px solid orangered !important;
+    border-radius: 15px;
+    margin-left:48%;
+    margin-right:48%;
+    margin-bottom: 45px !important; 
+    // box-shadow: 0 50px 50px rgba(155, 155, 155, 0.281);
+}
 .popular {
     text-align:center;
     h1 {
         font-weight: 400;
     }
     .top-tabs {
-        margin-bottom:30px;
+        margin-bottom:50px !important;
         .nav-link {
             color: #343A40;
         }
@@ -103,17 +221,20 @@
         }
     }
     hr {
-        border:1px solid #343A40;
+        border:0.3px solid #343A40 !important;
     }
     .item-card {
         display:inline-block;
         margin-bottom: 30px;
         width: 100%;
-        border-top: 2px solid #343A40;
-        border-bottom: 2px solid #343A40;
+        border-radius: 10px;
+        // border-top: 2px solid #343A40;
+        // border-bottom: 2px solid #343A40;
         padding: 15px;
-        box-shadow: 0 0 25px rgba(155,155,155,0.5);
+        box-shadow: 0 0 25px rgba(155,155,155,0.2);
         background-color:white;
+        transition: 600ms;
+        text-align: center;
         img {
             height:200px;
             display:block;
@@ -127,7 +248,17 @@
         }
         .price {
             font-weight: 500;
+            margin-bottom: 20px;
         }
     }
+    .item-card:hover{
+        box-shadow: 0 0 25px rgba(155,155,155,0.6);
+        border-radius: 12px;
+    
+    }
+
     
 } 
+.spaceBetweenPicText{
+    height: 30px;
+}

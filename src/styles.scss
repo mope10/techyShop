@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 html,body,.wrapper {
-    background-color: #eee;
+    background-color: white;
 }
 
 a:hover {
@@ -27,11 +27,12 @@ a:hover {
     border-radius:5px;
     min-width:120px !important;
     text-align:center;
+    font-size: 13px;
 }
 
 .link-custom:hover {
-    color: #343A40 !important;
-    background-color:#bbb;
+    color: white !important;
+    background-color: orangered;
     transition-duration: 100ms;
     text-decoration: none !important;
     cursor: pointer;
@@ -40,9 +41,9 @@ a:hover {
 .link-custom[disabled] {
     background-color: #343A40;
     color:white !important;
-}
+}               
 .link-custom:active {
-    background-color:#777;
+    background-color:rgb(214, 43, 0);
 }
 .link-custom:focus {
     box-shadow: none !important;
@@ -63,9 +64,12 @@ input:focus {
 
 .title {
     text-align:center;
-    margin-bottom: 30px;
-    letter-spacing: 15px;
-    font-weight: 300;
+    margin-bottom: 26px;
+    margin-top: 70px !important;
+    letter-spacing: 0px;
+    font-size: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 280 !important;
 }
 
 .custom-body {
