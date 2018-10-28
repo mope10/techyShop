@@ -6,7 +6,7 @@
     .border-bottom {
         display: inline-block;
         width:50%;
-        border-bottom: 2px solid white !important;
+        border-bottom: 2px solid #343A40 !important;
         padding: 0px;
     }
     .form-control { 
@@ -14,19 +14,18 @@
         width: 90%  ;
         margin-right:auto;
         color:white;
-        background-color: #343A40;
+        background-color: white;
         border: none;
     }
     .form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-        color: white; //SEARCH BAR PLACEHOLDER COLOR
+        color: #343A40; //SEARCH BAR PLACEHOLDER COLOR
         opacity: 1; /* Firefox */
     }
     .form-control::-ms-input-placeholder { /* Microsoft Edge */
-        color: white; //SEARCH BAR PLACEHOLDER COLOR
+        color: #343A40; //SEARCH BAR PLACEHOLDER COLOR
     }
 }
 .top-bar {
-    background-color: #343A40;
     margin: 50px;
     height: auto;
 }
@@ -34,7 +33,7 @@
 
 .fa-search {
     width:5%;
-    color: white;
+    color: #343A40;
     box-sizing: inline-block;
 }
 .link-custom2 {
@@ -44,16 +43,16 @@
     text-align:center;
     font-size: 13px;
     margin: 10px;
-    background-color: white ;   //CATEGORY BUTTON COLOR 
+    background-color: #343A40 ;   //CATEGORY BUTTON COLOR 
     border-color:#343A40;   //CATEGORY BUTTON COLOR 
-    color: #343A40 !important;  //CATEGORY BUTTON TEXT COLOR 
+    color: white !important;  //CATEGORY BUTTON TEXT COLOR 
 }
 .link-custom2:hover {
     background-color: orangered;        
     transition-duration: 100ms;
     text-decoration: none !important;
     cursor: pointer;
-    color: white!important;
+    color: #343A40!important;
     border-color: orangered; //TO CHANGE CATEGORY BUTTON HOVER COLOR
 }
 .item-card {
