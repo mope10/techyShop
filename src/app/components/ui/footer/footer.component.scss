@@ -40,3 +40,17 @@ i:hover{
     margin-bottom: 30px; 
     
 }
+
+.footerText{
+    color: #E5E2E2;
+    transition: 200ms;
+}
+.footerText:hover{
+    color: orangered;
+}
+
+.footerTextOrange{
+    color:orangered;
+    font-weight: bold;
+    // border-bottom: orangered 1px solid; 
+}
