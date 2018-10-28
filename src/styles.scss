@@ -4,6 +4,15 @@ html,body,.wrapper {
     background-color: white;
 }
 
+#logoBrand{
+    width: 170px;
+    padding-left:40px;
+    padding-top:10px;
+    padding-bottom:10px; 
+    margin: 0px;
+}
+
+
 a:hover {
     cursor:pointer;
 }
@@ -69,7 +78,7 @@ input:focus {
     letter-spacing: 0px;
     font-size: 50px;
     font-family: 'Poppins', sans-serif;
-    font-weight: 280 !important;
+    font-weight: 250px !important;
 }
 
 .custom-body {
