@@ -4,7 +4,7 @@
             <form [formGroup]="loginForm" autocomplete="off">
                 <div class="form-group">
                   <label for="email">Email address: </label>
-                  <input type="email" formControlName="email" name="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Enter email">
+                  <input type="email" formControlName="email" name="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Enter email" #email>
                   <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                   <div *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)" class="incorrect">
                       <div *ngIf="loginForm.controls['email'].errors.required">
@@ -18,7 +18,7 @@
         
                 <div class="form-group">
                   <label for="Password: " >Password: </label>
-                  <input type="password" formControlName="password"name="password" class="form-control" id="password" aria-describedby="emailHelp" placeholder="Enter password">
+                  <input type="password" formControlName="password"name="password" class="form-control" id="password" aria-describedby="emailHelp" #password placeholder="Enter password">
                   <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)" class="incorrect">
                       <div *ngIf="loginForm.controls['password'].errors.required">
                           password is required.
@@ -26,7 +26,7 @@
                   </div>
                 </div>
                 <div class="button-login">
-                  <button class="link-custom btn" routerLink="/admin/home" [disabled]="loginForm.invalid">Login</button>
+                  <button class="link-custom btn" (click)="login(email.value,password.value)" [disabled]="loginForm.invalid">Login</button>
                 </div>
             </form>
             <hr> 

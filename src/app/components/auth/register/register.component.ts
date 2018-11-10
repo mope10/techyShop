@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-
+import {AuthserviceService} from '../../../../services/auth/authservice.service';
+import {user} from '../../../../services/auth/authservice.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -11,7 +12,10 @@ export class RegisterComponent implements OnInit {
   private password: string;
   validityStatement = "";
   private validity= false;
-  constructor(private fb: FormBuilder) {
+  private User:user;
+  
+  
+  constructor(private fb: FormBuilder,private auth: AuthserviceService) {
     this.createForm();
    }
 
@@ -55,5 +59,17 @@ export class RegisterComponent implements OnInit {
       rePassword: ['',[Validators.required]],
       address    : ['',[Validators.required]]
     });
+  }
+  registerUser(firstName,lastName,password,emailAddress,phoneNumber,address){
+    this.User = {
+      firstName: firstName,
+      lastName: lastName,
+      password: password,
+      email: emailAddress,
+      number: phoneNumber,
+      address: address
+    }
+    console.log(this.User);
+    this.auth.createUser(this.User).subscribe();
   }
 }
