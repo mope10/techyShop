@@ -113,7 +113,7 @@
 }
 .headingSidebar {
     text-align:center;
-    color: white;
+    width:250px;
 }
 .gridHelp {
     grid-column-start: 15;
@@ -121,8 +121,7 @@
 }
 .form-control { 
     display: inline-block;
-    width: 90%  ;
-    margin-right:auto;
+    width:20%;
     color:black;
     background-color: white;
     border: none;
