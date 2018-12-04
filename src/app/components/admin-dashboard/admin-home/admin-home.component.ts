@@ -78,7 +78,7 @@ export class AdminHomeComponent implements OnInit {
 		}
 		]
 	});
-	
+	chart2.render();
 	
     }
 
