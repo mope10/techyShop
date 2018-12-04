@@ -33,12 +33,16 @@ export class LoginComponent implements OnInit {
       password: password
     }
     this.auth.login(this.account).subscribe((e)=>{
+      console.log(e)
       this.condition = e.condition;
+      console.log(this.condition)
+      if(this.condition) {
+        
+        this.router.navigate(['/','admin','home']);
+      }
 
-    });
-    if(this.condition) {
-      this.router.navigate(['/','admin','home']);
-    }
+    },(err)=>console.log(err),()=>console.log("completed"))
+    
   }
 
 }
