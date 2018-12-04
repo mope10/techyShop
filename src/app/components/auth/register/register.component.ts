@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthserviceService} from '../../../../services/auth/authservice.service';
 import {user} from '../../../../services/auth/authservice.service';
+import {Router} from '@angular/router'
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -15,7 +16,7 @@ export class RegisterComponent implements OnInit {
   private User:user;
   
   
-  constructor(private fb: FormBuilder,private auth: AuthserviceService) {
+  constructor(private fb: FormBuilder,private auth: AuthserviceService, private router: Router) {
     this.createForm();
    }
 
@@ -70,6 +71,6 @@ export class RegisterComponent implements OnInit {
       address: address
     }
     console.log(this.User);
-    this.auth.createUser(this.User).subscribe();
+    this.auth.createUser(this.User).subscribe((value)=>console.log(value),(err)=> console.log(err),()=> this.router.navigate(['/','login']));
   }
 }
