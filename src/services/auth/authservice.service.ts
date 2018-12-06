@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {shareReplay} from 'rxjs/operators';
 import {Router} from '@angular/router'
+import {environment_url} from "../../environments/environment";
+
 
 export interface user {
   firstName: any,
@@ -20,20 +22,56 @@ export interface account {
 
 }
 export interface authorization {
-  condition: boolean;
+  token: any,
+  accountType: any,
+  expiresIn: any
 }
-
+export interface creation {
+  creation: boolean
+}
 @Injectable({
   providedIn: 'root'
 })
 export class AuthserviceService {
-  constructor(private http:HttpClient,private router:Router) { }
+  constructor(private http:HttpClient,private router:Router) {
+    console.log(environment_url);
+   }
 
-  createUser(User: user): Observable<user>{
-   return this.http.post<user>("http://localhost:8000/users/create",User);
+  createUser(User: user): Observable<creation>{
+    var url = environment_url + "/users"+"/create";
+    
+   return this.http.post<creation>(url,User);
   }
-  login(account: account): Observable<authorization>{
-    return this.http.post<authorization>("http://localhost:8000/login",account);
+  login(account: account){
+    var url = environment_url + "/login";
+    this.http.post<authorization>(url,account).subscribe((e)=>{
+      localStorage.setItem("token",e.token);
+      localStorage.setItem("accountType",e.accountType);
+      if (e.token){
+        if(e.accountType == "admin"){
+          this.router.navigate(['admin','home']);
 
+        }
+        else if(e.accountType == "user") {
+          this.router.navigate(['user','history'])
+        }
+      }
+    });
+
+  }
+  isauthenticated() {
+    var token = localStorage.getItem("token");
+    if (token) {
+      // if(!this.jwt.isTokenExpired(token)){
+      //   return true;
+      // }
+      // else {
+      //   return false;
+      // }
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 }

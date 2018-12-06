@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {AppRoutingModule} from './app-routing';
 import { ReactiveFormsModule ,FormsModule }   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { AuthserviceService} from '../services/auth/authservice.service'
 
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './components/pages/landing-page/landing-page.component';
@@ -19,6 +19,9 @@ import { AdminHomeComponent } from './components/admin-dashboard/admin-home/admi
 import { AdminOrdersComponent } from './components/admin-dashboard/admin-orders/admin-orders.component';
 import { AdminInventoryComponent } from './components/admin-dashboard/admin-inventory/admin-inventory.component';
 import { AdminSettingsComponent } from './components/admin-dashboard/admin-settings/admin-settings.component';
+import { UserHistoryComponent } from './components/user-dashboard/user-history/user-history.component';
+import { UserSettingsComponent } from './components/user-dashboard/user-settings/user-settings.component';
+import { UserProductsComponent } from './components/user-dashboard/user-products/user-products.component';
 
 @NgModule({
   declarations: [
@@ -35,14 +38,19 @@ import { AdminSettingsComponent } from './components/admin-dashboard/admin-setti
     AdminHomeComponent,
     AdminOrdersComponent,
     AdminInventoryComponent,
-    AdminSettingsComponent
+    AdminSettingsComponent,
+    UserHistoryComponent,
+    UserSettingsComponent,
+    UserProductsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

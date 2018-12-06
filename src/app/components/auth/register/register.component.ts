@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
   validityStatement = "";
   private validity= false;
   private User:user;
-  
+  private message = "";
   
   constructor(private fb: FormBuilder,private auth: AuthserviceService, private router: Router) {
     this.createForm();
@@ -71,6 +71,14 @@ export class RegisterComponent implements OnInit {
       address: address
     }
     console.log(this.User);
-    this.auth.createUser(this.User).subscribe((value)=>console.log(value),(err)=> console.log(err),()=> this.router.navigate(['/','login']));
+    this.auth.createUser(this.User).subscribe((value)=>{
+      console.log(value);
+      if (value.creation == false) {
+        this.message = "Account already exists";
+      }
+      else if (value.creation == true) {
+        this.router.navigate(['login']);
+      }
+    },(err)=> console.log(err));
   }
 }

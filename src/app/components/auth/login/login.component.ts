@@ -12,10 +12,12 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   private account: account;
   private condition = false;
+  private notification = "";
   
   
   constructor(private fb: FormBuilder,private auth : AuthserviceService,private router: Router) {
     this.createForm();
+    
   }
 
 
@@ -32,17 +34,10 @@ export class LoginComponent implements OnInit {
       email: email,
       password: password
     }
-    this.auth.login(this.account).subscribe((e)=>{
-      console.log(e)
-      this.condition = e.condition;
-      console.log(this.condition)
-      if(this.condition) {
-        
-        this.router.navigate(['/','admin','home']);
-      }
-
-    },(err)=>console.log(err),()=>console.log("completed"))
-    
+    this.auth.login(this.account);
+    if (!localStorage.getItem("token")){
+      this.notification = "Your username or password is wrong"
+    }
   }
 
 }

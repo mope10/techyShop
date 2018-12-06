@@ -11,5 +11,22 @@ export class SideNavComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  checkuser() {
+    var type= localStorage.getItem("accountType");
+    if (type == "user"){
+      return true;
+    }
+    else {
+    return false;
+    }
+  }
+  checkadmin() {
+    var type= localStorage.getItem("accountType");
+    if (type == "admin"){
+      return true;
+    }
+    else {
+    return false;
+    }
+  }
 }
