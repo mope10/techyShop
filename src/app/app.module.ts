@@ -1,13 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {AppRoutingModule} from './app-routing';
-import { ReactiveFormsModule ,FormsModule }   from '@angular/forms';
+import { AppRoutingModule } from './app-routing';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-<<<<<<< HEAD
-import { AuthserviceService} from '../services/auth/authservice.service'
-=======
-import {NgxPaginationModule} from 'ngx-pagination';
->>>>>>> 34e6afc296003eaa26cfab238648e32d547d255f
+import { AuthserviceService } from '../services/auth/authservice.service'
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './components/pages/landing-page/landing-page.component';
@@ -53,12 +50,7 @@ import { UserProductsComponent } from './components/user-dashboard/user-products
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-<<<<<<< HEAD
-    
-
-=======
     NgxPaginationModule
->>>>>>> 34e6afc296003eaa26cfab238648e32d547d255f
   ],
   providers: [],
   bootstrap: [AppComponent]
