@@ -4,37 +4,28 @@
         <a class="nav-link active" id="Sold-tab" data-toggle="tab" href="#Sold" role="tab" aria-controls="Sold" aria-selected="true">Sold</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="TotalUsers-tab" data-toggle="tab" href="#TotalUsers" role="tab" aria-controls="TotalUsers" aria-selected="false" >Total Users</a>
+        <a class="nav-link" id="TotalUsers-tab" data-toggle="tab" href="#TotalUsers" role="tab" aria-controls="TotalUsers" aria-selected="false"`>Total Users</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="Items-tab" data-toggle="tab" href="#Items" role="tab" aria-controls="Items" aria-selected="false" >Items</a>
-      </li>
-      <li class="ml-auto nav-item">
-        <div class="form-group">
-            <form>
-              <input class="form-control" type="text" placeHolder="Search">
-            </form>
-            <i class="fa fa-search"></i>
-        </div>
-        
+        <a class="nav-link" id="Items-tab" data-toggle="tab" href="#Items" role="tab" aria-controls="Items" aria-selected="false">Items</a>
       </li>
     </ul>
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="Sold" role="tabpanel" aria-labelledby="Sold-tab">
         <div class="table-responsive">
-            <div id="chartContainer" style="height: 500px; width: 70%; margin: auto;"></div>
+            <div id="chartContainer" class="barChartStyle"></div>
         </div>
             
       </div>
       <div class="tab-pane fade" id="TotalUsers" role="tabpanel" aria-labelledby="TotalUsers-tab">
           <div class="table-responsive">
-
+            <div id="lineChart" style="height: 300px; width: 100%;"></div>
             </div>
             
       </div>
       <div class="tab-pane fade" id="Items" role="tabpanel" aria-labelledby="Items-tab">
         <div class="table-responsive">
-            <div id="PieChart" style="height: 500px; width: 40%; margin: auto;">
+            <div id="PieChart" class="pieChartStyle"></div>
         </div>
             
       </div>

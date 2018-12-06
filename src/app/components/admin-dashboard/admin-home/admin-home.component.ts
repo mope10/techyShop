@@ -5,6 +5,7 @@ import * as CanvasJS from './canvasjs.min';
   templateUrl: './admin-home.component.html',
   styleUrls: ['./admin-home.component.scss']
 })
+
 export class AdminHomeComponent implements OnInit {
 
   constructor() { }
@@ -79,7 +80,34 @@ export class AdminHomeComponent implements OnInit {
 		]
 	});
 	chart2.render();
-	
-    }
+	var chart3 = new CanvasJS.Chart("lineChart",
+    {
 
+      title:{
+      text: "Earthquakes - per month"
+      },
+       data: [
+      {
+        type: "line",
+
+        dataPoints: [
+        { x: new Date("February 4, 2016"), y: 450 },
+        { x: new Date("February 5, 2016"), y: 414 },
+        { x: new Date("February 6, 2016"), y: 520 },
+        { x: new Date("February 7, 2016"), y: 460 },
+        { x: new Date("February 8, 2016"), y: 450 },
+        { x: new Date("February 9, 2016"), y: 500 },
+        { x: new Date("February 10, 2016"), y: 480 },
+        { x: new Date("February 11, 2016"), y: 480 },
+        { x: new Date("February 12, 2016"), y: 410 },
+        { x: new Date("February 13, 2016"), y: 500 },
+        { x: new Date("February 4, 2016"), y: 480 },
+        { x: new Date("February 4, 2016"), y: 510 }
+        ]
+      }
+      ]
+    });
+
+    chart3.render();
+  }
 }

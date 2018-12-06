@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {AppRoutingModule} from './app-routing';
 import { ReactiveFormsModule ,FormsModule }   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './components/pages/landing-page/landing-page.component';
@@ -42,7 +42,8 @@ import { AdminSettingsComponent } from './components/admin-dashboard/admin-setti
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

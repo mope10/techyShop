@@ -1,7 +1,4 @@
-<!---<div class="sidebar">
-  <h2 class="headingSidebar">SideBar</h2>
-</div>-->
-<div class="grid">
+<!--<div class="grid">-->
 <div class="top-bar"> 
   <div class="form-group">
     <form>
@@ -13,23 +10,23 @@
     </form>
   </div>
 </div>
-<div class="sidebar">
+<!--<div class="sidebar">
   <h1 class="headingSidebar"> SideBar</h1>
   <h3> Price Range</h3>
   <div><input type=textField class="form-control" placeHolder="Lower Limit ">
   <input type=textField class="form-control" placeHolder="Upper Limit ">
 </div>
 
-</div>
+</div>-->
 <div class="container gridHelp"> 
   <div class="row">
-  <div class="col-lg-3 col-md-6 col-sm-12">
+  <div *ngFor="let x of data" class="col-lg-3 col-md-6 col-sm-12">
     <div class=" item-card">
-        <img src="https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg" alt="">
+        <img src="{{x.src}}" alt="">
         <div class="spaceBetweenPicText"></div>
-        <h6 >HTC one</h6>
-        <p class="details">FHD 6" Display</p>
-        <p class="price">Rs.5000</p>
+        <h6 >{{x.name}}</h6>
+        <p class="details">{{x.detail}}</p>
+        <p class="price">Rs: {{x.price}}</p>
         <a class="link-custom">Buy Now</a> 
     </div>
   </div>
@@ -85,5 +82,5 @@
   </div> 
   </div>
 </div>
-</div>  
+<!--</div>-->  
 <br><br>
