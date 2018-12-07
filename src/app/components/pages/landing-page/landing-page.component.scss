@@ -4,51 +4,55 @@
         max-height: 480px !important;
     }
 }
-body{
+
+body {
     background-color: white;
 }
 
-.category-card{
+.category-card {
     height: 200px;
     border-radius: 9px;
     margin-bottom: 20px;
     background-size: cover;
     background-repeat: no-repeat;
     padding: 0px;
-    transition:0.7s;
-
+    transition: 0.7s;
 }
-#category01{
+
+#category01 {
     background-image: url("../../../../assets/photos/background-img-category-cards/category_01_02.jpg");
 }
 
-#category02{
+#category02 {
     background-image: url("../../../../assets/photos/background-img-category-cards/category_02.jpg");
 }
 
-#category03{
+#category03 {
     background-image: url("../../../../assets/photos/background-img-category-cards/category_03.jpg");
 }
 
-#category04{
+#category04 {
     background-image: url("../../../../assets/photos/background-img-category-cards/category_04.jpeg");
 }
 
-#category05{
+#category05 {
     background-image: url("../../../../assets/photos/background-img-category-cards/category_05.jpg");
 }
-#category06{
+
+#category06 {
     background-image: url("../../../../assets/photos/background-img-category-cards/category_06.jpg");
 }
 
-.category-card:last-child{
+.category-card:last-child {
     margin-right: 0px;
 }
-.category-card:hover{
-    transform: translate(0px,-5px);
+
+.category-card:hover {
+    transform: translate(0px, -5px);
     box-shadow: 0px 3px 14px rgba(139, 139, 139, 0.5);
 }
-.catBack{
+
+.catBack {
     height: 100%;
     width: 100%;
     color: white;
@@ -59,66 +63,64 @@ body{
     display: flex;
     align-items: center;
     padding-top: 100px;
-
 }
-.cat01BackColor{
+
+.cat01BackColor {
     background: rgba(0, 60, 255, 0.31);
-    transition:1s;
-
+    transition: 1s;
 }
-.cat02BackColor{
+
+.cat02BackColor {
     background: rgba(7, 185, 0, 0.31);
-    transition:1s;
-
-}
-.cat03BackColor{
-    background: rgba(255,69,0,0.31);
-    transition:1s;
-
-}
-.cat04BackColor{
-    background: rgba(95, 36, 2,0.31);
-    transition:1s;
-
-}
-.cat05BackColor{
-    background: rgba(255, 0, 140,0.31);
-    transition:1s;
-
-}
-.cat06BackColor{
-    background: rgba(255, 217, 0,0.31);
-    transition:1s;
-
+    transition: 1s;
 }
 
+.cat03BackColor {
+    background: rgba(255, 69, 0, 0.31);
+    transition: 1s;
+}
+
+.cat04BackColor {
+    background: rgba(95, 36, 2, 0.31);
+    transition: 1s;
+}
+
+.cat05BackColor {
+    background: rgba(255, 0, 140, 0.31);
+    transition: 1s;
+}
+
+.cat06BackColor {
+    background: rgba(255, 217, 0, 0.31);
+    transition: 1s;
+}
 
 // Hover
-.cat01BackColor:hover{
-    background: rgba(0, 60, 255,0.7);
+.cat01BackColor:hover {
+    background: rgba(0, 60, 255, 0.7);
 }
-.cat02BackColor:hover{
-    background: rgba(7, 185, 0,0.7);
+
+.cat02BackColor:hover {
+    background: rgba(7, 185, 0, 0.7);
 }
-.cat03BackColor:hover{
-    background: rgba(255,69,0,0.7);
+
+.cat03BackColor:hover {
+    background: rgba(255, 69, 0, 0.7);
 }
-.cat04BackColor:hover{
-    background: rgba(95, 36, 2,0.8);
+
+.cat04BackColor:hover {
+    background: rgba(95, 36, 2, 0.8);
 }
-.cat05BackColor:hover{
-    background: rgba(255, 0, 140,0.7);
+
+.cat05BackColor:hover {
+    background: rgba(255, 0, 140, 0.7);
 }
-.cat06BackColor:hover{
-    background: rgba(255, 217, 0,0.7);
+
+.cat06BackColor:hover {
+    background: rgba(255, 217, 0, 0.7);
 }
+
 // Hover_Ends
-
-
-
-
-
-
 .categories {
     margin-top: 30px;
     color: #343A40;
@@ -127,90 +129,74 @@ body{
         font-weight: 400;
     }
     hr {
-        border:3px solid orangered !important;
+        border: 3px solid orangered !important;
         border-radius: 15px;
-        margin-left:48%;
-        margin-right:48%;
-        margin-bottom: 45px !important; 
-        // box-shadow: 0 50px 50px rgba(155, 155, 155, 0.281);
+        margin-left: 48%;
+        margin-right: 48%;
+        margin-bottom: 45px !important; // box-shadow: 0 50px 50px rgba(155, 155, 155, 0.281);
     }
     .cat {
-        display:block;
+        display: block;
         font-weight: 500;
-        color:white;
+        color: white;
         text-transform: capitalize;
-        box-shadow: 0 0 25px rgba(155,155,155,0.5);
+        box-shadow: 0 0 25px rgba(155, 155, 155, 0.5);
         background-size: cover;
         background-repeat: no-repeat;
         p {
             padding: 2px 10px;
-            box-shadow: 0 0 25px rgba(155,155,155,0.5);
+            box-shadow: 0 0 25px rgba(155, 155, 155, 0.5);
             background-color: #343A40;
             border-radius: 15px;
-            display:inline-block;
-            
+            display: inline-block;
         }
-        
     }
     .cat:hover {
-        cursor:pointer;
+        cursor: pointer;
         p {
             color: #343A40;
-            background-color:white;
+            background-color: white;
             transition-duration: 100ms;
         }
     }
     .cat:active {
         p {
-            background-color:#bbb;
+            background-color: #bbb;
         }
     }
-    .laptop {
-
-    }
-    .mobile {
-
-    }
-    .accessories {
-    
-    }
-    .gaming {
-
-    }
-    .lcd {
-
-    }
-    .speakers {
-        
-    }
-    
+    .laptop {}
+    .mobile {}
+    .accessories {}
+    .gaming {}
+    .lcd {}
+    .speakers {}
 }
+
 #orangeLine {
-    border:3px solid orangered !important;
+    border: 3px solid orangered !important;
     border-radius: 15px;
-    margin-left:48%;
-    margin-right:48%;
-    margin-bottom: 45px !important; 
-    // box-shadow: 0 50px 50px rgba(155, 155, 155, 0.281);
+    margin-left: 48%;
+    margin-right: 48%;
+    margin-bottom: 45px !important; // box-shadow: 0 50px 50px rgba(155, 155, 155, 0.281);
 }
+
 .popular {
-    text-align:center;
+    text-align: center;
     h1 {
         font-weight: 400;
     }
     .top-tabs {
-        margin-bottom:50px !important;
+        margin-bottom: 50px !important;
         .nav-link {
             color: #343A40;
         }
         .active {
             background-color: #343A40;
-            color:white;
+            color: white;
         }
     }
 }
 
-
-.spaceBetweenPicText{
+.spaceBetweenPicText {
     height: 30px;
 }

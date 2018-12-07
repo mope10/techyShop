@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ConditionalExpr } from '@angular/compiler';
+<<<<<<< HEAD
+=======
+import { NgxPaginationModule } from 'ngx-pagination'
+>>>>>>> c45bddf253717f8b7e7ef2e1e090bc0a4e694a92
 
 @Component({
   selector: 'app-store',
@@ -9,60 +13,60 @@ import { ConditionalExpr } from '@angular/compiler';
 export class StoreComponent implements OnInit {
   category = "All";
   data = [
-    {  
-      id:"1", 
-      name:"HTC", 
-      src:"https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg", 
-      detail:"FHD 6' Display",
+    {
+      id: "1",
+      name: "HTC",
+      src: "https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg",
+      detail: "FHD 6' Display",
       price: "5000"
     },
     {
-      id:"2",
-      name:"HTC",
-      src:"https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg", 
-      detail:"FHD 6' Display", 
+      id: "2",
+      name: "HTC",
+      src: "https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg",
+      detail: "FHD 6' Display",
       price: "5000"
     },
     {
-      id:"3",
-      name:"HTC",
-      src:"https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg", 
-      detail:"FHD 6' Display", 
+      id: "3",
+      name: "HTC",
+      src: "https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg",
+      detail: "FHD 6' Display",
       price: "5000"
     },
     {
-      id:"4", 
-      name:"HTC", 
-      src:"https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg", 
-      detail:"FHD 6' Display", 
+      id: "4",
+      name: "HTC",
+      src: "https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg",
+      detail: "FHD 6' Display",
       price: "5000"
     },
     {
-      id:"5", 
-      name:"HTC", 
-      src:"https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg", 
-      detail:"FHD 6' Display", 
+      id: "5",
+      name: "HTC",
+      src: "https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg",
+      detail: "FHD 6' Display",
       price: "5000"
     },
     {
-      id:"6", 
-      name:"HTC", 
-      src:"https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg", 
-      detail:"FHD 6' Display", 
+      id: "6",
+      name: "HTC",
+      src: "https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg",
+      detail: "FHD 6' Display",
       price: "5000"
     },
     {
-      id:"7", 
-      name:"HTC", 
-      src:"https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg", 
-      detail:"FHD 6's Display", 
+      id: "7",
+      name: "HTC",
+      src: "https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg",
+      detail: "FHD 6's Display",
       price: "5000"
     }
   ];
   constructor() { }
 
   ngOnInit() {
-    
+
   }
   search(query) {
     this.category = query;

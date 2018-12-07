@@ -5,30 +5,27 @@ form {
         display: inline-block;
         width: 90%;
         margin-right: 10px;
-        
-        
     }
     hr {
         border: 3px solid orangered !important;
-        border-radius: 20px; 
+        border-radius: 20px;
         display: block;
         margin-top: 0px;
     }
     #dropdownMenuButton {
         width: 100%;
-        background-color: black; 
+        background-color: black;
         margin-top: 5px;
     }
-    .dropdown-item{
+    .dropdown-item {
         width: 100%;
-
     }
     .dropdown-item:hover {
         background-color: orangered;
-        color:white;
+        color: white;
     }
     .dropdown-item:focus {
-        box-shadow: 0 0 45px rgba(155,155,155,0.5);
+        box-shadow: 0 0 45px rgba(155, 155, 155, 0.5);
     }
 }
 
