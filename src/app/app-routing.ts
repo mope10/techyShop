@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardService } from '../services/authguard/auth-guard.service'
+import { AuthGuardServiceAdminService } from '../services/authGuardServiceAdmin/auth-guard-service-admin.service'
 
 //Pages
 import {LandingPageComponent} from "./components/pages/landing-page/landing-page.component";
@@ -32,11 +33,11 @@ const routes: Routes = [
 
     //Admin Panel
 
-    { path: 'admin',canActivate:[AuthGuardService],children:[
-        { path: 'home', component: AdminHomeComponent, canActivate: [AuthGuardService]},
-        { path: 'orders', component: AdminOrdersComponent, canActivate: [AuthGuardService]},
-        { path: 'inventory', component: AdminInventoryComponent, canActivate: [AuthGuardService]},
-        { path: 'settings', component: AdminSettingsComponent, canActivate: [AuthGuardService]}
+    { path: 'admin',canActivate:[AuthGuardServiceAdminService],children:[
+        { path: 'home', component: AdminHomeComponent, canActivate: [AuthGuardServiceAdminService]},
+        { path: 'orders', component: AdminOrdersComponent, canActivate: [AuthGuardServiceAdminService]},
+        { path: 'inventory', component: AdminInventoryComponent, canActivate: [AuthGuardServiceAdminService]},
+        { path: 'settings', component: AdminSettingsComponent, canActivate: [AuthGuardServiceAdminService]}
     ]},
     {
         path: 'user', canActivate:[AuthGuardService],children:[

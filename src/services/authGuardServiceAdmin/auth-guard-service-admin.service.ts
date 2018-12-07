@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import {AuthserviceService} from '../auth/authservice.service';
 import {Router} from '@angular/router'
@@ -5,11 +6,12 @@ import {Router} from '@angular/router'
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuardService {
+export class AuthGuardServiceAdminService  {
 
   constructor(private authservice: AuthserviceService,private router: Router) { }
   canActivate() {
-    if (this.authservice.isauthenticated()) {
+    var condition = this.authservice.getAccountType();
+    if (this.authservice.isauthenticated() && condition == 'admin') {
       return true;
     } 
     else {

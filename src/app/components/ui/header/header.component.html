@@ -15,14 +15,30 @@
       <li class="nav-item">
         <a class="nav-link " routerLink="aboutUs" routerLinkActive="active"><span class="textNav underline">ABOUT US</span></a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf = "!accountApproval()">
         <a class="nav-link" routerLink="login" routerLinkActive="active"><span class="textNav underline">LOGIN</span></a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf = "!accountApproval()">
         <div class="backSignUp">  
           <a class="nav-link" routerLink="register" routerLinkActive="active"><span class="textNavSignup">SIGN UP</span></a>
         </div>
       
+      </li>
+      <li class="nav-item" *ngIf = "accountApproval()">
+        <div class="profile-info row" data-toggle="dropdown">
+          <div class="col-3">
+            <img src="../../../../assets/photos/profile-pics/awwal.jpg" alt="">
+          </div>
+          <div class="col-9">
+            <p>Mustafa Siddiqui</p>
+            <p>Store Owner</p>
+          </div>
+        </div>
+        <div class="dropdown-menu profile-dropdown" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" (click)="goToProfile()" ><i class="fa fa-user"aria-hidden="true"></i>Profile</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item"  (click)="signOut()"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out</a>
+        </div>
       </li>
     </ul>
     

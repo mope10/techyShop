@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
 import { ConditionalExpr } from '@angular/compiler';
-=======
-import {NgxPaginationModule} from 'ngx-pagination'
->>>>>>> 34e6afc296003eaa26cfab238648e32d547d255f
 
 @Component({
   selector: 'app-store',
@@ -11,9 +7,7 @@ import {NgxPaginationModule} from 'ngx-pagination'
   styleUrls: ['./store.component.scss']
 })
 export class StoreComponent implements OnInit {
-<<<<<<< HEAD
   category = "All";
-=======
   data = [
     {  
       id:"1", 
@@ -65,7 +59,6 @@ export class StoreComponent implements OnInit {
       price: "5000"
     }
   ];
->>>>>>> 34e6afc296003eaa26cfab238648e32d547d255f
   constructor() { }
 
   ngOnInit() {

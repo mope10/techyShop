@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router} from '@angular/router'
+import { AuthserviceService} from '../../../../services/auth/authservice.service';
 
 @Component({
   selector: 'app-account-header',
@@ -8,7 +9,7 @@ import { Router} from '@angular/router'
 })
 export class AccountHeaderComponent implements OnInit {
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private auth: AuthserviceService) {
 
    }
 
@@ -18,5 +19,9 @@ export class AccountHeaderComponent implements OnInit {
     localStorage.removeItem("token");
     localStorage.removeItem("type");
     this.router.navigate([''])
+  }
+  goToProfile() {
+    this.auth.goToProfile();
+   
   }
 }
