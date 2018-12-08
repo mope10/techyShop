@@ -12,7 +12,6 @@ export class AppComponent {
   accountWrapper="";
   
   constructor(private location: Location,private auth: AuthserviceService) {
-    this.auth.removeToken();
   }
 
   footerApproval(): boolean {

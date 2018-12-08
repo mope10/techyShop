@@ -42,7 +42,7 @@ export class AdminInventoryComponent implements OnInit {
     this.AddingItemForm = this.fb.group({
       productName: ['', [Validators.required, Validators.maxLength(50)]],
       brandName: ['', [Validators.required, Validators.maxLength(50)]],
-      price: ['', [Validators.required, Validators.pattern('[1-9]*')]],
+      price: ['', [Validators.required, Validators.pattern('[0-9]*')]],
       details: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(255)]],
       file: ['', [Validators.required]],
 
