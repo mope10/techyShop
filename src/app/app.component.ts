@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
+import { AuthserviceService} from '../services/auth/authservice.service'
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,8 @@ export class AppComponent {
   title = 'Tech Shop';
   accountWrapper="";
   
-  constructor(private location: Location) {
-
+  constructor(private location: Location,private auth: AuthserviceService) {
+    this.auth.removeToken();
   }
 
   footerApproval(): boolean {

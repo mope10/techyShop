@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthserviceService} from '../../../../services/auth/authservice.service'
 import {Router} from '@angular/router';
+import {DataService} from '../../../../services/dataService/data.service';
 
 @Component({
   selector: 'app-header',
@@ -8,13 +9,17 @@ import {Router} from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor(private auth: AuthserviceService, private router: Router) { }
+  firstName = "";
+  lastName  = "";
+  status    = "";
+  constructor(private auth: AuthserviceService, private router: Router, private data: DataService) { 
+    this.getUser();
+  }
 
   ngOnInit() {
   }
   accountApproval():boolean {
-    if(localStorage.getItem('token')) {
+    if(this.auth.isToken()) {
       return true;
     }
     else {
@@ -31,4 +36,17 @@ export class HeaderComponent implements OnInit {
     this.auth.goToProfile();
    
   }
+  getUser() {
+    if(this.auth.isToken()){
+    this.data.getUserData().subscribe((data)=>{
+      if (data.user != null){
+      this.firstName = data.user.firstName;
+      this.lastName  = data.user.lastName;
+      this.status    = data.user.accountType;
+    
+    }});
+    
+  }
+  }
+
 }

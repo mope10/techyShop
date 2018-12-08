@@ -24,7 +24,8 @@ export interface account {
 export interface authorization {
   token: any,
   accountType: any,
-  expiresIn: any
+  expiresIn: any,
+  id : any
 }
 export interface creation {
   creation: boolean
@@ -48,6 +49,7 @@ export class AuthserviceService {
     this.http.post<authorization>(url,account).subscribe((e)=>{
       localStorage.setItem("token",e.token);
       localStorage.setItem("accountType",e.accountType);
+      localStorage.setItem("userId",e.id);
       if (e.token){
         if(e.accountType == "admin"){
           console.log("in admin");
@@ -63,15 +65,10 @@ export class AuthserviceService {
   }
   isauthenticated() {
     console.log("protecting route");
-    var token = localStorage.getItem("token");
+    var token = this.getToken()
     console.log(token);
     if (token) {
-      // if(!this.jwt.isTokenExpired(token)){
-      //   return true;
-      // }
-      // else {
-      //   return false;
-      // }
+      
       return true;
     }
     else {
@@ -82,6 +79,12 @@ export class AuthserviceService {
   getAccountType() {
     return localStorage.getItem('accountType');
   }
+  getToken(){
+    return localStorage.getItem('token');
+  }
+  removeToken(){
+    localStorage.removeItem('token');
+  }
 
   isToken() {
     if(localStorage.getItem('token')) {
@@ -91,6 +94,13 @@ export class AuthserviceService {
     else {
       return false;
     }
+  }
+
+  getId(){
+    if(this.isToken()){
+      return localStorage.getItem('userId');
+    }
+    
   }
 
   goToProfile() {

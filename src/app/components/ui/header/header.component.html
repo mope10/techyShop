@@ -30,12 +30,12 @@
             <img src="../../../../assets/photos/profile-pics/awwal.jpg" alt="">
           </div>
           <div class="col-9">
-            <p>Mustafa Siddiqui</p>
-            <p>Store Owner</p>
+            <p> {{firstName}} {{lastName}}</p>
+            <p> {{status}}</p>
           </div>
         </div>
         <div class="dropdown-menu profile-dropdown" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" (click)="goToProfile()" ><i class="fa fa-user"aria-hidden="true"></i>Profile</a>
+          <a class="dropdown-item" (click)="goToProfile()" ><i class="fa fa-user"aria-hidden="true"></i> Profile</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item"  (click)="signOut()"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out</a>
         </div>

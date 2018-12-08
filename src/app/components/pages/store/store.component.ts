@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConditionalExpr } from '@angular/compiler';
-<<<<<<< HEAD
-=======
 import { NgxPaginationModule } from 'ngx-pagination'
->>>>>>> c45bddf253717f8b7e7ef2e1e090bc0a4e694a92
 
 @Component({
   selector: 'app-store',
