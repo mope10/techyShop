@@ -13,6 +13,7 @@ export class AdminInventoryComponent implements OnInit {
   validityStatement = "";
   private validity = false;
   private message = "";
+  formCondition   = true;
 
 
   constructor(private fb: FormBuilder, private auth: AuthserviceService) {
@@ -48,8 +49,12 @@ export class AdminInventoryComponent implements OnInit {
 
     });
   }
+  goToForm(){
+    this.formCondition = !this.formCondition;
+  }
   addItem(productName, brandName, price, details, image){
     //TODO: ADD LOGIC HERE
+    console.log(productName, brandName, price, details, image);
   }
   editItem(productName, brandName, price, details, image){
     //TODO: ADD LOGIC HERE
