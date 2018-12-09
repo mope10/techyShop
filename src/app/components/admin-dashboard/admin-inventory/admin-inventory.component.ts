@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthserviceService } from '../../../../services/auth/authservice.service';
+import { identifierModuleUrl } from '@angular/compiler';
 
 @Component({
   selector: 'app-admin-inventory',
@@ -14,13 +15,33 @@ export class AdminInventoryComponent implements OnInit {
   private validity = false;
   private message = "";
   formCondition   = true;
-
-
+  key = "id";
+  reverse = false;
+  //TO CHANGE
+  data = [{ id: "1", productName: "Dell PC", amount: "10", sellPrice: "15000", buyPrice: "13000" },
+  { id: "2", productName: "Dell PC", amount: "10", sellPrice: "15000", buyPrice: "13000" },
+  { id: "3", productName: "Dell PC", amount: "10", sellPrice: "15000", buyPrice: "13000" },
+  { id: "4", productName: "Dell PC", amount: "10", sellPrice: "15000", buyPrice: "13000" },
+  { id: "5", productName: "Dell PC", amount: "10", sellPrice: "15000", buyPrice: "13000" },
+  { id: "6", productName: "Dell PC", amount: "10", sellPrice: "15000", buyPrice: "13000" },
+  { id: "7", productName: "Dell PC", amount: "10", sellPrice: "15000", buyPrice: "13000" },
+  { id: "8", productName: "Dell PC", amount: "10", sellPrice: "15000", buyPrice: "13000" },
+  ];
+  //TO CHANGE
   constructor(private fb: FormBuilder, private auth: AuthserviceService) {
     this.createForm();
   }
 
   ngOnInit() {
+  }
+  sort(key){
+    if (this.key === key) {
+      this.reverse = !this.reverse;
+    }
+    else {
+      this.reverse = false;
+    }
+    this.key = key;
   }
   fileNameChecker(fileName: string) {
     var allowed_extensions = new Array("jpg","png");
