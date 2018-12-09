@@ -87,7 +87,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let x of data | orderBy: key : reverse ">
+            <tr *ngFor="let x of data | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'laptop', itemsPerPage: 4, currentPage: pLaptop }">
               <td>{{x.id}}</td>
               <td>{{x.productName}}</td>
               <td>{{x.amount}}</td>
@@ -97,6 +97,9 @@
             </tr>
           </tbody>
         </table>
+        <div class="pageControl">
+          <pagination-controls id="laptop" (pageChange)="pLaptop = $event" autoHide="true" responsive="true"></pagination-controls>
+        </div>
       </div>
     </div>
     <div class="tab-pane fade" id="mobiles" role="tabpanel" aria-labelledby="mobiles-tab">
@@ -143,7 +146,7 @@
                 </tr>
               </thead>
           <tbody>
-            <tr *ngFor="let x of data | orderBy: key : reverse  ">
+            <tr *ngFor="let x of data | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'mobiles', itemsPerPage: 4, currentPage: pMobile } ">
               <td>{{x.id}}</td>
               <td>{{x.productName}}</td>
               <td>{{x.amount}}</td>
@@ -153,6 +156,9 @@
             </tr>
           </tbody>
         </table>
+        <div class="pageControl">
+          <pagination-controls id="mobiles" (pageChange)="pMobile = $event" autoHide="true" responsive="true"></pagination-controls>
+        </div>
       </div>
 
     </div>
@@ -200,7 +206,7 @@
                 </tr>
               </thead>
           <tbody>
-            <tr *ngFor="let x of data | orderBy: key : reverse ">
+            <tr *ngFor="let x of data | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'accessories', itemsPerPage: 4, currentPage: pAccessory }">
               <td>{{x.id}}</td>
               <td>{{x.productName}}</td>
               <td>{{x.amount}}</td>
@@ -210,6 +216,9 @@
             </tr> 
           </tbody>
         </table>
+        <div class="pageControl">
+          <pagination-controls id="accessories" (pageChange)="pAccessory = $event" autoHide="true" responsive="true"></pagination-controls>
+        </div>
       </div>
     </div>
     <div class="tab-pane fade" id="gaming" role="tabpanel" aria-labelledby="gaming-tab">
@@ -256,7 +265,7 @@
                 </tr>
               </thead>
           <tbody>
-            <tr *ngFor="let x of data | orderBy: key : reverse ">
+            <tr *ngFor="let x of data | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'gaming', itemsPerPage: 4, currentPage: pGaming }">
               <td>{{x.id}}</td>
               <td>{{x.productName}}</td>
               <td>{{x.amount}}</td>
@@ -266,6 +275,9 @@
             </tr>
           </tbody>
         </table>
+        <div class="pageControl">
+          <pagination-controls id="gaming" (pageChange)="pGaming = $event" autoHide="true" responsive="true"></pagination-controls>
+        </div>
       </div>
     </div>
     <div class="tab-pane fade" id="display" role="tabpanel" aria-labelledby="display-tab">
@@ -312,7 +324,7 @@
                 </tr>
               </thead>
           <tbody>
-            <tr *ngFor="let x of data | orderBy: key : reverse ">
+            <tr *ngFor="let x of data | filter:MyFilter | orderBy: key : reverse | paginate: { id: 'display', itemsPerPage: 4, currentPage: pDisplay }">
               <td>{{x.id}}</td>
               <td>{{x.productName}}</td>
               <td>{{x.amount}}</td>
@@ -322,6 +334,9 @@
             </tr>
           </tbody>
         </table>
+        <div class="pageControl">
+          <pagination-controls id="display" (pageChange)="pDisplay = $event" autoHide="true" responsive="true"></pagination-controls>
+        </div>  
       </div>
     </div>
     <div class="tab-pane fade" id="speaker" role="tabpanel" aria-labelledby="speaker-tab">
@@ -368,7 +383,7 @@
                 </tr>
               </thead>
           <tbody>
-            <tr *ngFor="let x of data | orderBy: key : reverse ">
+            <tr *ngFor="let x of data | filter:MyFilter | orderBy: key : reverse | paginate: { id: 'speaker', itemsPerPage: 4, currentPage: pSpeaker }">
               <td>{{x.id}}</td>
               <td>{{x.productName}}</td>
               <td>{{x.amount}}</td>
@@ -378,6 +393,9 @@
             </tr>
           </tbody>
         </table>
+        <div class="pageControl">
+          <pagination-controls id="speaker" (pageChange)="pSpeaker = $event" autoHide="true" responsive="true"></pagination-controls>
+        </div>
       </div>
     </div>
 

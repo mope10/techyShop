@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthserviceService } from '../services/auth/authservice.service'
 import { NgxPaginationModule } from 'ngx-pagination';
 import { OrderModule } from 'ngx-order-pipe';
-import { FilterPipeModule } from 'ngx-filter-pipe';
+import { Ng2SearchPipeModule } from 'ng2-search-filter'; 
 
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './components/pages/landing-page/landing-page.component';
@@ -54,7 +54,7 @@ import { UserProductsComponent } from './components/user-dashboard/user-products
     HttpClientModule,
     NgxPaginationModule,
     OrderModule,
-    FilterPipeModule
+    Ng2SearchPipeModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

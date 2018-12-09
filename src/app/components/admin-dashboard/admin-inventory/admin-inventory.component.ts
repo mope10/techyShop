@@ -17,6 +17,12 @@ export class AdminInventoryComponent implements OnInit {
   formCondition   = true;
   key = "id";
   reverse = false;
+  pLaptop  = 1;
+  pMobile  = 1;
+  pAccessory  = 1;
+  pGaming  = 1;
+  pDisplay  = 1;
+  pSpeaker  = 1;
   //TO CHANGE
   data = [{ id: "1", productName: "Dell PC", amount: "10", sellPrice: "15000", buyPrice: "13000" },
   { id: "2", productName: "Dell PC", amount: "10", sellPrice: "15000", buyPrice: "13000" },
