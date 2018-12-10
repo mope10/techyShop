@@ -438,7 +438,7 @@
       <div class="row">
         <div class="col-md-6">
           <label for="productName">Price: </label>
-          <input type="number" name="price" #price id="price" class="form-control" formControlName="price" placeholder="Enter Price in Ruppees">
+          <input type="number" name="price" #price id="price" class="form-control" formControlName="  " placeholder="Enter Price in Ruppees">
           <div class="incorrect" *ngIf="AddingItemForm.controls['price'].invalid && (AddingItemForm.controls['price'].dirty || AddingItemForm.controls['price'].touched)">
             <div *ngIf="AddingItemForm.controls['price'].errors.required">
               Price is required.

@@ -73,7 +73,6 @@ export class AdminInventoryComponent implements OnInit {
       price: ['', [Validators.required, Validators.pattern('[0-9]*')]],
       details: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(255)]],
       file: ['', [Validators.required]],
-
     });
   }
   goToForm(){
