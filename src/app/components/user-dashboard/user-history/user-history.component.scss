@@ -1,0 +1,25 @@
+.pageControl {
+    text-align: center;
+}
+
+pagination-controls /deep/ .ngx-pagination li.current {
+    background: #A94442 !important;    //CHANGE THIS TO CHANGE COLOR OF PAGINATION BUTTON
+}
+
+.form-group2 {
+    border-bottom: 2px solid black;
+    
+    input {
+        border:0;
+        width: 230px
+    }
+    form {
+        display: inline-block !important;
+    }
+    
+}
+.search-bar {
+    width: 250px;
+    margin-left:auto;
+    
+}
