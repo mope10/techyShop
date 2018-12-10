@@ -10,3 +10,10 @@
         border-bottom: 2px solid #42A948 !important;
     }
 }
+.pageControl {
+    text-align: center;
+}
+
+.pageControl pagination-controls /deep/ .ngx-pagination li.current {
+    background: #A94442 !important;
+  }

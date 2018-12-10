@@ -38,3 +38,7 @@ form {
 .pageControl {
     text-align: center;
 }
+
+pagination-controls /deep/ .ngx-pagination li.current {
+    background: #A94442 !important;    //CHANGE THIS TO CHANGE COLOR OF PAGINATION BUTTON
+  }
