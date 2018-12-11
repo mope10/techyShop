@@ -151,7 +151,7 @@ export class AdminInventoryComponent implements OnInit {
     this.key = key;
   }
   fileNameChecker(fileName: string) {
-    console.log(fileName);
+
     var allowed_extensions = new Array("jpg","png");
     var file_extension = fileName.split('.').pop().toLowerCase();
 
@@ -163,9 +163,7 @@ export class AdminInventoryComponent implements OnInit {
             return;
         }
     }
-
     this.validity = true;
-    console.log("was"+fileName);
     this.validityStatement = "You must choose a jpeg or png format picture."
   }
   createForm() {
@@ -203,7 +201,7 @@ export class AdminInventoryComponent implements OnInit {
     
     
   }
-  editItem(productName, brandName, price, details, image){
+  editItem(productName, brandName, price, details, image,  amount, category){
     //TODO: ADD LOGIC HERE
   }
   fileOverBase(e: any): void {

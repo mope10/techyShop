@@ -1,3 +1,203 @@
-<p>
-  user-products works!
-</p>
+<div class="col-12" [hidden]="showTable">
+  <button class="btn link-custom" (click)="checkprev()">Request Shop Privileges</button><br>  
+  <span class="textAdmin">{{confirmation}}</span>
+</div>
+<br>
+<div [hidden]="!showTable">
+  <div class="custom-body" [hidden]="!formCondition">
+    <div class="row">
+      <div class="col-6">
+        <button class="btn link-custom" (click)="goToForm()">Add Item</button>
+      </div>
+      <div class="col-6">
+        <div class="form-group2 search-bar">
+          <form>
+            <input class="form-control" type="text" name="search" placeHolder="Search" [(ngModel)]="MyFilter">
+          </form>
+          <i class="fa fa-search"></i>
+        </div>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th (click)="sort('id')">
+              #
+              <span *ngIf="key == 'id'">
+                <span [hidden]="reverse">▼</span>
+                <span [hidden]="!reverse">▲</span>
+              </span>
+            </th>
+            <th (click)="sort('productName')">
+              Product
+              <span *ngIf="key == 'productName'">
+                <span [hidden]="reverse">▼</span>
+                <span [hidden]="!reverse">▲</span>
+              </span>
+            </th>
+            <th (click)="sort('amount')">
+              Amount Left
+              <span *ngIf="key == 'amount'">
+                <span [hidden]="reverse">▼</span>
+                <span [hidden]="!reverse">▲</span>
+              </span>
+            </th>
+            <th (click)="sort('sellPrice')">
+              Price
+              <span *ngIf="key == 'sellPrice'">
+                <span [hidden]="reverse">▼</span>
+                <span [hidden]="!reverse">▲</span>
+              </span>
+            </th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let x of data | filter:MyFilter | orderBy: key : reverse | paginate: { id: 'speaker', itemsPerPage: 4, currentPage: pSpeaker }">
+            <td>{{x.id}}</td>
+            <td>{{x.productName}}</td>
+            <td>{{x.amount}}</td>
+            <td>{{x.sellPrice}}</td>
+
+            <td class="link-custom">Edit</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="pageControl">
+        <pagination-controls id="speaker" (pageChange)="pSpeaker = $event" autoHide="true" responsive="true"></pagination-controls>
+      </div>
+    </div>
+  </div>
+
+  <div class="custom-body itemEditor" [hidden]="formCondition">
+    <form action="" class="form" [formGroup]="AddingItemForm">
+      <div>
+        <div class="row">
+          <div class="col-md-6">
+            <label for="productName">Name: </label>
+            <input type="text" name="Name" #Name id="Name" class="form-control" formControlName="productName"
+              placeholder="Enter Product Name">
+            <div class="incorrect" *ngIf="AddingItemForm.controls['productName'].invalid && (AddingItemForm.controls['productName'].dirty || AddingItemForm.controls['productName'].touched)">
+              <div *ngIf="AddingItemForm.controls['productName'].errors.required">
+                Product Name is required.
+              </div>
+              <div *ngIf="AddingItemForm.controls['productName'].errors.maxlength">
+                Maximum Length is 50.
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="brand">Brand Name: </label>
+            <input type="text" name="brand" #brand id="brand" class="form-control" formControlName="brandName"
+              placeholder="Enter Brand name">
+            <div class="incorrect" *ngIf="AddingItemForm.controls['brandName'].invalid && (AddingItemForm.controls['brandName'].dirty || AddingItemForm.controls['brandName'].touched)">
+              <div *ngIf="AddingItemForm.controls['brandName'].errors.required">
+                Brand Name is required.
+              </div>
+              <div *ngIf="AddingItemForm.controls['brandName'].errors.maxlength">
+                Maximum Length is 50.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-6">
+            <label for="productName">Price: </label>
+            <input type="number" name="price" #price id="price" class="form-control" formControlName="price"
+              placeholder="Enter Price in Ruppees">
+            <div class="incorrect" *ngIf="AddingItemForm.controls['price'].invalid && (AddingItemForm.controls['price'].dirty || AddingItemForm.controls['price'].touched)">
+              <div *ngIf="AddingItemForm.controls['price'].errors.required">
+                Price is required.
+              </div>
+              <div *ngIf="AddingItemForm.controls['price'].errors.pattern">
+                Only Numbers are allowed
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="fileupload">Select Image: {{imageProgress}}</label>
+            <div class="btn link-custom" style="display:block" (click)="image.click()">Choose File</div>
+            <input type="file" id="fileupload" #image formControlName="file" ng2FileSelect [uploader]="uploader"
+              multiple />
+            <div class="incorrect">{{validityStatement}} </div>
+            <div class="incorrect" *ngIf="AddingItemForm.controls['file'].invalid && (AddingItemForm.controls['file'].dirty || AddingItemForm.controls['file'].touched)">
+              <div *ngIf="AddingItemForm.controls['file'].errors.required">
+                You must select a picture.
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-6">
+              <label for="amount">Amount: </label>
+              <input type="number" name="amount" #amnt id="amount" class="form-control" formControlName="amount"
+                placeholder="Enter No. of Item Available">
+              <div class="incorrect" *ngIf="AddingItemForm.controls['amount'].invalid && (AddingItemForm.controls['amount'].dirty || AddingItemForm.controls['amount'].touched)">
+                <div *ngIf="AddingItemForm.controls['amount'].errors.required">
+                  Amount is required.
+                </div>
+                <div *ngIf="AddingItemForm.controls['amount'].errors.min">
+                  Number must be equal to or greater than 0.
+                </div>
+                <div *ngIf="AddingItemForm.controls['amount'].errors.pattern">
+                  Only Numbers allowed.
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="category">Chose a Category: </label>
+              <div>
+                <select class="form-control" name="category" #cat formControlName="category">
+                  <option value="Laptop">Laptop</option>
+                  <option value="Mobile">Mobile</option>
+                  <option value="Accessories">Accessories</option>
+                  <option value="Gaming">Gaming</option>
+                  <option value="Display">Display</option>
+                  <option value="Speaker">Speaker</option>
+                </select>
+              </div>
+              <div class="incorrect" *ngIf="AddingItemForm.controls['category'].invalid && (AddingItemForm.controls['category'].dirty || AddingItemForm.controls['category'].touched)">
+                <div *ngIf="AddingItemForm.controls['category'].errors.required">
+                  You Must Select an Option
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="infoArea">Add Info: </label>
+          <textarea name="info" name="infoArea" #details id="infoArea" cols="30" rows="3" class="textArea"
+            formControlName="details" placeholder="Write details about the product"></textarea>
+          <div class="incorrect" *ngIf="AddingItemForm.controls['details'].invalid && (AddingItemForm.controls['details'].dirty || AddingItemForm.controls['details'].touched)">
+            <div *ngIf="AddingItemForm.controls['details'].errors.required">
+              Details about Item is required.
+            </div>
+            <div *ngIf="AddingItemForm.controls['details'].errors.minlength">
+              Details should be more than 10 characters
+            </div>
+            <div *ngIf="AddingItemForm.controls['details'].errors.maxlength">
+              Details should be less than 255 characters
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-6">
+              <button class="btn link-custom" (click)="goToForm()">Back</button>
+            </div>
+            <div class="col-6">
+              <button class="btn link-custom fright" [disabled]="AddingItemForm.invalid" (click)="addItem(Name.value,brand.value,price.value,details.value,image.value,amnt.value,cat.value)">Add
+                item </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+.right-align {
+    text-align: right;
+    display: inline-block;
+}
+table {
+    .link-custom {
+        border-radius: 0px;
+    }
+}
+
+.form-group2 {
+    border-bottom: 2px solid black;
+    
+    input {
+        border:0;
+        width: 230px
+    }
+    form {
+        display: inline-block !important;
+    }
+    
+}
+.search-bar {
+    width: 250px;
+    margin-left:auto;
+    
+}
+
+.itemEditor {
+    
+    textarea {
+        display: block;    
+    }
+}
+
+.form {
+
+    min-width: 500px;
+    padding:30px;
+    font-weight: 500;
+    input {
+        padding: 5px;
+        border: 0px;
+        border-bottom: 2px solid black;
+    }
+    input[type=file] {
+        border-bottom: none !important;
+        display: none;
+    }
+    input::placeholder {
+        font-style: italic;
+    }
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+    }
+    .textArea {
+        max-height:400px;
+        width: 100%;
+    }
+}
+
+.pageControl {
+    text-align: center;
+}
+pagination-controls /deep/ .ngx-pagination li.current {
+    background: #A94442 !important;    //CHANGE THIS TO CHANGE COLOR OF PAGINATION BUTTON
+  }
+.textAdmin {
+ font-size: 20px;
+ color: rgb(93, 216, 93);
+}
