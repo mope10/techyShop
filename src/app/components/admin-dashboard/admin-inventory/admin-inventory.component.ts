@@ -3,8 +3,10 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { AuthserviceService } from '../../../../services/auth/authservice.service';
 import {FileUploader, FileUploaderOptions, ParsedResponseHeaders} from 'ng2-file-upload';
 import {Cloudinary} from '@cloudinary/angular-5.x';
+import {DataService,itemData} from '../../../../services/dataService/data.service'
 
 import { identifierModuleUrl } from '@angular/compiler';
+import { THROW_IF_NOT_FOUND } from '@angular/core/src/di/injector';
 
 @Component({
   selector: 'app-admin-inventory',
@@ -15,6 +17,7 @@ export class AdminInventoryComponent implements OnInit {
   AddingItemForm: FormGroup;
   responses: Array<any>;
   imageProgress: any;
+  itemCreated: boolean;
   private hasBaseDropZoneOver: boolean = false;
   private password: string;
   validityStatement = "";
@@ -41,7 +44,7 @@ export class AdminInventoryComponent implements OnInit {
   { id: "8", productName: "Dell PC", amount: "10", sellPrice: "15000"},
   ];
   file: File;
-  constructor(private fb: FormBuilder, private auth: AuthserviceService,private cloudinary: Cloudinary,private zone : NgZone) {
+  constructor(private dataS : DataService,private fb: FormBuilder, private auth: AuthserviceService,private cloudinary: Cloudinary,private zone : NgZone) {
     this.createForm();
     this.responses = [];
   }
@@ -170,7 +173,7 @@ export class AdminInventoryComponent implements OnInit {
       productName: ['', [Validators.required, Validators.maxLength(50)]],
       brandName: ['', [Validators.required, Validators.maxLength(50)]],
       price: ['', [Validators.required, Validators.pattern('[0-9]*')]],
-      details: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(255), Validators.pattern('[0-9]*')]],
+      details: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(255)]],
       file: ['', [Validators.required]],
       amount: ['', [Validators.required, Validators.min(0)]],
       category: ['', [Validators.required]],
@@ -179,9 +182,26 @@ export class AdminInventoryComponent implements OnInit {
   goToForm(){
     this.formCondition = !this.formCondition;
   }
-  addItem(productName, brandName, price, details, image, amount, category){
-    console.log(productName, brandName, price, details, image, amount, category);
-    console.log(this.responses.pop().data.public_id,"seomthigndsjbksdf");
+  addItem(productName, brandName, price, details, amount, category){
+    price = parseInt(price);
+    amount = parseInt(amount);
+    let image = this.responses.pop().data.url
+    let item: itemData = {
+      name: productName,
+      brand: brandName,
+      price: price,
+      detail: details,
+      image: image,
+      amount: amount,
+      category: category
+    }
+    console.log(item);
+    this.dataS.createItem(item).subscribe((e)=>{
+      this.auth.setToken(e.token);
+      this.itemCreated = e.creation;
+    });
+    
+    
   }
   editItem(productName, brandName, price, details, image){
     //TODO: ADD LOGIC HERE

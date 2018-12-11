@@ -438,9 +438,10 @@
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <label for="category">Chose a   Category: </label>
+                  <label for="category">Choose a Category: </label>
                   <div>
                   <select class="form-control" name="category" #cat formControlName="category">
+                    <option value="">Choose Category</option>
                     <option value="Laptop">Laptop</option>
                     <option value="Mobile">Mobile</option>
                     <option value="Accessories">Accessories</option>
@@ -479,7 +480,7 @@
             <button class="btn link-custom" (click)="goToForm()">Back</button>
           </div>
           <div class="col-6">
-            <button class="btn link-custom fright"  [disabled]="AddingItemForm.invalid" (click)="addItem(Name.value,brand.value,price.value,details.value,image.value,amnt.value,cat.value)">Add item </button>
+            <button class="btn link-custom fright"  [disabled]="AddingItemForm.invalid" (click)="addItem(Name.value,brand.value,price.value,details.value,amnt.value,cat.value)">Add item </button>
           </div>
         </div>
       </div>

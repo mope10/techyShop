@@ -39,6 +39,7 @@ export class HeaderComponent implements OnInit {
   getUser() {
     if(this.auth.isToken()){
     this.data.getUserData().subscribe((data)=>{
+      this.auth.setToken(data.token);
       if (data.user != null){
       this.firstName = data.user.firstName;
       this.lastName  = data.user.lastName;

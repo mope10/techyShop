@@ -68,7 +68,6 @@ export class AuthserviceService {
     var token = this.getToken()
     console.log(token);
     if (token) {
-      
       return true;
     }
     else {
@@ -95,7 +94,12 @@ export class AuthserviceService {
       return false;
     }
   }
-
+  setToken(token){
+    localStorage.setItem('token',token)
+    if(!this.isauthenticated()){
+      this.router.navigate(['/']);
+    }
+  }
   getId(){
     if(this.isToken()){
       return localStorage.getItem('userId');

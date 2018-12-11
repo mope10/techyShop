@@ -30,6 +30,7 @@ export class AccountHeaderComponent implements OnInit {
   }
   getUser() {
     this.data.getUserData().subscribe((data)=>{
+      this.auth.setToken(data.token);
       if(data.user != null){
       this.firstName = data.user.firstName;
       this.lastName  = data.user.lastName;

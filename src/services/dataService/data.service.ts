@@ -17,9 +17,24 @@ export interface userData {
   
   
 }
+export interface itemData {
+  name: any,
+  brand: any,
+  price: Number,
+  image: any,
+  detail: any,
+  amount: Number,
+  category: any
+}
 export interface userToken{
   token: any,
   user : userData
+}
+
+export interface creation {
+  creation: boolean,
+  token:any
+  
 }
 
 
@@ -34,24 +49,23 @@ export class DataService {
 
   constructor(private http: HttpClient, private router: Router,private auth: AuthserviceService) { 
   }
-  verify(verification: Observable<userToken>){
-    verification.subscribe((e)=>{
-      if (e.token == null){
-        console.log('removing token');
-        this.auth.removeToken();
-        this.router.navigate(['']);
-        
-      }
-    });
-  }
+  
   getUserData(){
     var id = this.auth.getId();
     var token = this.auth.getToken();
     var url = environment_url + '/user'
     console.log(id,token);
     const httpOptions = new HttpHeaders({'id': id,'token': token});
-    const verification = this.http.get<userToken>(url,{headers: httpOptions});
-    this.verify(verification);
-    return verification;
+    return this.http.get<userToken>(url,{headers: httpOptions});
+    
+  }
+  createItem(item: itemData){
+    var url = environment_url + '/item'+'/create'
+    var condition = false;
+
+    let token = this.auth.getToken()
+    const httpOptions = new HttpHeaders({'token': token})
+    return this.http.post<creation>(url,item,{headers: httpOptions});
+    
   }
 }
