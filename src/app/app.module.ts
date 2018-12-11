@@ -6,6 +6,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthserviceService } from '../services/auth/authservice.service'
 import { NgxPaginationModule } from 'ngx-pagination';
 
+//FIle upload module
+import {FileUploadModule} from 'ng2-file-upload';
+
+//Cloudinary 
+import cloudinaryConfiguration from '../environments/config';
+import * as cloudinary from 'cloudinary-core';
+import {Cloudinary,CloudinaryModule, CloudinaryConfiguration, provideCloudinary} from '@cloudinary/angular-5.x';
+
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './components/pages/landing-page/landing-page.component';
 import { HeaderComponent } from './components/ui/header/header.component';
@@ -50,9 +58,12 @@ import { UserProductsComponent } from './components/user-dashboard/user-products
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    FileUploadModule,
+    CloudinaryModule.forRoot(cloudinary, cloudinaryConfiguration as CloudinaryConfiguration)
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
