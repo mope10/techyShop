@@ -181,7 +181,7 @@ export class AdminInventoryComponent implements OnInit {
     console.log(productName, brandName, price, details, image, amount, category);
     console.log(this.responses.pop().data.public_id,"seomthigndsjbksdf");
   }
-  editItem(productName, brandName, price, details, image){
+  editItem(productName, brandName, price, details, image,  amount, category){
     //TODO: ADD LOGIC HERE
   }
   fileOverBase(e: any): void {
