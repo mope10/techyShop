@@ -9,7 +9,7 @@ form {
     font-weight: 500;
     input {
         border: 0px;
-        border-bottom: 2px solid black;
+        border-bottom: 2px solid black !important; 
     }
     input::placeholder {
         font-style: italic;

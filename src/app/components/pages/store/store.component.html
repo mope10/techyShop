@@ -34,7 +34,7 @@
       </div>
       <hr>
       <div class="row">
-        <div *ngFor="let x of data" class="col-md-3 col-6">
+        <div *ngFor="let x of data | paginate: { itemsPerPage: 4, currentPage: p }" class="col-md-3 col-6">
           <div class=" item-card">
             <img src="{{x.src}}" alt="">
             <div class="spaceBetweenPicText"></div>
@@ -44,6 +44,9 @@
             <a class="link-custom">Buy Now</a>
           </div>
         </div>
+      </div>
+      <div class="pageControl" >
+        <pagination-controls (pageChange)="p = $event" autoHide="true" responsive="true"></pagination-controls>
       </div>
     </div>
   </div>

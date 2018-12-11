@@ -1,9 +1,13 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthserviceService } from '../../../../services/auth/authservice.service';
+<<<<<<< HEAD
 import {FileUploader, FileUploaderOptions, ParsedResponseHeaders} from 'ng2-file-upload';
 import {Cloudinary} from '@cloudinary/angular-5.x';
 
+=======
+import { identifierModuleUrl } from '@angular/compiler';
+>>>>>>> 0d3ce7a8f709e27ab247c87ed2476b1ed8af542b
 
 @Component({
   selector: 'app-admin-inventory',
@@ -20,9 +24,32 @@ export class AdminInventoryComponent implements OnInit {
   private uploader: FileUploader;
   private message = "";
   formCondition   = true;
+<<<<<<< HEAD
   file: File;
   data = new FormData();
   constructor(private fb: FormBuilder, private auth: AuthserviceService,private cloudinary: Cloudinary,private zone : NgZone) {
+=======
+  key = "id";
+  reverse = false;
+  pLaptop  = 1;
+  pMobile  = 1;
+  pAccessory  = 1;
+  pGaming  = 1;
+  pDisplay  = 1;
+  pSpeaker  = 1;
+  //TO CHANGE
+  data = [{ id: "1", productName: "Dell PC", amount: "10", sellPrice: "15000", buyPrice: "13000" },
+  { id: "2", productName: "Dell PC", amount: "10", sellPrice: "15000", buyPrice: "13000" },
+  { id: "3", productName: "Dell PC", amount: "10", sellPrice: "15000", buyPrice: "13000" },
+  { id: "4", productName: "Dell PC", amount: "10", sellPrice: "15000", buyPrice: "13000" },
+  { id: "5", productName: "Dell PC", amount: "10", sellPrice: "15000", buyPrice: "13000" },
+  { id: "6", productName: "Dell PC", amount: "10", sellPrice: "15000", buyPrice: "13000" },
+  { id: "7", productName: "Dell PC", amount: "10", sellPrice: "15000", buyPrice: "13000" },
+  { id: "8", productName: "Dell PC", amount: "10", sellPrice: "15000", buyPrice: "13000" },
+  ];
+  //TO CHANGE
+  constructor(private fb: FormBuilder, private auth: AuthserviceService) {
+>>>>>>> 0d3ce7a8f709e27ab247c87ed2476b1ed8af542b
     this.createForm();
     this.responses = [];
   }
@@ -114,11 +141,24 @@ export class AdminInventoryComponent implements OnInit {
         }
       );
   }
+<<<<<<< HEAD
   fileNameChecker(fileName: string,file) {
     this.file = file.target.files[0];
     console.log(this.file);
     this.data.append('picture',this.file);
     console.log(this.data);
+=======
+  sort(key){
+    if (this.key === key) {
+      this.reverse = !this.reverse;
+    }
+    else {
+      this.reverse = false;
+    }
+    this.key = key;
+  }
+  fileNameChecker(fileName: string) {
+>>>>>>> 0d3ce7a8f709e27ab247c87ed2476b1ed8af542b
     var allowed_extensions = new Array("jpg","png");
     var file_extension = fileName.split('.').pop().toLowerCase();
 
@@ -142,7 +182,6 @@ export class AdminInventoryComponent implements OnInit {
       price: ['', [Validators.required, Validators.pattern('[0-9]*')]],
       details: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(255)]],
       file: ['', [Validators.required]],
-
     });
   }
   goToForm(){

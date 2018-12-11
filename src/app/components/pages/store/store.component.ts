@@ -69,4 +69,5 @@ export class StoreComponent implements OnInit {
     this.category = query;
     console.log(query);
   }
+  p = 1;
 }

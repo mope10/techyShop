@@ -5,6 +5,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthserviceService } from '../services/auth/authservice.service'
 import { NgxPaginationModule } from 'ngx-pagination';
+import { OrderModule } from 'ngx-order-pipe';
+import { Ng2SearchPipeModule } from 'ng2-search-filter'; 
 
 //FIle upload module
 import {FileUploadModule} from 'ng2-file-upload';
@@ -59,10 +61,15 @@ import { UserProductsComponent } from './components/user-dashboard/user-products
     ReactiveFormsModule,
     HttpClientModule,
     NgxPaginationModule,
+<<<<<<< HEAD
     FileUploadModule,
     CloudinaryModule.forRoot(cloudinary, cloudinaryConfiguration as CloudinaryConfiguration)
   ],
   providers: [
+=======
+    OrderModule,
+    Ng2SearchPipeModule 
+>>>>>>> 0d3ce7a8f709e27ab247c87ed2476b1ed8af542b
   ],
   bootstrap: [AppComponent]
 })

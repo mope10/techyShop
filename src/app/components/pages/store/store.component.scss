@@ -18,7 +18,7 @@ form {
         margin-top: 5px;
     }
     .dropdown-item {
-        width: 100%;
+        
     }
     .dropdown-item:hover {
         background-color: orangered;
@@ -27,8 +27,18 @@ form {
     .dropdown-item:focus {
         box-shadow: 0 0 45px rgba(155, 155, 155, 0.5);
     }
+    .dropdown-menu.show{
+        width: 100%;
+    }
 }
 
 .container {
     padding-top: 20px;
 }
+.pageControl {
+    text-align: center;
+}
+
+pagination-controls /deep/ .ngx-pagination li.current {
+    background: #A94442 !important;    //CHANGE THIS TO CHANGE COLOR OF PAGINATION BUTTON
+  }

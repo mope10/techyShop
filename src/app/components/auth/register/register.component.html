@@ -42,7 +42,13 @@
         <input type="text" placeholder="enter your phone number" formControlName="phoneNumber" class="form-control" name="phoneNumber" id="phoneNumber" #phoneNumber>
         <div class="incorrect" *ngIf="registrationForm.controls['phoneNumber'].invalid && (registrationForm.controls['phoneNumber'].dirty || registrationForm.controls['phoneNumber'].touched)">
           <div *ngIf="registrationForm.controls['phoneNumber'].errors.required">
-            Phone number is required
+            Phone number is required.
+          </div>
+          <div *ngIf="registrationForm.controls['phoneNumber'].hasError('minlength')">
+            Phone number must be 11 digits.
+          </div>
+          <div *ngIf="registrationForm.controls['phoneNumber'].hasError('pattern')">
+            Only 11 digits from 0-9 allowed.
           </div>
         </div>
       </div>

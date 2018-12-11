@@ -54,15 +54,15 @@ table {
     -webkit-appearance: none; 
     margin: 0; 
     }
-    .ng-invalid:not(form)  {
-        border-bottom: 2px solid #a94442; /* red */
-      }
-
-    .fa-check {
-        color: #42A948 !important;
-    }
     .textArea {
         max-height:400px;
         width: 100%;
     }
 }
+
+.pageControl {
+    text-align: center;
+}
+pagination-controls /deep/ .ngx-pagination li.current {
+    background: #A94442 !important;    //CHANGE THIS TO CHANGE COLOR OF PAGINATION BUTTON
+  }

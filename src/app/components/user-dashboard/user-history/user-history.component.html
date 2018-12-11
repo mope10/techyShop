@@ -1,3 +1,78 @@
-<p>
-  user-history works!
-</p>
+<div class="col-12">
+  <div class="form-group2 search-bar">
+    <form>
+      <input class="form-control" type="text" name="search" placeHolder="Search" [(ngModel)]="MyFilter">
+    </form>
+    <i class="fa fa-search"></i>
+  </div>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th (click)="sort('id')">
+        #
+        <span *ngIf="key =='id'">
+          <span [hidden]="reverse">▼</span>
+          <span [hidden]="!reverse">▲</span>
+        </span>
+      </th>
+      <th (click)="sort('orderNo')">
+        OrderNo
+        <span *ngIf="key == 'orderNo'">
+          <span [hidden]="reverse">▼</span>
+          <span [hidden]="!reverse">▲</span>
+        </span>
+      </th>
+      <th (click)="sort('productName')">
+        Product
+        <span *ngIf="key == 'productName'">
+          <span [hidden]="reverse">▼</span>
+          <span [hidden]="!reverse">▲</span>
+        </span>
+      </th>
+      <th (click)="sort('amount')">
+        Amount Left
+        <span *ngIf="key == 'amount'">
+          <span [hidden]="reverse">▼</span>
+          <span [hidden]="!reverse">▲</span>
+        </span>
+      </th>
+      <th (click)="sort('datePurchased')">
+        Date Purchased
+        <span *ngIf="key == 'datePurchased'">
+          <span [hidden]="reverse">▼</span>
+          <span [hidden]="!reverse">▲</span>
+        </span>
+      </th>
+      <th (click)="sort('address')">
+        Address
+        <span *ngIf="key == 'address'">
+          <span [hidden]="reverse">▼</span>
+          <span [hidden]="!reverse">▲</span>
+        </span>
+      </th>
+      <th (click)="sort('totalPrice')">
+        Price
+        <span *ngIf="key == 'totalPrice'">
+          <span [hidden]="reverse">▼</span>
+          <span [hidden]="!reverse">▲</span>
+        </span>
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let x of data | filter:MyFilter | orderBy: key : reverse | paginate: {itemsPerPage: 10, currentPage: p }">
+      <td>{{x.id}}</td>
+      <td>{{x.orderNo}}</td>
+      <td>{{x.productName}}</td>
+      <td>{{x.amount}}</td>
+      <td>{{x.datePurchased.getDate()}} / {{x.datePurchased.getMonth()}} / {{x.datePurchased.getFullYear()}}</td>
+      <td>{{x.address}}</td>
+      <td>Rs. {{x.totalPrice}}</td>
+    </tr>
+  </tbody>
+</table>
+<div class="pageControl">
+  <pagination-controls (pageChange)="p = $event" autoHide="true" responsive="true"></pagination-controls>
+</div>

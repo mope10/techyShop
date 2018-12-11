@@ -19,4 +19,28 @@
             border-radius: 50%;
         }
     }
+}
+form {
+    
+    min-width: 500px;
+    padding:30px;
+    font-weight: 500;
+    input {
+        padding: 5px;
+        border: 0px;
+        border-bottom: 2px solid black;
+    }
 }   
+.inlineElement {
+    display: inline-block !important;
+    padding: 0px;
+    padding-bottom: 5px;
+}
+.editOuterButton {
+    display: inline-block !important;
+    text-align: right;
+    padding-top: 5px;
+}
+input:read-only {
+    background-color:  rgba(158, 157, 157, 0.048);
+}
