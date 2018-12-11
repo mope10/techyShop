@@ -31,14 +31,14 @@ export class AdminInventoryComponent implements OnInit {
   pDisplay  = 1;
   pSpeaker  = 1;
   //TO CHANGE
-  data = [{ id: "1", productName: "Dell PC", amount: "10", sellPrice: "15000", buyPrice: "13000" },
-  { id: "2", productName: "Dell PC", amount: "10", sellPrice: "15000", buyPrice: "13000" },
-  { id: "3", productName: "Dell PC", amount: "10", sellPrice: "15000", buyPrice: "13000" },
-  { id: "4", productName: "Dell PC", amount: "10", sellPrice: "15000", buyPrice: "13000" },
-  { id: "5", productName: "Dell PC", amount: "10", sellPrice: "15000", buyPrice: "13000" },
-  { id: "6", productName: "Dell PC", amount: "10", sellPrice: "15000", buyPrice: "13000" },
-  { id: "7", productName: "Dell PC", amount: "10", sellPrice: "15000", buyPrice: "13000" },
-  { id: "8", productName: "Dell PC", amount: "10", sellPrice: "15000", buyPrice: "13000" },
+  data = [{ id: "1", productName: "Dell PC", amount: "10", sellPrice: "15000" },
+  { id: "2", productName: "Dell PC", amount: "10", sellPrice: "15000"},
+  { id: "3", productName: "Dell PC", amount: "10", sellPrice: "15000" },
+  { id: "4", productName: "Dell PC", amount: "10", sellPrice: "15000"},
+  { id: "5", productName: "Dell PC", amount: "10", sellPrice: "15000"},
+  { id: "6", productName: "Dell PC", amount: "10", sellPrice: "15000"},
+  { id: "7", productName: "Dell PC", amount: "10", sellPrice: "15000"},
+  { id: "8", productName: "Dell PC", amount: "10", sellPrice: "15000"},
   ];
   file: File;
   constructor(private fb: FormBuilder, private auth: AuthserviceService,private cloudinary: Cloudinary,private zone : NgZone) {
@@ -97,6 +97,7 @@ export class AdminInventoryComponent implements OnInit {
         // Find the id of an existing item
         if(fileItem.status == 200){
           this.imageProgress = fileItem.file.name + ' 100% Complete '
+          this.fileNameChecker(fileItem.file.name);
         }
         else if(fileItem.progress){
           this.imageProgress = "uploading..." + fileItem.progress
@@ -147,6 +148,7 @@ export class AdminInventoryComponent implements OnInit {
     this.key = key;
   }
   fileNameChecker(fileName: string) {
+    console.log(fileName);
     var allowed_extensions = new Array("jpg","png");
     var file_extension = fileName.split('.').pop().toLowerCase();
 
@@ -168,15 +170,17 @@ export class AdminInventoryComponent implements OnInit {
       productName: ['', [Validators.required, Validators.maxLength(50)]],
       brandName: ['', [Validators.required, Validators.maxLength(50)]],
       price: ['', [Validators.required, Validators.pattern('[0-9]*')]],
-      details: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(255)]],
+      details: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(255), Validators.pattern('[0-9]*')]],
       file: ['', [Validators.required]],
+      amount: ['', [Validators.required, Validators.min(0)]],
+      category: ['', [Validators.required]],
     });
   }
   goToForm(){
     this.formCondition = !this.formCondition;
   }
-  addItem(productName, brandName, price, details, image){
-    console.log(productName, brandName, price, details, image);
+  addItem(productName, brandName, price, details, image, amount, category){
+    console.log(productName, brandName, price, details, image, amount, category);
     console.log(this.responses.pop().data.public_id,"seomthigndsjbksdf");
   }
   editItem(productName, brandName, price, details, image){
