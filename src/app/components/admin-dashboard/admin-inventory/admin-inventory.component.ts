@@ -99,8 +99,8 @@ export class AdminInventoryComponent implements OnInit {
           this.imageProgress = fileItem.file.name + ' 100% Complete '
           this.fileNameChecker(fileItem.file.name);
         }
-        else {
-          this.imageProgress = "uploading..."
+        else if(fileItem.progress){
+          this.imageProgress = "uploading..." + fileItem.progress
         }
         const existingId = this.responses.reduce((prev, current, index) => {
           if (current.file.name === fileItem.file.name && !current.status) {
