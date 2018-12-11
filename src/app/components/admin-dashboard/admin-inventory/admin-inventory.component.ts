@@ -148,7 +148,7 @@ export class AdminInventoryComponent implements OnInit {
     this.key = key;
   }
   fileNameChecker(fileName: string) {
-    console.log(fileName);
+
     var allowed_extensions = new Array("jpg","png");
     var file_extension = fileName.split('.').pop().toLowerCase();
 
@@ -160,9 +160,7 @@ export class AdminInventoryComponent implements OnInit {
             return;
         }
     }
-
     this.validity = true;
-    console.log("was"+fileName);
     this.validityStatement = "You must choose a jpeg or png format picture."
   }
   createForm() {
@@ -170,7 +168,7 @@ export class AdminInventoryComponent implements OnInit {
       productName: ['', [Validators.required, Validators.maxLength(50)]],
       brandName: ['', [Validators.required, Validators.maxLength(50)]],
       price: ['', [Validators.required, Validators.pattern('[0-9]*')]],
-      details: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(255), Validators.pattern('[0-9]*')]],
+      details: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(255)]],
       file: ['', [Validators.required]],
       amount: ['', [Validators.required, Validators.min(0)]],
       category: ['', [Validators.required]],
