@@ -14,6 +14,10 @@ export class AdminSettingsComponent implements OnInit {
   address = "";
   number = "";
 
+  fname = "";
+  lname = "";
+  add = "";
+  phNo = "";
   EditingAdminInfo: FormGroup;
   editDisabled = true;
   constructor(private data: DataService, private fb: FormBuilder) {
@@ -41,28 +45,28 @@ export class AdminSettingsComponent implements OnInit {
       this.number = e.user.phoneNumber;
     });
   }
-  editEnable() {
+  editEnable(firstName, lastName, number, address) {
+    this.fname = firstName;
+    this.lname = lastName;
+    this.phNo = number;
+    this.add = address;
     this.editDisabled = false;
+    console.log(this.fname, this.lname, this.phNo, this.add);
+
   }
   editDisable() {
+    this.firstName = this.fname; 
+    this.lastName = this.lname;
+    this.address = this.add;
+    this.number = this.phNo;
     this.editDisabled = true;
+    console.log(this.firstName, this.lastName, this.address, this.number);
+
   }
+
   save(firstName, lastName, number, address) {
     //TODO: ADD LOGIC HERE
     console.log(firstName, lastName, number, address);
     this.editDisabled = true;
   }
-
-  restrictMinus(e) {
-
-    var inputKeyCode = e.keyCode ? e.keyCode : e.which;
-    if (inputKeyCode != null) {
-      if(!((e.keyCode > 95 && e.keyCode < 106) || (e.keyCode > 47 && e.keyCode < 58) || e.keyCode == 8)) {
-        e.preventDefault();
-    }
-    console.log(e.keyCode);
-    }
-  }
-  
-
 }
