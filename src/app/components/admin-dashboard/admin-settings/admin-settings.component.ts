@@ -9,18 +9,18 @@ import { DataService } from "../../../../services/dataService/data.service";
 })
 export class AdminSettingsComponent implements OnInit {
   firstName = "";
-  lastName  = "";
-  status    = "";
-  address   = "";
-  number    = "";
+  lastName = "";
+  status = "";
+  address = "";
+  number = "";
 
   EditingAdminInfo: FormGroup;
   editDisabled = true;
   constructor(private data: DataService, private fb: FormBuilder) {
     this.getData();
     this.createForm();
-   }
-  
+  }
+
   ngOnInit() {
   }
   createForm() {
@@ -28,29 +28,41 @@ export class AdminSettingsComponent implements OnInit {
       firstNameV: ['', [Validators.required, Validators.maxLength(30)]],
       lastNameV: ['', [Validators.required, Validators.maxLength(30)]],
       phoneNumberV: ['', [Validators.required, Validators.pattern('[0-9]{11}')]],
-      addressV: ['', [Validators.required, Validators.maxLength(250)]],
-
+      addressV: ['', [Validators.required, Validators.maxLength(250)]]
     });
   }
 
-  getData(){
-    this.data.getUserData().subscribe((e)=>{
+  getData() {
+    this.data.getUserData().subscribe((e) => {
       this.firstName = e.user.firstName;
-      this.lastName  = e.user.lastName;
-      this.address   = e.user.address;
-      this.status    = e.user.accountType;
-      this.number    = e.user.phoneNumber;
+      this.lastName = e.user.lastName;
+      this.address = e.user.address;
+      this.status = e.user.accountType;
+      this.number = e.user.phoneNumber;
     });
   }
-  editEnable(){
+  editEnable() {
     this.editDisabled = false;
   }
   editDisable() {
     this.editDisabled = true;
   }
-  save(firstName, lastName, number, address ){
+  save(firstName, lastName, number, address) {
     //TODO: ADD LOGIC HERE
     console.log(firstName, lastName, number, address);
     this.editDisabled = true;
   }
+
+  restrictMinus(e) {
+
+    var inputKeyCode = e.keyCode ? e.keyCode : e.which;
+    if (inputKeyCode != null) {
+      if(!((e.keyCode > 95 && e.keyCode < 106) || (e.keyCode > 47 && e.keyCode < 58) || e.keyCode == 8)) {
+        e.preventDefault();
+    }
+    console.log(e.keyCode);
+    }
+  }
+  
+
 }
