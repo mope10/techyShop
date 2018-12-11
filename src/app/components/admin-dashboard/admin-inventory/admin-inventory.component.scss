@@ -45,6 +45,7 @@ table {
     }
     input[type=file] {
         border-bottom: none !important;
+        display: none;
     }
     input::placeholder {
         font-style: italic;

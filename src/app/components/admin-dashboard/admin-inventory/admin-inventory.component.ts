@@ -1,13 +1,10 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthserviceService } from '../../../../services/auth/authservice.service';
-<<<<<<< HEAD
 import {FileUploader, FileUploaderOptions, ParsedResponseHeaders} from 'ng2-file-upload';
 import {Cloudinary} from '@cloudinary/angular-5.x';
 
-=======
 import { identifierModuleUrl } from '@angular/compiler';
->>>>>>> 0d3ce7a8f709e27ab247c87ed2476b1ed8af542b
 
 @Component({
   selector: 'app-admin-inventory',
@@ -17,6 +14,7 @@ import { identifierModuleUrl } from '@angular/compiler';
 export class AdminInventoryComponent implements OnInit {
   AddingItemForm: FormGroup;
   responses: Array<any>;
+  imageProgress: any;
   private hasBaseDropZoneOver: boolean = false;
   private password: string;
   validityStatement = "";
@@ -24,11 +22,6 @@ export class AdminInventoryComponent implements OnInit {
   private uploader: FileUploader;
   private message = "";
   formCondition   = true;
-<<<<<<< HEAD
-  file: File;
-  data = new FormData();
-  constructor(private fb: FormBuilder, private auth: AuthserviceService,private cloudinary: Cloudinary,private zone : NgZone) {
-=======
   key = "id";
   reverse = false;
   pLaptop  = 1;
@@ -47,9 +40,8 @@ export class AdminInventoryComponent implements OnInit {
   { id: "7", productName: "Dell PC", amount: "10", sellPrice: "15000", buyPrice: "13000" },
   { id: "8", productName: "Dell PC", amount: "10", sellPrice: "15000", buyPrice: "13000" },
   ];
-  //TO CHANGE
-  constructor(private fb: FormBuilder, private auth: AuthserviceService) {
->>>>>>> 0d3ce7a8f709e27ab247c87ed2476b1ed8af542b
+  file: File;
+  constructor(private fb: FormBuilder, private auth: AuthserviceService,private cloudinary: Cloudinary,private zone : NgZone) {
     this.createForm();
     this.responses = [];
   }
@@ -97,14 +89,18 @@ export class AdminInventoryComponent implements OnInit {
 
     // Insert or update an entry in the responses array
     const upsertResponse = fileItem => {
-
+      console.log(fileItem);
       // Run the update in a custom zone since for some reason change detection isn't performed
       // as part of the XHR request to upload the files.
       // Running in a custom zone forces change detection
-      this.zone.run(() => {
         // Update an existing entry if it's upload hasn't completed yet
-
         // Find the id of an existing item
+        if(fileItem.status == 200){
+          this.imageProgress = fileItem.file.name + ' 100% Complete '
+        }
+        else {
+          this.imageProgress = "uploading..."
+        }
         const existingId = this.responses.reduce((prev, current, index) => {
           if (current.file.name === fileItem.file.name && !current.status) {
             return index;
@@ -118,7 +114,7 @@ export class AdminInventoryComponent implements OnInit {
           // Create new response
           this.responses.push(fileItem);
         }
-      });
+  
     };
 
     // Update model on completion of uploading a file
@@ -141,13 +137,6 @@ export class AdminInventoryComponent implements OnInit {
         }
       );
   }
-<<<<<<< HEAD
-  fileNameChecker(fileName: string,file) {
-    this.file = file.target.files[0];
-    console.log(this.file);
-    this.data.append('picture',this.file);
-    console.log(this.data);
-=======
   sort(key){
     if (this.key === key) {
       this.reverse = !this.reverse;
@@ -158,7 +147,6 @@ export class AdminInventoryComponent implements OnInit {
     this.key = key;
   }
   fileNameChecker(fileName: string) {
->>>>>>> 0d3ce7a8f709e27ab247c87ed2476b1ed8af542b
     var allowed_extensions = new Array("jpg","png");
     var file_extension = fileName.split('.').pop().toLowerCase();
 
@@ -189,7 +177,7 @@ export class AdminInventoryComponent implements OnInit {
   }
   addItem(productName, brandName, price, details, image){
     console.log(productName, brandName, price, details, image);
-    console.log(this.responses,"seomthigndsjbksdf");
+    console.log(this.responses.pop().data.public_id,"seomthigndsjbksdf");
   }
   editItem(productName, brandName, price, details, image){
     //TODO: ADD LOGIC HERE

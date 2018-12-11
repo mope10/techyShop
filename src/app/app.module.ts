@@ -61,15 +61,13 @@ import { UserProductsComponent } from './components/user-dashboard/user-products
     ReactiveFormsModule,
     HttpClientModule,
     NgxPaginationModule,
-<<<<<<< HEAD
     FileUploadModule,
-    CloudinaryModule.forRoot(cloudinary, cloudinaryConfiguration as CloudinaryConfiguration)
-  ],
-  providers: [
-=======
+    CloudinaryModule.forRoot(cloudinary, cloudinaryConfiguration as CloudinaryConfiguration),
     OrderModule,
     Ng2SearchPipeModule 
->>>>>>> 0d3ce7a8f709e27ab247c87ed2476b1ed8af542b
+  ],
+  providers: [
+   
   ],
   bootstrap: [AppComponent]
 })
