@@ -21,7 +21,7 @@ export class AdminInventoryComponent implements OnInit {
   private hasBaseDropZoneOver: boolean = false;
   private password: string;
   validityStatement = "";
-  private validity = false;
+  private validity = true;
   private uploader: FileUploader;
   private message = "";
   formCondition   = true;
@@ -198,7 +198,7 @@ export class AdminInventoryComponent implements OnInit {
       this.auth.setToken(e.token);
       this.itemCreated = e.creation;
     });
-    
+    this.goToForm();
     
   }
   editItem(productName, brandName, price, details, image,  amount, category){

@@ -38,14 +38,14 @@ export interface creation {
 }
 
 export interface itemList {
-  owner: "admin",
-  _id: 0,
-  name: "Speakers",
-  brand: "Sony",
-  price: 5000,
-  category: "Speaker",
-  image: "http://res.cloudinary.com/do9bwaox0/image/upload/v1544556245/items/gd7mo6pndzjnxeerjhsf.jpg",
-  detail: "6\" Powerful speakers from sony"
+  owner: any,
+  _id: any,
+  name: any,
+  brand: any,
+  price: Number,
+  category: any,
+  image: any,
+  detail: any
 }
 
 
@@ -55,9 +55,6 @@ export interface itemList {
 })
 
 export class DataService {
-
-
-
   constructor(private http: HttpClient, private router: Router,private auth: AuthserviceService) { 
   }
   

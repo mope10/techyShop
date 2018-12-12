@@ -10,7 +10,9 @@ import {DataService} from '../../../../services/dataService/data.service'
 })
 export class StoreComponent implements OnInit {
   category = "All";
-  data = [
+  categorySearch = "";
+  data;
+/*   data = [
     {
       id: "1",
       name: "HTC",
@@ -60,7 +62,7 @@ export class StoreComponent implements OnInit {
       detail: "FHD 6's Display",
       price: "5000"
     }
-  ];
+  ]; */
   constructor(private dataS: DataService) { 
     this.getItems();
   }
@@ -69,14 +71,22 @@ export class StoreComponent implements OnInit {
 
   }
   search(query) {
-    this.category = query;
+    if (query == "All")
+      this.categorySearch = "";
+    else
+      this.categorySearch = query;
     console.log(query);
+    this.category = query;
   }
   p = 1;
 
   getItems(){
+    console.log("here2");
     this.dataS.getItems().subscribe((items)=>{
       console.log(items);
+      console.log("here");
+      this.data = items;
+      console.log(this.data);
     })
   }
 }

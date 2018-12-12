@@ -2,7 +2,7 @@
   <form action="">
     <div class="row">
       <div class="form-group col-md-6 offset-lg-2 offset-md-1 offset-0">
-        <input type="text" class="form-control" placeholder="Search">
+        <input type="text" class="form-control" placeholder="Search" name="search" [(ngModel)]="MyFilter">
         <i class="fa fa-search"></i>
         <hr>
       </div>
@@ -14,11 +14,11 @@
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" (click)="search('All')">All</a>
-            <a class="dropdown-item" (click)="search('Laptops')">Laptop</a>
-            <a class="dropdown-item" (click)="search('Mobiles')">Mobile</a>
+            <a class="dropdown-item" (click)="search('Laptop')">Laptop</a>
+            <a class="dropdown-item" (click)="search('Mobile')">Mobile</a>
             <a class="dropdown-item" (click)="search('Accessories')">Accessories</a>
-            <a class="dropdown-item" (click)="search('Displays')">Displays</a>
-            <a class="dropdown-item" (click)="search('Speakers')">Speakers</a>
+            <a class="dropdown-item" (click)="search('Display')">Displays</a>
+            <a class="dropdown-item" (click)="search('Speaker')">Speakers</a>
             <a class="dropdown-item" (click)="search('Gaming')">Gaming</a>
           </div>
         </div>
@@ -34,9 +34,9 @@
       </div>
       <hr>
       <div class="row">
-        <div *ngFor="let x of data | paginate: { itemsPerPage: 4, currentPage: p }" class="col-md-3 col-6">
+        <div *ngFor="let x of data | filter:categorySearch | filter:MyFilter | paginate: { itemsPerPage: 4, currentPage: p }" class="col-md-3 col-6">
           <div class=" item-card">
-            <img src="{{x.src}}" alt="">
+            <img src="{{x.image}}" alt="">
             <div class="spaceBetweenPicText"></div>
             <h6>{{x.name}}</h6>
             <p class="details">{{x.detail}}</p>
