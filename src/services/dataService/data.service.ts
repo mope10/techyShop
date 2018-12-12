@@ -37,6 +37,17 @@ export interface creation {
   
 }
 
+export interface itemList {
+  owner: "admin",
+  _id: 0,
+  name: "Speakers",
+  brand: "Sony",
+  price: 5000,
+  category: "Speaker",
+  image: "http://res.cloudinary.com/do9bwaox0/image/upload/v1544556245/items/gd7mo6pndzjnxeerjhsf.jpg",
+  detail: "6\" Powerful speakers from sony"
+}
+
 
 
 @Injectable({
@@ -67,5 +78,9 @@ export class DataService {
     const httpOptions = new HttpHeaders({'token': token})
     return this.http.post<creation>(url,item,{headers: httpOptions});
     
+  }
+  getItems():  Observable<itemList[]>{
+    let url = environment_url + '/item'
+    return this.http.get<itemList[]>(url);
   }
 }

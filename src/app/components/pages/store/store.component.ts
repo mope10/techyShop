@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ConditionalExpr } from '@angular/compiler';
 import { NgxPaginationModule } from 'ngx-pagination'
-
+import {DataService} from '../../../../services/dataService/data.service'
+ 
 @Component({
   selector: 'app-store',
   templateUrl: './store.component.html',
@@ -60,7 +61,9 @@ export class StoreComponent implements OnInit {
       price: "5000"
     }
   ];
-  constructor() { }
+  constructor(private dataS: DataService) { 
+    this.getItems();
+  }
 
   ngOnInit() {
 
@@ -70,4 +73,10 @@ export class StoreComponent implements OnInit {
     console.log(query);
   }
   p = 1;
+
+  getItems(){
+    this.dataS.getItems().subscribe((items)=>{
+      console.log(items);
+    })
+  }
 }
