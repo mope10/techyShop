@@ -40,5 +40,33 @@ form {
 }
 
 pagination-controls /deep/ .ngx-pagination li.current {
-    background: #A94442 !important;    //CHANGE THIS TO CHANGE COLOR OF PAGINATION BUTTON
+    background: orangered !important;    //CHANGE THIS TO CHANGE COLOR OF PAGINATION BUTTON
+  }
+  .left {
+    border: 1px solid orange;
+    float: left;
+    padding: 30px;
+  }
+  .right {
+    border: 1px solid orange;
+    float: left;
+  }
+  .bottom {
+      float: none;
+      border: 1px solid orange;
+      padding: 30px;
+  }
+  .single-product-view {
+      border-radius: 5px;
+      padding: 20px;
+    //   display: inline;
+    //   border: 2px solid black;
+      background: white;
+      box-shadow: 1px 1px 25px grey;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      align-content: left;
+  }
+  .imgStyle {
+      width: 90%;
   }
