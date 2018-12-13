@@ -14,7 +14,7 @@ import { THROW_IF_NOT_FOUND } from '@angular/core/src/di/injector';
   styleUrls: ['./admin-inventory.component.scss']
 })
 export class AdminInventoryComponent implements OnInit {
-  name; BName; price; amount; detail; cat; img; 
+  name; BName; priceS; amount; detail; cat; img; 
   AddingItemForm: FormGroup;
   responses: Array<any>;
   imageProgress: any;
@@ -179,6 +179,13 @@ export class AdminInventoryComponent implements OnInit {
     });
   }
   goToForm(){
+    this.name = "";
+    this.BName = "";
+    this.amount = "";
+    this.priceS = "";
+    this.cat = "";
+    this.img = "";
+    this.detail = "";
     this.formCondition = !this.formCondition;
   }
   addItem(productName, brandName, price, details, amount, category){
@@ -237,20 +244,12 @@ export class AdminInventoryComponent implements OnInit {
     this.name = prdName;
     this.BName = brand;
     this.amount = amnt;
-    this.price = price;
+    this.priceS = price;
     this.cat = cat;
     this.img = img;
     this.detail = detail;
-    this.AddingItemForm.controls['productName'].dirty
-    this.AddingItemForm.controls['brandName'].dirty
-    this.AddingItemForm.controls['price'].dirty
-    this.AddingItemForm.controls['details'].dirty
-    this.AddingItemForm.controls['file'].dirty
-    this.AddingItemForm.controls['amount'].dirty  
-    this.AddingItemForm.controls['categoryV'].dirty  
-
     console.log(prdName, amnt, price,cat,img,detail);
     this.formCondition = !this.formCondition;
   }
-
 }
+
