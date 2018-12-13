@@ -80,4 +80,8 @@ export class DataService {
     let url = environment_url + '/item'
     return this.http.get<itemList[]>(url);
   }
+  getItem(id):Observable<itemList>{
+    let url = environment_url + '/item'+id;
+    return this.http.get<itemList>(url);
+  }
 }

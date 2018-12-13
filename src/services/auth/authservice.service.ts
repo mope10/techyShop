@@ -68,9 +68,11 @@ export class AuthserviceService {
     var token = this.getToken()
     console.log(token);
     if (token) {
+      console.log('something else')
       return true;
     }
     else {
+      console.log('something')
       return false;
     }
   }
@@ -96,7 +98,15 @@ export class AuthserviceService {
   }
   setToken(token){
     localStorage.setItem('token',token)
+    if(token == null){
+      console.log('in set token')
+      localStorage.removeItem('token');
+
+    }
     if(!this.isauthenticated()){
+      localStorage.removeItem('token');
+      localStorage.removeItem('accountType');
+      localStorage.removeItem('userId');
       this.router.navigate(['/']);
     }
   }

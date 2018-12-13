@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ConditionalExpr } from '@angular/compiler';
 import { NgxPaginationModule } from 'ngx-pagination'
 import {DataService} from '../../../../services/dataService/data.service'
- 
+import {Router} from '@angular/router' 
 @Component({
   selector: 'app-store',
   templateUrl: './store.component.html',
@@ -12,58 +12,13 @@ export class StoreComponent implements OnInit {
   category = "All";
   categorySearch = "";
   data;
-/*   data = [
-    {
-      id: "1",
-      name: "HTC",
-      src: "https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg",
-      detail: "FHD 6' Display",
-      price: "5000"
-    },
-    {
-      id: "2",
-      name: "HTC",
-      src: "https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg",
-      detail: "FHD 6' Display",
-      price: "5000"
-    },
-    {
-      id: "3",
-      name: "HTC",
-      src: "https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg",
-      detail: "FHD 6' Display",
-      price: "5000"
-    },
-    {
-      id: "4",
-      name: "HTC",
-      src: "https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg",
-      detail: "FHD 6' Display",
-      price: "5000"
-    },
-    {
-      id: "5",
-      name: "HTC",
-      src: "https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg",
-      detail: "FHD 6' Display",
-      price: "5000"
-    },
-    {
-      id: "6",
-      name: "HTC",
-      src: "https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg",
-      detail: "FHD 6' Display",
-      price: "5000"
-    },
-    {
-      id: "7",
-      name: "HTC",
-      src: "https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg",
-      detail: "FHD 6's Display",
-      price: "5000"
-    }
-  ]; */
-  constructor(private dataS: DataService) { 
+  name = "";
+  price = 0;
+  detail = "";
+  src = "";
+  brand = "";
+
+  constructor(private dataS: DataService,private router : Router) { 
     this.getItems();
   }
 
@@ -89,4 +44,14 @@ export class StoreComponent implements OnInit {
       console.log(this.data);
     })
   }
+
+  setItemView(id,brand,name,price,image,detail){
+    console.log(id,brand,name,price,image,detail);
+    this.brand = brand;
+    this.name  = name;
+    this.price = price;
+    this.src   = image;
+    this.detail= detail;
+  }
+  
 }
