@@ -14,8 +14,10 @@ import { THROW_IF_NOT_FOUND } from '@angular/core/src/di/injector';
   styleUrls: ['./admin-inventory.component.scss']
 })
 export class AdminInventoryComponent implements OnInit {
-  name; BName; priceS; amount; detail; cat; img; 
+  name; BName; priceS; amount; detail; img; caty;
+  selectedLaptop = false; selectedMobile = false; selectedAccessories = false; selectedGaming = false; selectedDisplay = false; selectedSpeaker = false; 
   AddingItemForm: FormGroup;
+  EdittingItemForm: FormGroup;
   responses: Array<any>;
   imageProgress: any;
   itemCreated: boolean;
@@ -26,6 +28,7 @@ export class AdminInventoryComponent implements OnInit {
   private uploader: FileUploader;
   private message = "";
   formCondition   = true;
+  editing = false;
   key = "id";
   reverse = false;
   pLaptop  = 1;
@@ -41,8 +44,18 @@ export class AdminInventoryComponent implements OnInit {
     this.createForm();
     this.getItems();
     this.responses = [];
+    
+    
   }
-
+  EmptyValidator(control: FormControl){
+    let feild = null;
+    feild = control.value;
+    console.log(feild);
+    if (feild == "" || feild == " ") {
+      return { 'empty': true };
+    }
+    return null;
+  } 
   ngOnInit(): void {
     // Create the file uploader, wire it to upload to your account
     const uploaderOptions: FileUploaderOptions = {
@@ -135,6 +148,10 @@ export class AdminInventoryComponent implements OnInit {
         }
       );
   }
+  changeImage(image, cat){
+    this.img = image;
+    this.caty = cat;
+  }
   sort(key){
     if (this.key === key) {
       this.reverse = !this.reverse;
@@ -177,16 +194,38 @@ export class AdminInventoryComponent implements OnInit {
       amount: ['', [Validators.required, Validators.min(0)]],
       categoryV: ['', [Validators.required]],
     });
+    
+    this.EdittingItemForm = this.fb.group({
+      productName: ['', [Validators.maxLength(50)]],
+      brandName: ['', [ Validators.maxLength(50)]],
+      price: ['', [Validators.pattern('[0-9]*')]],
+      details: ['', [Validators.minLength(10), Validators.maxLength(255)]],
+      file: ['', []],
+      amount: ['', [Validators.min(0)]],
+      categoryV: ['', []],
+    });
   }
-  goToForm(){
+  catReset(){
+    this.selectedLaptop = false; 
+    this.selectedMobile = false;
+    this.selectedAccessories = false;
+    this.selectedGaming = false; 
+    this.selectedDisplay = false; 
+    this.selectedSpeaker = false; 
+  }
+ goToForm(){
     this.name = "";
     this.BName = "";
     this.amount = "";
     this.priceS = "";
-    this.cat = "";
     this.img = "";
     this.detail = "";
+
     this.formCondition = !this.formCondition;
+  } 
+  goToEditForm(){
+    this.catReset();
+    this.editing = !this.editing;
   }
   addItem(productName, brandName, price, details, amount, category){
     price = parseInt(price);
@@ -211,6 +250,7 @@ export class AdminInventoryComponent implements OnInit {
   }
   editItem(productName, brandName, price, details, image,  amount, category){
     //TODO: ADD LOGIC HERE
+    console.log(productName, brandName, price, details, image,  amount, category)
   }
   fileOverBase(e: any): void {
     this.hasBaseDropZoneOver = e;
@@ -240,16 +280,27 @@ export class AdminInventoryComponent implements OnInit {
   }
   
   editValues(prdName, amnt, price,cat,img,detail,brand) {
-    console.log(prdName, amnt, price);
     this.name = prdName;
     this.BName = brand;
     this.amount = amnt;
     this.priceS = price;
-    this.cat = cat;
     this.img = img;
     this.detail = detail;
+    this.caty = cat;
+    this.goToEditForm();
+    if(cat=="Mobile")
+      this.selectedMobile = true;
+    else if(cat == "Laptop")
+      this.selectedLaptop = true;
+    else if(cat == "Speaker")
+      this.selectedSpeaker = true;
+    else if(cat == "Accessories")
+      this.selectedAccessories = true;
+    else if(cat == "Display")
+      this.selectedDisplay = true;
+    else if(cat == "Gaming")
+      this.selectedGaming = true;
     console.log(prdName, amnt, price,cat,img,detail);
-    this.formCondition = !this.formCondition;
   }
 }
 

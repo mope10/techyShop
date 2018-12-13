@@ -32,7 +32,8 @@ export class AdminSettingsComponent implements OnInit {
       firstNameV: ['', [Validators.required, Validators.maxLength(30)]],
       lastNameV: ['', [Validators.required, Validators.maxLength(30)]],
       phoneNumberV: ['', [Validators.required, Validators.pattern('[0-9]{11}')]],
-      addressV: ['', [Validators.required, Validators.maxLength(250)]]
+      addressV: ['', [Validators.required, Validators.maxLength(250)]],
+      statusV: ['', []]
     });
   }
 

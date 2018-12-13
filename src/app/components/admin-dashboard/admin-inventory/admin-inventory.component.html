@@ -1,4 +1,4 @@
-<div class="custom-body" [hidden]="!formCondition">
+<div class="custom-body" [hidden]="!formCondition || editing">
   <ul class="nav nav-tabs custom-tabs justify-content-center" id="myTab" role="tablist">
     <li class="nav-item">
       <a class="nav-link active" id="laptop-tab" data-toggle="tab" href="#laptop" role="tab" aria-controls="laptop"
@@ -93,6 +93,9 @@
               <td>{{x.brand}}</td>
               <td>{{x.amount}}</td>
               <td>{{x.price}}</td>
+              <td>
+                <div id="myImg" data-toggle="modal" data-target="#exampleModalCenter" (click)="changeImage(x.image, x.category)">Image</div>
+              </td>
               <td class="link-custom" (click) = "editValues(x.name,x.amount,x.price,x.category,x.image,x.detail,x.brand)">Edit</td> <!--MORE THINGS CAN BE ADDED-->
             </tr>
           </tbody>
@@ -154,8 +157,7 @@
               <td>{{x.amount}}</td>
               <td>{{x.price}}</td>
               <td>
-                <div id="myImg" class="imgy">Image</div>
-                <div class="showy imgy"><img src={{x.image}}></div>
+                <div id="myImg" data-toggle="modal" data-target="#exampleModalCenter" (click)="changeImage(x.image, x.category)">Image</div>
               </td>
               <td class="link-custom" (click) = "editValues(x.name,x.amount,x.price,x.category,x.image,x.detail,x.brand)">Edit</td>
             </tr>
@@ -406,18 +408,15 @@
       </div>
     </div>
 
-
   </div>
-
 </div>
-
 <div class="custom-body itemEditor" [hidden]="formCondition">
   <form action="" class="form" [formGroup]="AddingItemForm" >
     <div>
       <div class="row">
         <div class="col-md-6">
           <label for="productName">Name: </label>
-          <input type="text" name="Name" #Name id="Name" class="form-control" formControlName="productName" placeholder="Enter Product Name" value='{{name}}'>
+          <input type="text" name="Name" #Name id="Name" class="form-control" formControlName="productName" placeholder="Enter Product Name">
           <div class="incorrect" *ngIf="AddingItemForm.controls['productName'].invalid && (AddingItemForm.controls['productName'].dirty || AddingItemForm.controls['productName'].touched)">
             <div *ngIf="AddingItemForm.controls['productName'].errors.required">
               Product Name is required.
@@ -429,7 +428,7 @@
         </div>
         <div class="col-md-6">
           <label for="brand" >Brand Name: </label>
-          <input type="text" name="brand" #brand id="brand" class="form-control" formControlName="brandName" placeholder="Enter Brand name" value='{{BName}}'> 
+          <input type="text" name="brand" #brand id="brand" class="form-control" formControlName="brandName" placeholder="Enter Brand name"> 
           <div class="incorrect" *ngIf="AddingItemForm.controls['brandName'].invalid && (AddingItemForm.controls['brandName'].dirty || AddingItemForm.controls['brandName'].touched)">
             <div *ngIf="AddingItemForm.controls['brandName'].errors.required">
               Brand Name is required.
@@ -445,7 +444,7 @@
             <div class="row">
               <div class="col-md-6">
                 <label for="productName">Price: </label>
-                <input type="number" name="price" #price id="price" class="form-control" formControlName="price" placeholder="Enter Price in Ruppees" value='{{priceS}}'>
+                <input type="number" name="price" #price id="price" class="form-control" formControlName="price" placeholder="Enter Price in Ruppees">
                 <div class="incorrect" *ngIf="AddingItemForm.controls['price'].invalid  && (AddingItemForm.controls['price'].dirty || AddingItemForm.controls['price'].touched)">
                   <div *ngIf="AddingItemForm.controls['price'].errors.required">
                     Price is required.
@@ -472,7 +471,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <label for="amount">Amount: </label>
-                  <input type="number" name="amount" #amnt id="amount" class="form-control" formControlName="amount" placeholder="Enter No. of Item Available" value='{{amount}}'>
+                  <input type="number" name="amount" #amnt id="amount" class="form-control" formControlName="amount" placeholder="Enter No. of Item Available">
                   <div class="incorrect" *ngIf="AddingItemForm.controls['amount'].invalid && (AddingItemForm.controls['amount'].dirty || AddingItemForm.controls['amount'].touched)">
                     <div *ngIf="AddingItemForm.controls['amount'].errors.required">
                       Amount is required.
@@ -488,10 +487,10 @@
                 <div class="col-md-6">
                   <label for="category">Choose a Category: </label>
                   <div>
-                  <select class="form-control" name="category" #cat formControlName="categoryV" value="{{cat}}">
+                  <select class="form-control" name="category" #cat formControlName="categoryV">
                     <option value="" >Choose Category</option>
-                    <option value="Laptop" [selected]="">Laptop</option>
-                    <option value="Mobile" [selected]="cat">Mobile</option>
+                    <option value="Laptop">Laptop</option>
+                    <option value="Mobile">Mobile</option>
                     <option value="Accessories">Accessories</option>
                     <option value="Gaming">Gaming</option>
                     <option value="Display">Display</option>
@@ -509,7 +508,7 @@
       <div class="form-group">
         <label for="infoArea">Add Info: </label>
         <textarea name="info" name="infoArea" #details id="infoArea" cols="30" rows="3" class="textArea" formControlName="details"
-          placeholder="Write details about the product" value='{{detail}}'></textarea>
+          placeholder="Write details about the product"></textarea>
         <div class="incorrect" *ngIf="AddingItemForm.controls['details'].invalid && (AddingItemForm.controls['details'].dirty || AddingItemForm.controls['details'].touched)">
           <div *ngIf="AddingItemForm.controls['details'].errors.required">
             Details about Item is required.
@@ -534,4 +533,143 @@
       </div>
     </div>  
   </form>
+</div>
+<div class="custom-body itemEditor" [hidden]="!editing">
+  <form action="" class="form" [formGroup]="EdittingItemForm" >
+    <div>
+      <div class="row">
+        <div class="col-md-6">
+          <label for="productName">Name: </label>
+          <input type="text" #EName class="form-control" formControlName="productName" placeholder="Enter Product Name" value="{{name}}" required>
+          <div class="incorrect" *ngIf="EdittingItemForm.controls['productName'].invalid && (EdittingItemForm.controls['productName'].dirty || EdittingItemForm.controls['productName'].touched)">
+            <div *ngIf="EdittingItemForm.controls['productName'].errors.empty">
+              Product Name is required.
+            </div>
+            <div *ngIf="EdittingItemForm.controls['productName'].errors.maxlength">
+              Maximum Length is 50.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="brand" >Brand Name: </label>
+          <input type="text" name="brand" #Ebrand id="brand" class="form-control" formControlName="brandName" placeholder="Enter Brand name" value='{{BName}}' required> 
+          <div class="incorrect" *ngIf="EdittingItemForm.controls['brandName'].invalid && (EdittingItemForm.controls['brandName'].dirty || EdittingItemForm.controls['brandName'].touched)">
+            <div *ngIf="EdittingItemForm.controls['brandName'].errors.empty">
+              Brand Name is required.
+            </div>
+            <div *ngIf="EdittingItemForm.controls['brandName'].errors.maxlength">
+              Maximum Length is 50.
+            </div>
+          </div>
+          </div>
+          </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="productName">Price: </label>
+                <input type="number" name="price" #Eprice id="price" class="form-control" formControlName="price" placeholder="Enter Price in Ruppees" value='{{priceS}}' required>
+                <div class="incorrect" *ngIf="EdittingItemForm.controls['price'].invalid  && (EdittingItemForm.controls['price'].dirty || EdittingItemForm.controls['price'].touched)">
+                  <div *ngIf="EdittingItemForm.controls['price'].errors.empty">
+                    Price is required.
+                  </div>
+                  <div *ngIf="EdittingItemForm.controls['price'].errors.pattern">
+                    Only Numbers are allowed
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="fileupload">Select Image: {{imageProgress}}</label><span id="myImg" data-toggle="modal" data-target="#exampleModalCenter" (click)="changeImage(img, caty)" required> Uploaded Image</span>
+                <div class="btn link-custom" style="display:block" (click)="image.click()">Choose File</div>
+                <input type="file" id="fileupload" #Eimage formControlName="file" ng2FileSelect [uploader]="uploader" multiple/>
+                <div class="incorrect">{{validityStatement}} </div>
+                <div class="incorrect" *ngIf="EdittingItemForm.controls['file'].invalid && (EdittingItemForm.controls['file'].dirty || EdittingItemForm.controls['file'].touched)">
+                  <div *ngIf="EdittingItemForm.controls['file'].errors.empty">
+                    You must select a picture.
+                  </div>
+          
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="amount">Amount: </label>
+                  <input type="number" name="amount" #Eamnt id="amount" class="form-control" formControlName="amount" placeholder="Enter No. of Item Available" value='{{amount}}' required>
+                  <div class="incorrect" *ngIf="EdittingItemForm.controls['amount'].invalid && (EdittingItemForm.controls['amount'].dirty || EdittingItemForm.controls['amount'].touched)">
+                    <div *ngIf="EdittingItemForm.controls['amount'].errors.empty">
+                      Amount is required.
+                    </div>
+                    <div *ngIf="EdittingItemForm.controls['amount'].errors.min">
+                      Number must be equal to or greater than 0.
+                    </div>
+                    <div *ngIf="EdittingItemForm.controls['amount'].errors.pattern">
+                        Only Numbers allowed.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="category">Choose a Category: </label>
+                  <div>
+                  <select class="form-control" name="category" #Ecat formControlName="categoryV" value="{{cat}}" required>
+                    <option value="" >Choose Category</option>
+                    <option value="Laptop" [selected]="selectedLaptop">Laptop</option>
+                    <option value="Mobile" [selected]="selectedMobile">Mobile</option>
+                    <option value="Accessories" [selected]="selectedAccessories">Accessories</option>
+                    <option value="Gaming" [selected]="selectedGaming">Gaming</option>
+                    <option value="Display" [selected]="selectedDisplay">Display</option>
+                    <option value="Speaker" [selected]="selectedSpeaker">Speaker</option>
+                  </select>
+                </div>
+                  <div class="incorrect" *ngIf="EdittingItemForm.controls['categoryV'].invalid && (EdittingItemForm.controls['categoryV'].dirty || EdittingItemForm.controls['categoryV'].touched)">
+                    <div *ngIf="EdittingItemForm.controls['categoryV'].errors.empty">
+                      You Must Select an Option
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      <div class="form-group">
+        <label for="infoArea">Add Info: </label>
+        <textarea name="info" name="infoArea" #Edetails id="infoArea" cols="30" rows="3" class="textArea" formControlName="details"
+          placeholder="Write details about the product" value='{{detail}}' required></textarea>
+        <div class="incorrect" *ngIf="EdittingItemForm.controls['details'].invalid">
+          <div *ngIf="EdittingItemForm.controls['details'].errors.empty">
+            Details should be more than 10 characters
+          </div>
+          <div *ngIf="EdittingItemForm.controls['details'].errors.maxlength">
+            Details should be less than 255 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-6">
+            <button class="btn link-custom" (click)="goToEditForm()">Back</button>
+          </div>
+          <div class="col-6">
+            <button class="btn link-custom fright"  [disabled]="EdittingItemForm.invalid || validity" (click)="editItem(EName.value,Ebrand.value,Eprice.value,Edetails.value,Eamnt.value,Ecat.value)">Edit item </button>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </form>
+</div>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"> {{caty}} </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img src={{img}} width="100%">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>

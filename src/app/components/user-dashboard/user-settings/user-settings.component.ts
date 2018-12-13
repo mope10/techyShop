@@ -14,6 +14,10 @@ export class UserSettingsComponent implements OnInit {
   address = "";
   number = "";
 
+  fname = "";
+  lname = "";
+  add = "";
+  phNo = "";
   EditingUserInfo: FormGroup;
   editDisabled = true;
 
@@ -32,7 +36,8 @@ export class UserSettingsComponent implements OnInit {
       firstNameV: ['', [Validators.required, Validators.maxLength(30)]],
       lastNameV: ['', [Validators.required, Validators.maxLength(30)]],
       phoneNumberV: ['', [Validators.required, Validators.pattern('[0-9]{11}')]],
-      addressV: ['', [Validators.required, Validators.maxLength(250)]]
+      addressV: ['', [Validators.required, Validators.maxLength(250)]],
+      statusV: ['', []]
     });
   }
 
@@ -46,19 +51,19 @@ export class UserSettingsComponent implements OnInit {
     });
   }
   editEnable(firstName, lastName, number, address) {
-    // this.fname = firstName;
-    // this.lname = lastName;
-    // this.phNo = number;
-    // this.add = address;
+    this.fname = firstName;
+    this.lname = lastName;
+    this.phNo = number;
+    this.add = address;
     this.editDisabled = false;
-    // console.log(this.fname, this.lname, this.phNo, this.add);
+    console.log(this.fname, this.lname, this.phNo, this.add);
 
   }
   editDisable() {
-    // this.firstName = this.fname; 
-    // this.lastName = this.lname;
-    // this.address = this.add;
-    // this.number = this.phNo;
+    this.firstName = this.fname; 
+    this.lastName = this.lname;
+    this.address = this.add;
+    this.number = this.phNo;
     this.editDisabled = true;
     // console.log(this.firstName, this.lastName, this.address, this.number);
 
