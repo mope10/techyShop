@@ -45,7 +45,8 @@ export interface itemList {
   price: Number,
   category: any,
   image: any,
-  detail: any
+  detail: any,
+  amount: Number
 }
 
 

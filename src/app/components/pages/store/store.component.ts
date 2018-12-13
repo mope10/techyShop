@@ -12,6 +12,7 @@ export class StoreComponent implements OnInit {
   category = "All";
   categorySearch = "";
   data;
+<<<<<<< HEAD
   name = "";
   price = 0;
   detail = "";
@@ -19,6 +20,9 @@ export class StoreComponent implements OnInit {
   brand = "";
 
   constructor(private dataS: DataService,private router : Router) { 
+=======
+  constructor(private dataS: DataService) { 
+>>>>>>> 247d319a42d3c645090c0e03a3b13b30475d42f0
     this.getItems();
   }
 
@@ -36,12 +40,8 @@ export class StoreComponent implements OnInit {
   p = 1;
 
   getItems(){
-    console.log("here2");
     this.dataS.getItems().subscribe((items)=>{
-      console.log(items);
-      console.log("here");
       this.data = items;
-      console.log(this.data);
     })
   }
 

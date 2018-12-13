@@ -35,7 +35,7 @@
       <hr>
       <div class="row">
         <div *ngFor="let x of data | filter:categorySearch | filter:MyFilter | paginate: { itemsPerPage: 4, currentPage: p }" class="col-md-3 col-6">
-          <div class=" item-card" (click)="setItemView(,x.owner,x._id,x.brand,x.name,x.price,x.image,x.detail)">
+          <div class=" item-card" (click)="setItemView(x.owner,x._id,x.brand,x.name,x.price,x.image,x.detail)">
             <img src="{{x.image}}" alt="">
             <div class="spaceBetweenPicText"></div>
             <h6>{{x.brand}} {{x.name}}</h6>
