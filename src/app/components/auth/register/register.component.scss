@@ -1,19 +1,57 @@
-form {
+.background {
+    height: 650px !important;
 
+    background: url("../../../../assets/photos/back03.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+  
+
+}
+form {
+    color: white;
+    font-weight: 400 !important;
     max-width:800px;
     min-width: 500px;
-    margin:120px auto;
-    background-color:white;
+    margin: auto;
+    // margin-top: 100px !important;
     padding:30px;
     box-shadow: 0 0 25px rgba(155,155,155,0.5);
-    font-weight: 500;
+
+    background-color: #332f2c;
+    border-radius: 7px;
+    font-family: "Poppins";
+    font-size: 15px;
+    .signUpHeading {
+        text-align: left !important;
+        border-left: orangered solid 6px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        font-size: 30px !important;
+        padding-left: 20px;
+
+    }
+
+
     input {
-        border: 0px;
-        border-bottom: 2px solid black !important; 
+        // border: 0px;
+        // border-bottom: 2px solid black !important; 
+        font-size: 12px;
+        border-radius: 5px !important;
+        color: #c6c5c4;
+        border: 1px solid rgb(165, 165, 165) !important;
+        background-color: #332f2c !important; 
+    }
+    input:hover {
+        border: 1px solid rgb(251, 251, 251) !important;
+        transition-duration: 300ms;
     }
     input::placeholder {
         font-style: italic;
     }
+
     input[type=number]::-webkit-inner-spin-button, 
     input[type=number]::-webkit-outer-spin-button { 
     -webkit-appearance: none; 
@@ -26,5 +64,18 @@ form {
     .fa-check {
         color: #42A948 !important;
     }
+    .registerBtn {
+        background-color: #e4e4e4;
+        color: black !important;
+        margin-top: 10px;
 
+    }
+    .registerBtn:hover{
+        color: white !important;
+        background-color: orangered;
+        transition-duration: 100ms;
+        text-decoration: none !important;
+        cursor: pointer;
+    }
+    
 }
