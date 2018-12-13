@@ -87,7 +87,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let x of data | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'laptop', itemsPerPage: 4, currentPage: pLaptop }">
+            <tr *ngFor="let x of data | filter:'laptop' | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'laptop', itemsPerPage: 4, currentPage: pLaptop }">
               <td>{{x._id}}</td>
               <td>{{x.name}}</td>
               <td>{{x.brand}}</td>
@@ -142,6 +142,7 @@
                     <span [hidden]="!reverse">▲</span>
                 </span>
               </th>
+              <th>Image</th>
               <th></th>
             </tr>
           </thead>
@@ -152,6 +153,10 @@
               <td>{{x.brand}}</td>
               <td>{{x.amount}}</td>
               <td>{{x.price}}</td>
+              <td>
+                <div id="myImg" class="imgy">Image</div>
+                <div class="showy imgy"><img src={{x.image}}></div>
+              </td>
               <td class="link-custom" (click) = "editValues(x.name,x.amount,x.price,x.category,x.image,x.detail,x.brand)">Edit</td>
             </tr>
           </tbody>
@@ -206,7 +211,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let x of data | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'accessories', itemsPerPage: 4, currentPage: pAccessory }">
+            <tr *ngFor="let x of data | filter:'accessories' | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'accessories', itemsPerPage: 4, currentPage: pAccessory }">
               <td>{{x._id}}</td>
               <td>{{x.name}}</td>
               <td>{{x.brand}}</td>
@@ -265,7 +270,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let x of data | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'gaming', itemsPerPage: 4, currentPage: pGaming }">
+            <tr *ngFor="let x of data | filter:'gaming' | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'gaming', itemsPerPage: 4, currentPage: pGaming }">
               <td>{{x._id}}</td>
               <td>{{x.name}}</td>
               <td>{{x.brand}}</td>
@@ -320,16 +325,18 @@
                     <span [hidden]="!reverse">▲</span>
                 </span>
               </th>
+              <th>Images</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let x of data | filter:MyFilter | orderBy: key : reverse | paginate: { id: 'display', itemsPerPage: 4, currentPage: pDisplay }">
+            <tr *ngFor="let x of data | filter:'display' | filter:MyFilter | orderBy: key : reverse | paginate: { id: 'display', itemsPerPage: 4, currentPage: pDisplay }">
               <td>{{x._id}}</td>
               <td>{{x.name}}</td>
               <td>{{x.brand}}</td>
               <td>{{x.amount}}</td>
               <td>{{x.price}}</td>
+              <td id="imgshow"><img src="x.image" hidden>Image </td>
               <td class="link-custom" (click) = "editValues(x.name,x.amount,x.price,x.category,x.image,x.detail,x.brand)">Edit</td>
             </tr>
           </tbody>
@@ -383,7 +390,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let x of data | filter:MyFilter | orderBy: key : reverse | paginate: { id: 'speaker', itemsPerPage: 4, currentPage: pSpeaker }">
+            <tr *ngFor="let x of data | filter:'speaker' | filter:MyFilter | orderBy: key : reverse | paginate: { id: 'speaker', itemsPerPage: 4, currentPage: pSpeaker }">
               <td>{{x._id}}</td>
               <td>{{x.name}}</td>
               <td>{{x.brand}}</td>
@@ -439,7 +446,7 @@
               <div class="col-md-6">
                 <label for="productName">Price: </label>
                 <input type="number" name="price" #price id="price" class="form-control" formControlName="price" placeholder="Enter Price in Ruppees" value='{{priceS}}'>
-                <div class="incorrect" *ngIf="AddingItemForm.controls['price'].invalid &&    || AddingItemForm.controls['price'].touched)">
+                <div class="incorrect" *ngIf="AddingItemForm.controls['price'].invalid  && (AddingItemForm.controls['price'].dirty || AddingItemForm.controls['price'].touched)">
                   <div *ngIf="AddingItemForm.controls['price'].errors.required">
                     Price is required.
                   </div>
@@ -451,7 +458,7 @@
               <div class="col-md-6">
                 <label for="fileupload">Select Image: {{imageProgress}}</label>
                 <div class="btn link-custom" style="display:block" (click)="image.click()">Choose File</div>
-                <input type="file" id="fileupload" #image formControlName="file" ng2FileSelect  [uploader]="uploader" multiple/>
+                <input type="file" id="fileupload" #image formControlName="file" ng2FileSelect [uploader]="uploader" multiple/>
                 <div class="incorrect">{{validityStatement}} </div>
                 <div class="incorrect" *ngIf="AddingItemForm.controls['file'].invalid && (AddingItemForm.controls['file'].dirty || AddingItemForm.controls['file'].touched)">
                   <div *ngIf="AddingItemForm.controls['file'].errors.required">
@@ -483,8 +490,8 @@
                   <div>
                   <select class="form-control" name="category" #cat formControlName="categoryV" value="{{cat}}">
                     <option value="" >Choose Category</option>
-                    <option value="Laptop">Laptop</option>
-                    <option value="Mobile">Mobile</option>
+                    <option value="Laptop" [selected]="">Laptop</option>
+                    <option value="Mobile" [selected]="cat">Mobile</option>
                     <option value="Accessories">Accessories</option>
                     <option value="Gaming">Gaming</option>
                     <option value="Display">Display</option>
