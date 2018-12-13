@@ -2,7 +2,7 @@
     <app-header *ngIf="headerApproval()" ></app-header>
     <app-side-nav *ngIf="!headerApproval()"></app-side-nav>
     <app-account-header *ngIf="!headerApproval()"></app-account-header>
-    <div class="stupid" [ngClass]="accountWrapper">
+    <div [ngClass]="accountWrapper">
         <router-outlet></router-outlet>
     </div>
     <app-footer *ngIf="footerApproval()"></app-footer>

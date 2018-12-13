@@ -31,21 +31,27 @@ export class AppComponent {
   }
 
   headerApproval(): boolean {
-    if (
+    if(
+      this.location.path() === "/login" ||
+      this.location.path() === "/register"
+    ){
+      this.accountWrapper ="stupidMistake";
+      return true;
+    }
+    else if (
       this.location.path() === ""          ||
       this.location.path() === "/aboutUs"  ||
-      this.location.path() === "/store"    ||
-      this.location.path() === "/login"    ||
-      this.location.path() === "/register" 
+      this.location.path() === "/store"    
+      
       
     ) {
-      console.log(true);
       this.accountWrapper="";
       return true;
     }
     else if(!this.auth.isauthenticated()){
-      return true;
       this.accountWrapper = "";
+
+      return true;
     }
     else {
       this.accountWrapper="account-wrapper";
@@ -53,5 +59,7 @@ export class AppComponent {
     }
 
   }
+
+  
  
 }

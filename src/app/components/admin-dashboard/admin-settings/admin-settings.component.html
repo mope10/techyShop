@@ -17,9 +17,9 @@
             <!--here-->
             <div class="col-6 inlineElement">
               <input class="form-control" #fName type="text" [readonly]="editDisabled" formControlName="firstNameV"
-                value="{{firstName}}">
+              [(ngModel)]="firstName">
             </div>
-            <div class="col-6 inlineElement"><input class="form-control" #lName type="text" value="{{lastName}}"
+            <div class="col-6 inlineElement"><input class="form-control" #lName type="text" [(ngModel)]="lastName"
                 [readonly]="editDisabled" formControlName="lastNameV"></div>
             <div class="incorrect" *ngIf="EditingAdminInfo.controls['firstNameV'].invalid && (EditingAdminInfo.controls['firstNameV'].dirty)">
               <div *ngIf="EditingAdminInfo.controls['firstNameV'].errors.required">
@@ -40,12 +40,12 @@
             <p></p>
             <!--this p tag is giving error being placed before div -->
             <h5>Designation: </h5>
-            <p><input class="form-control" #stat type="text" [readonly]="true" value="{{status}}"></p>
+            <p><input class="form-control" #stat type="text" [readonly]="true" [(ngModel)]="status" formControlName="statusV"></p>
           </div>
           <div class="col-6">
             <h5>Phone Number: </h5>
             <p>
-              <input class="form-control" #phNo type="text" [readonly]="editDisabled" value="{{number}}"
+              <input class="form-control" #phNo type="text" [readonly]="editDisabled" [(ngModel)]="number"
                 formControlName="phoneNumberV" min=0>
               <div class="incorrect" *ngIf="EditingAdminInfo.controls['phoneNumberV'].invalid && (EditingAdminInfo.controls['phoneNumberV'].dirty)">
                 <div *ngIf="EditingAdminInfo.controls['phoneNumberV'].errors.required">
@@ -58,7 +58,7 @@
               <!--P tag missing dont know why-->
               <h5>Address: </h5>
               <p>
-                <input class="form-control" #add type="text" [readonly]="editDisabled" value="{{address}}"
+                <input class="form-control" #add type="text" [readonly]="editDisabled" [(ngModel)]="address"
                   formControlName="addressV">
                 <div class="incorrect" *ngIf="EditingAdminInfo.controls['addressV'].invalid && (EditingAdminInfo.controls['addressV'].dirty)">
                   <div *ngIf="EditingAdminInfo.controls['addressV'].errors.required">
