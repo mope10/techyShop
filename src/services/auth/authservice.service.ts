@@ -64,15 +64,11 @@ export class AuthserviceService {
 
   }
   isauthenticated() {
-    console.log("protecting route");
     var token = this.getToken()
-    console.log(token);
     if (token) {
-      console.log('something else')
       return true;
     }
     else {
-      console.log('something')
       return false;
     }
   }
