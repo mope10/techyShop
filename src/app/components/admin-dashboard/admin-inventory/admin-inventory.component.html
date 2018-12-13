@@ -48,16 +48,23 @@
         <table class="table">
           <thead>
             <tr>
-              <th (click)="sort('id')">
+              <th (click)="sort('_id')">
                 #
-                <span *ngIf="key == 'id'" >
+                <span *ngIf="key == '_id'" >
                     <span [hidden]="reverse">▼</span>
                     <span [hidden]="!reverse">▲</span>
                 </span>
               </th>
-              <th (click)="sort('productName')">
-                Product
-                <span *ngIf="key == 'productName'" >
+              <th (click)="sort('name')">
+                Product Name
+                <span *ngIf="key == 'name'" >
+                  <span [hidden]="reverse">▼</span>
+                  <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th (click)="sort('brand')">
+                Brand Name
+                <span *ngIf="key == 'brand'" >
                   <span [hidden]="reverse">▼</span>
                   <span [hidden]="!reverse">▲</span>
                 </span>
@@ -69,9 +76,9 @@
                     <span [hidden]="!reverse">▲</span>
                 </span>
               </th>
-              <th (click)="sort('sellPrice')">
+              <th (click)="sort('price')">
                 Price
-                <span *ngIf="key == 'sellPrice'" >
+                <span *ngIf="key == 'price'" >
                     <span [hidden]="reverse">▼</span>
                     <span [hidden]="!reverse">▲</span>
                 </span>
@@ -81,12 +88,12 @@
           </thead>
           <tbody>
             <tr *ngFor="let x of data | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'laptop', itemsPerPage: 4, currentPage: pLaptop }">
-              <td>{{x.id}}</td>
-              <td>{{x.productName}}</td>
+              <td>{{x._id}}</td>
+              <td>{{x.name}}</td>
+              <td>{{x.brand}}</td>
               <td>{{x.amount}}</td>
-              <td>{{x.sellPrice}}</td>
- 
-              <td class="link-custom">Edit</td>
+              <td>{{x.price}}</td>
+              <td class="link-custom" (click) = "editValues(x.name,x.amount,x.price,x.category,x.image,x.detail,x.brand)">Edit</td> <!--MORE THINGS CAN BE ADDED-->
             </tr>
           </tbody>
         </table>
@@ -98,47 +105,54 @@
     <div class="tab-pane fade" id="mobiles" role="tabpanel" aria-labelledby="mobiles-tab">
       <div class="table-responsive">
         <table class="table">
-            <thead>
-                <tr>
-                  <th (click)="sort('id')">
-                    #
-                    <span *ngIf="key == 'id'" >
-                        <span [hidden]="reverse">▼</span>
-                        <span [hidden]="!reverse">▲</span>
-                    </span>
-                  </th>
-                  <th (click)="sort('productName')">
-                    Product
-                    <span *ngIf="key == 'productName'" >
-                      <span [hidden]="reverse">▼</span>
-                      <span [hidden]="!reverse">▲</span>
-                    </span>
-                  </th>
-                  <th (click)="sort('amount')">
-                    Amount Left
-                    <span *ngIf="key == 'amount'" >
-                        <span [hidden]="reverse">▼</span>
-                        <span [hidden]="!reverse">▲</span>
-                    </span>
-                  </th>
-                  <th (click)="sort('sellPrice')">
-                    Price
-                    <span *ngIf="key == 'sellPrice'" >
-                        <span [hidden]="reverse">▼</span>
-                        <span [hidden]="!reverse">▲</span>
-                    </span>
-                  </th>
-                  <th></th>
-                </tr>
-              </thead>
+          <thead>
+            <tr>
+              <th (click)="sort('_id')">
+                #
+                <span *ngIf="key == '_id'" >
+                    <span [hidden]="reverse">▼</span>
+                    <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th (click)="sort('name')">
+                Product Name
+                <span *ngIf="key == 'name'" >
+                  <span [hidden]="reverse">▼</span>
+                  <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th (click)="sort('brand')">
+                Brand Name
+                <span *ngIf="key == 'brand'" >
+                  <span [hidden]="reverse">▼</span>
+                  <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th (click)="sort('amount')">
+                Amount Left
+                <span *ngIf="key == 'amount'" >
+                    <span [hidden]="reverse">▼</span>
+                    <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th (click)="sort('price')">
+                Price
+                <span *ngIf="key == 'price'" >
+                    <span [hidden]="reverse">▼</span>
+                    <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th></th>
+            </tr>
+          </thead>
           <tbody>
             <tr *ngFor="let x of data | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'mobiles', itemsPerPage: 4, currentPage: pMobile } ">
-              <td>{{x.id}}</td>
-              <td>{{x.productName}}</td>
+              <td>{{x._id}}</td>
+              <td>{{x.name}}</td>
+              <td>{{x.brand}}</td>
               <td>{{x.amount}}</td>
-              <td>{{x.sellPrice}}</td>
- 
-              <td class="link-custom">Edit</td>
+              <td>{{x.price}}</td>
+              <td class="link-custom" (click) = "editValues(x.name,x.amount,x.price,x.category,x.image,x.detail,x.brand)">Edit</td>
             </tr>
           </tbody>
         </table>
@@ -151,48 +165,54 @@
     <div class="tab-pane fade" id="accessories" role="tabpanel" aria-labelledby="accessories-tab">
       <div class="table-responsive">
         <table class="table">
-            <thead>
-                <tr>
-                  <th (click)="sort('id')">
-                    #
-                    <span *ngIf="key == 'id'" >
-                        <span [hidden]="reverse">▼</span>
-                        <span [hidden]="!reverse">▲</span>
-                    </span>
-                  </th>
-                  <th (click)="sort('productName')">
-                    Product
-                    <span *ngIf="key == 'productName'" >
-                      <span [hidden]="reverse">▼</span>
-                      <span [hidden]="!reverse">▲</span>
-                    </span>
-                  </th>
-                  <th (click)="sort('amount')">
-                    Amount Left
-                    <span *ngIf="key == 'amount'" >
-                        <span [hidden]="reverse">▼</span>
-                        <span [hidden]="!reverse">▲</span>
-                    </span>
-                  </th>
-                  <th (click)="sort('sellPrice')">
-                    Price
-                    <span *ngIf="key == 'sellPrice'" >
-                        <span [hidden]="reverse">▼</span>
-                        <span [hidden]="!reverse">▲</span>
-                    </span>
-                  </th>
-
-                  <th></th>
-                </tr>
-              </thead>
+          <thead>
+            <tr>
+              <th (click)="sort('_id')">
+                #
+                <span *ngIf="key == '_id'" >
+                    <span [hidden]="reverse">▼</span>
+                    <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th (click)="sort('name')">
+                Product Name
+                <span *ngIf="key == 'name'" >
+                  <span [hidden]="reverse">▼</span>
+                  <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th (click)="sort('brand')">
+                Brand Name
+                <span *ngIf="key == 'brand'" >
+                  <span [hidden]="reverse">▼</span>
+                  <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th (click)="sort('amount')">
+                Amount Left
+                <span *ngIf="key == 'amount'" >
+                    <span [hidden]="reverse">▼</span>
+                    <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th (click)="sort('price')">
+                Price
+                <span *ngIf="key == 'price'" >
+                    <span [hidden]="reverse">▼</span>
+                    <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th></th>
+            </tr>
+          </thead>
           <tbody>
             <tr *ngFor="let x of data | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'accessories', itemsPerPage: 4, currentPage: pAccessory }">
-              <td>{{x.id}}</td>
-              <td>{{x.productName}}</td>
+              <td>{{x._id}}</td>
+              <td>{{x.name}}</td>
+              <td>{{x.brand}}</td>
               <td>{{x.amount}}</td>
-              <td>{{x.sellPrice}}</td>
- 
-              <td class="link-custom">Edit</td>
+              <td>{{x.price}}</td>
+              <td class="link-custom" (click) = "editValues(x.name,x.amount,x.price,x.category,x.image,x.detail,x.brand)">Edit</td>
             </tr> 
           </tbody>
         </table>
@@ -204,48 +224,54 @@
     <div class="tab-pane fade" id="gaming" role="tabpanel" aria-labelledby="gaming-tab">
       <div class="table-responsive">
         <table class="table">
-            <thead>
-                <tr>
-                  <th (click)="sort('id')">
-                    #
-                    <span *ngIf="key == 'id'" >
-                        <span [hidden]="reverse">▼</span>
-                        <span [hidden]="!reverse">▲</span>
-                    </span>
-                  </th>
-                  <th (click)="sort('productName')">
-                    Product
-                    <span *ngIf="key == 'productName'" >
-                      <span [hidden]="reverse">▼</span>
-                      <span [hidden]="!reverse">▲</span>
-                    </span>
-                  </th>
-                  <th (click)="sort('amount')">
-                    Amount Left
-                    <span *ngIf="key == 'amount'" >
-                        <span [hidden]="reverse">▼</span>
-                        <span [hidden]="!reverse">▲</span>
-                    </span>
-                  </th>
-                  <th (click)="sort('sellPrice')">
-                    Price
-                    <span *ngIf="key == 'sellPrice'" >
-                        <span [hidden]="reverse">▼</span>
-                        <span [hidden]="!reverse">▲</span>
-                    </span>
-                  </th>
-
-                  <th></th>
-                </tr>
-              </thead>
+          <thead>
+            <tr>
+              <th (click)="sort('_id')">
+                #
+                <span *ngIf="key == '_id'" >
+                    <span [hidden]="reverse">▼</span>
+                    <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th (click)="sort('name')">
+                Product Name
+                <span *ngIf="key == 'name'" >
+                  <span [hidden]="reverse">▼</span>
+                  <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th (click)="sort('brand')">
+                Brand Name
+                <span *ngIf="key == 'brand'" >
+                  <span [hidden]="reverse">▼</span>
+                  <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th (click)="sort('amount')">
+                Amount Left
+                <span *ngIf="key == 'amount'" >
+                    <span [hidden]="reverse">▼</span>
+                    <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th (click)="sort('price')">
+                Price
+                <span *ngIf="key == 'price'" >
+                    <span [hidden]="reverse">▼</span>
+                    <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th></th>
+            </tr>
+          </thead>
           <tbody>
             <tr *ngFor="let x of data | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'gaming', itemsPerPage: 4, currentPage: pGaming }">
-              <td>{{x.id}}</td>
-              <td>{{x.productName}}</td>
+              <td>{{x._id}}</td>
+              <td>{{x.name}}</td>
+              <td>{{x.brand}}</td>
               <td>{{x.amount}}</td>
-              <td>{{x.sellPrice}}</td>
- 
-              <td class="link-custom">Edit</td>
+              <td>{{x.price}}</td>
+              <td class="link-custom" (click) = "editValues(x.name,x.amount,x.price,x.category,x.image,x.detail,x.brand)">Edit</td>
             </tr>
           </tbody>
         </table>
@@ -257,46 +283,54 @@
     <div class="tab-pane fade" id="display" role="tabpanel" aria-labelledby="display-tab">
       <div class="table-responsive">
         <table class="table">
-            <thead>
-                <tr>
-                  <th (click)="sort('id')">
-                    #
-                    <span *ngIf="key == 'id'" >
-                        <span [hidden]="reverse">▼</span>
-                        <span [hidden]="!reverse">▲</span>
-                    </span>
-                  </th>
-                  <th (click)="sort('productName')">
-                    Product
-                    <span *ngIf="key == 'productName'" >
-                      <span [hidden]="reverse">▼</span>
-                      <span [hidden]="!reverse">▲</span>
-                    </span>
-                  </th>
-                  <th (click)="sort('amount')">
-                    Amount Left
-                    <span *ngIf="key == 'amount'" >
-                        <span [hidden]="reverse">▼</span>
-                        <span [hidden]="!reverse">▲</span>
-                    </span>
-                  </th>
-                  <th (click)="sort('sellPrice')">
-                    Price
-                    <span *ngIf="key == 'sellPrice'" >
-                        <span [hidden]="reverse">▼</span>
-                        <span [hidden]="!reverse">▲</span>
-                    </span>
-                  </th>
-                  <th></th>
-                </tr>
-              </thead>
+          <thead>
+            <tr>
+              <th (click)="sort('_id')">
+                #
+                <span *ngIf="key == '_id'" >
+                    <span [hidden]="reverse">▼</span>
+                    <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th (click)="sort('name')">
+                Product Name
+                <span *ngIf="key == 'name'" >
+                  <span [hidden]="reverse">▼</span>
+                  <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th (click)="sort('brand')">
+                Brand Name
+                <span *ngIf="key == 'brand'" >
+                  <span [hidden]="reverse">▼</span>
+                  <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th (click)="sort('amount')">
+                Amount Left
+                <span *ngIf="key == 'amount'" >
+                    <span [hidden]="reverse">▼</span>
+                    <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th (click)="sort('price')">
+                Price
+                <span *ngIf="key == 'price'" >
+                    <span [hidden]="reverse">▼</span>
+                    <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th></th>
+            </tr>
+          </thead>
           <tbody>
             <tr *ngFor="let x of data | filter:MyFilter | orderBy: key : reverse | paginate: { id: 'display', itemsPerPage: 4, currentPage: pDisplay }">
-              <td>{{x.id}}</td>
-              <td>{{x.productName}}</td>
+              <td>{{x._id}}</td>
+              <td>{{x.name}}</td>
+              <td>{{x.brand}}</td>
               <td>{{x.amount}}</td>
-              <td>{{x.sellPrice}}</td>
-              <td class="link-custom">Edit</td>
+              <td>{{x.price}}</td>
+              <td class="link-custom" (click) = "editValues(x.name,x.amount,x.price,x.category,x.image,x.detail,x.brand)">Edit</td>
             </tr>
           </tbody>
         </table>
@@ -308,47 +342,54 @@
     <div class="tab-pane fade" id="speaker" role="tabpanel" aria-labelledby="speaker-tab">
       <div class="table-responsive">
         <table class="table">
-            <thead>
-                <tr>
-                  <th (click)="sort('id')">
-                    #
-                    <span *ngIf="key == 'id'" >
-                        <span [hidden]="reverse">▼</span>
-                        <span [hidden]="!reverse">▲</span>
-                    </span>
-                  </th>
-                  <th (click)="sort('productName')">
-                    Product
-                    <span *ngIf="key == 'productName'" >
-                      <span [hidden]="reverse">▼</span>
-                      <span [hidden]="!reverse">▲</span>
-                    </span>
-                  </th>
-                  <th (click)="sort('amount')">
-                    Amount Left
-                    <span *ngIf="key == 'amount'" >
-                        <span [hidden]="reverse">▼</span>
-                        <span [hidden]="!reverse">▲</span>
-                    </span>
-                  </th>
-                  <th (click)="sort('sellPrice')">
-                    Price
-                    <span *ngIf="key == 'sellPrice'" >
-                        <span [hidden]="reverse">▼</span>
-                        <span [hidden]="!reverse">▲</span>
-                    </span>
-                  </th>
-                  <th></th>
-                </tr>
-              </thead>
+          <thead>
+            <tr>
+              <th (click)="sort('_id')">
+                #
+                <span *ngIf="key == '_id'" >
+                    <span [hidden]="reverse">▼</span>
+                    <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th (click)="sort('name')">
+                Product Name
+                <span *ngIf="key == 'name'" >
+                  <span [hidden]="reverse">▼</span>
+                  <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th (click)="sort('brand')">
+                Brand Name
+                <span *ngIf="key == 'brand'" >
+                  <span [hidden]="reverse">▼</span>
+                  <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th (click)="sort('amount')">
+                Amount Left
+                <span *ngIf="key == 'amount'" >
+                    <span [hidden]="reverse">▼</span>
+                    <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th (click)="sort('price')">
+                Price
+                <span *ngIf="key == 'price'" >
+                    <span [hidden]="reverse">▼</span>
+                    <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th></th>
+            </tr>
+          </thead>
           <tbody>
             <tr *ngFor="let x of data | filter:MyFilter | orderBy: key : reverse | paginate: { id: 'speaker', itemsPerPage: 4, currentPage: pSpeaker }">
-              <td>{{x.id}}</td>
-              <td>{{x.productName}}</td>
+              <td>{{x._id}}</td>
+              <td>{{x.name}}</td>
+              <td>{{x.brand}}</td>
               <td>{{x.amount}}</td>
-              <td>{{x.sellPrice}}</td>
- 
-              <td class="link-custom">Edit</td>
+              <td>{{x.price}}</td>
+              <td class="link-custom" (click) = "editValues(x.name,x.amount,x.price,x.category,x.image,x.detail,x.brand)">Edit</td>
             </tr>
           </tbody>
         </table>
@@ -369,7 +410,7 @@
       <div class="row">
         <div class="col-md-6">
           <label for="productName">Name: </label>
-          <input type="text" name="Name" #Name id="Name" class="form-control" formControlName="productName" placeholder="Enter Product Name">
+          <input type="text" name="Name" #Name id="Name" class="form-control" formControlName="productName" placeholder="Enter Product Name" value='{{name}}'>
           <div class="incorrect" *ngIf="AddingItemForm.controls['productName'].invalid && (AddingItemForm.controls['productName'].dirty || AddingItemForm.controls['productName'].touched)">
             <div *ngIf="AddingItemForm.controls['productName'].errors.required">
               Product Name is required.
@@ -380,8 +421,8 @@
           </div>
         </div>
         <div class="col-md-6">
-          <label for="brand">Brand Name: </label>
-          <input type="text" name="brand" #brand id="brand" class="form-control" formControlName="brandName" placeholder="Enter Brand name">
+          <label for="brand" >Brand Name: </label>
+          <input type="text" name="brand" #brand id="brand" class="form-control" formControlName="brandName" placeholder="Enter Brand name" value='{{BName}}'> 
           <div class="incorrect" *ngIf="AddingItemForm.controls['brandName'].invalid && (AddingItemForm.controls['brandName'].dirty || AddingItemForm.controls['brandName'].touched)">
             <div *ngIf="AddingItemForm.controls['brandName'].errors.required">
               Brand Name is required.
@@ -397,8 +438,8 @@
             <div class="row">
               <div class="col-md-6">
                 <label for="productName">Price: </label>
-                <input type="number" name="price" #price id="price" class="form-control" formControlName="price" placeholder="Enter Price in Ruppees">
-                <div class="incorrect" *ngIf="AddingItemForm.controls['price'].invalid && (AddingItemForm.controls['price'].dirty || AddingItemForm.controls['price'].touched)">
+                <input type="number" name="price" #price id="price" class="form-control" formControlName="price" placeholder="Enter Price in Ruppees" value='{{priceS}}'>
+                <div class="incorrect" *ngIf="AddingItemForm.controls['price'].invalid &&    || AddingItemForm.controls['price'].touched)">
                   <div *ngIf="AddingItemForm.controls['price'].errors.required">
                     Price is required.
                   </div>
@@ -410,7 +451,7 @@
               <div class="col-md-6">
                 <label for="fileupload">Select Image: {{imageProgress}}</label>
                 <div class="btn link-custom" style="display:block" (click)="image.click()">Choose File</div>
-                <input type="file" id="fileupload" #image formControlName="file" ng2FileSelect  [uploader]="uploader" multiple />
+                <input type="file" id="fileupload" #image formControlName="file" ng2FileSelect  [uploader]="uploader" multiple/>
                 <div class="incorrect">{{validityStatement}} </div>
                 <div class="incorrect" *ngIf="AddingItemForm.controls['file'].invalid && (AddingItemForm.controls['file'].dirty || AddingItemForm.controls['file'].touched)">
                   <div *ngIf="AddingItemForm.controls['file'].errors.required">
@@ -424,7 +465,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <label for="amount">Amount: </label>
-                  <input type="number" name="amount" #amnt id="amount" class="form-control" formControlName="amount" placeholder="Enter No. of Item Available">
+                  <input type="number" name="amount" #amnt id="amount" class="form-control" formControlName="amount" placeholder="Enter No. of Item Available" value='{{amount}}'>
                   <div class="incorrect" *ngIf="AddingItemForm.controls['amount'].invalid && (AddingItemForm.controls['amount'].dirty || AddingItemForm.controls['amount'].touched)">
                     <div *ngIf="AddingItemForm.controls['amount'].errors.required">
                       Amount is required.
@@ -440,8 +481,8 @@
                 <div class="col-md-6">
                   <label for="category">Choose a Category: </label>
                   <div>
-                  <select class="form-control" name="category" #cat formControlName="category">
-                    <option value="">Choose Category</option>
+                  <select class="form-control" name="category" #cat formControlName="categoryV" value="{{cat}}">
+                    <option value="" >Choose Category</option>
                     <option value="Laptop">Laptop</option>
                     <option value="Mobile">Mobile</option>
                     <option value="Accessories">Accessories</option>
@@ -450,8 +491,8 @@
                     <option value="Speaker">Speaker</option>
                   </select>
                 </div>
-                  <div class="incorrect" *ngIf="AddingItemForm.controls['category'].invalid && (AddingItemForm.controls['category'].dirty || AddingItemForm.controls['category'].touched)">
-                    <div *ngIf="AddingItemForm.controls['category'].errors.required">
+                  <div class="incorrect" *ngIf="AddingItemForm.controls['categoryV'].invalid && (AddingItemForm.controls['categoryV'].dirty || AddingItemForm.controls['categoryV'].touched)">
+                    <div *ngIf="AddingItemForm.controls['categoryV'].errors.required">
                       You Must Select an Option
                     </div>
                   </div>
@@ -461,7 +502,7 @@
       <div class="form-group">
         <label for="infoArea">Add Info: </label>
         <textarea name="info" name="infoArea" #details id="infoArea" cols="30" rows="3" class="textArea" formControlName="details"
-          placeholder="Write details about the product"></textarea>
+          placeholder="Write details about the product" value='{{detail}}'></textarea>
         <div class="incorrect" *ngIf="AddingItemForm.controls['details'].invalid && (AddingItemForm.controls['details'].dirty || AddingItemForm.controls['details'].touched)">
           <div *ngIf="AddingItemForm.controls['details'].errors.required">
             Details about Item is required.

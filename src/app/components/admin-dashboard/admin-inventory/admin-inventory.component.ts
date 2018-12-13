@@ -14,6 +14,7 @@ import { THROW_IF_NOT_FOUND } from '@angular/core/src/di/injector';
   styleUrls: ['./admin-inventory.component.scss']
 })
 export class AdminInventoryComponent implements OnInit {
+  name; BName; price; amount; detail; cat; img; 
   AddingItemForm: FormGroup;
   responses: Array<any>;
   imageProgress: any;
@@ -34,18 +35,11 @@ export class AdminInventoryComponent implements OnInit {
   pDisplay  = 1;
   pSpeaker  = 1;
   //TO CHANGE
-  data = [{ id: "1", productName: "Dell PC", amount: "10", sellPrice: "15000" },
-  { id: "2", productName: "Dell PC", amount: "10", sellPrice: "15000"},
-  { id: "3", productName: "Dell PC", amount: "10", sellPrice: "15000" },
-  { id: "4", productName: "Dell PC", amount: "10", sellPrice: "15000"},
-  { id: "5", productName: "Dell PC", amount: "10", sellPrice: "15000"},
-  { id: "6", productName: "Dell PC", amount: "10", sellPrice: "15000"},
-  { id: "7", productName: "Dell PC", amount: "10", sellPrice: "15000"},
-  { id: "8", productName: "Dell PC", amount: "10", sellPrice: "15000"},
-  ];
+  data;
   file: File;
   constructor(private dataS : DataService,private fb: FormBuilder, private auth: AuthserviceService,private cloudinary: Cloudinary,private zone : NgZone) {
     this.createForm();
+    this.getItems();
     this.responses = [];
   }
 
@@ -150,6 +144,13 @@ export class AdminInventoryComponent implements OnInit {
     }
     this.key = key;
   }
+  getItems(){
+    console.log("here")
+    this.dataS.getItems().subscribe((items)=>{
+      this.data = items;
+      console.log(items)
+    })
+  }
   fileNameChecker(fileName: string) {
 
     var allowed_extensions = new Array("jpg","png");
@@ -174,7 +175,7 @@ export class AdminInventoryComponent implements OnInit {
       details: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(255)]],
       file: ['', [Validators.required]],
       amount: ['', [Validators.required, Validators.min(0)]],
-      category: ['', [Validators.required]],
+      categoryV: ['', [Validators.required]],
     });
   }
   goToForm(){
@@ -230,4 +231,26 @@ export class AdminInventoryComponent implements OnInit {
     return Object.keys(fileProperties)
       .map((key) => ({ 'key': key, 'value': fileProperties[key] }));
   }
+  
+  editValues(prdName, amnt, price,cat,img,detail,brand) {
+    console.log(prdName, amnt, price);
+    this.name = prdName;
+    this.BName = brand;
+    this.amount = amnt;
+    this.price = price;
+    this.cat = cat;
+    this.img = img;
+    this.detail = detail;
+    this.AddingItemForm.controls['productName'].dirty
+    this.AddingItemForm.controls['brandName'].dirty
+    this.AddingItemForm.controls['price'].dirty
+    this.AddingItemForm.controls['details'].dirty
+    this.AddingItemForm.controls['file'].dirty
+    this.AddingItemForm.controls['amount'].dirty  
+    this.AddingItemForm.controls['categoryV'].dirty  
+
+    console.log(prdName, amnt, price,cat,img,detail);
+    this.formCondition = !this.formCondition;
+  }
+
 }
