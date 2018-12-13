@@ -35,7 +35,6 @@ export interface creation {
 })
 export class AuthserviceService {
   constructor(private http:HttpClient,private router:Router) {
-    console.log(environment_url);
    }
 
   createUser(User: user): Observable<creation>{
@@ -44,7 +43,6 @@ export class AuthserviceService {
    return this.http.post<creation>(url,User);
   }
   login(account: account){
-    console.log("in login");
     var url = environment_url + "/login";
     this.http.post<authorization>(url,account).subscribe((e)=>{
       localStorage.setItem("token",e.token);
@@ -52,7 +50,6 @@ export class AuthserviceService {
       localStorage.setItem("userId",e.id);
       if (e.token){
         if(e.accountType == "admin"){
-          console.log("in admin");
           this.router.navigate(['admin','home']);
 
         }
@@ -64,15 +61,11 @@ export class AuthserviceService {
 
   }
   isauthenticated() {
-    console.log("protecting route");
     var token = this.getToken()
-    console.log(token);
     if (token) {
-      console.log('something else')
       return true;
     }
     else {
-      console.log('something')
       return false;
     }
   }
@@ -99,7 +92,6 @@ export class AuthserviceService {
   setToken(token){
     localStorage.setItem('token',token)
     if(token == null){
-      console.log('in set token')
       localStorage.removeItem('token');
 
     }
@@ -119,7 +111,6 @@ export class AuthserviceService {
 
   goToProfile() {
     var type = this.getAccountType();
-    console.log(localStorage.getItem('accountType'));
     if(type == "admin") {
       this.router.navigate(['admin','home']);
     }

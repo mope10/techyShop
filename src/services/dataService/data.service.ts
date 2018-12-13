@@ -63,7 +63,6 @@ export class DataService {
     var id = this.auth.getId();
     var token = this.auth.getToken();
     var url = environment_url + '/user'
-    console.log(id,token);
     const httpOptions = new HttpHeaders({'id': id,'token': token});
     return this.http.get<userToken>(url,{headers: httpOptions});
     
