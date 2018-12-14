@@ -26,7 +26,6 @@ const routes: Routes = [
     
     //pages
     { path: '', component: LandingPageComponent},
-    { path: 'home', component: LandingPageComponent},
     { path: 'login', component: LoginComponent},
     { path: 'register', component: RegisterComponent},
     { path: 'aboutUs', component: AboutUsComponent},
