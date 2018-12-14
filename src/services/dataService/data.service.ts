@@ -70,9 +70,9 @@ export class DataService {
   createItem(item: itemData){
     var url = environment_url + '/item'+'/create'
     var condition = false;
-
+    var id = this.auth.getId();
     let token = this.auth.getToken()
-    const httpOptions = new HttpHeaders({'token': token})
+    const httpOptions = new HttpHeaders({'id': id,'token': token})
     return this.http.post<creation>(url,item,{headers: httpOptions});
     
   }
