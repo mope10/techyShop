@@ -83,9 +83,15 @@ export class DataService {
     var id = this.auth.getId();
     console.log('Data service creater id is: ', id);
     var condition = false;
+<<<<<<< HEAD
     
     let token = this.auth.getToken()
     const httpOptions = new HttpHeaders({'id':id, 'token': token})
+=======
+    var id = this.auth.getId();
+    let token = this.auth.getToken()
+    const httpOptions = new HttpHeaders({'id': id,'token': token})
+>>>>>>> 4054dbab23157f33625c4294886d222a8b8b28e6
     return this.http.post<creation>(url,item,{headers: httpOptions});
     
   }

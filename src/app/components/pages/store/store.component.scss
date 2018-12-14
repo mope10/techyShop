@@ -43,13 +43,17 @@ pagination-controls /deep/ .ngx-pagination li.current {
     background: orangered !important;    //CHANGE THIS TO CHANGE COLOR OF PAGINATION BUTTON
   }
   .left {
-    border: 1px solid orange;
     float: left;
-    padding: 30px;
+    padding: 20px;
+    align-content: center !important;
+    height: 100%;
   }
   .right {
-    border: 1px solid orange;
+    padding-top: 15px;
+    padding-left: 30px;
+    // border: 1px solid orange;
     float: left;
+    align-content: left;
   }
   .bottom {
       float: none;
@@ -57,16 +61,101 @@ pagination-controls /deep/ .ngx-pagination li.current {
       padding: 30px;
   }
   .single-product-view {
-      border-radius: 5px;
-      padding: 20px;
+      font-family: "Poppins";
+      max-height: 500px;
+      border-radius: 40px;
+      padding: 40px;
     //   display: inline;
     //   border: 2px solid black;
       background: white;
-      box-shadow: 1px 1px 25px grey;
+      box-shadow: 1px 1px 80px rgba(128, 128, 128, 0.602);
       margin-top: 20px;
-      margin-bottom: 20px;
+      margin-bottom: 50px;
       align-content: left;
+      transition-duration: 400ms;
+
+  }
+  .single-product-view:hover {
+      box-shadow: 1px 1px 50px rgba(59, 59, 59, 0.486);
+      transform: scale(0.98,0.98);
+
   }
   .imgStyle {
-      width: 90%;
+    //   width: 90%;
+      max-height: 100%;  
+      max-width: 100%;
+      border-radius: 40px;
+      box-shadow: 1px 1px 60px rgba(59, 59, 59, 0.486);
+      padding: 20px;
+      transition-duration: 600ms;
+  }
+  .imgStyle:hover {
+    box-shadow: 1px 1px 50px grey;
+    transform: scale(0.98,0.98);
+    padding: 10px;
+  }
+  .brand1 {
+      font-weight: 500;
+      font-size: 30px;
+      margin-bottom: 10px;
+  }
+  .name1 {
+      max-width: 100%;
+      font-weight: 400;
+      font-size: 22px;
+      margin-bottom: 20px;
+  }
+  .price1 {
+      width: 50%;
+      transition-duration: 1000ms;
+      padding: 10px;
+      border-radius: 20px;
+      background-color: black;
+      margin-bottom: 20px;
+      font-size: 14px;
+
+  }
+  .price1:hover {
+    color: white !important;
+    background-color: orangered;
+    cursor: pointer;
+  }
+  .movePrice{
+    transition-duration: 1000ms;
+
+  }
+  .movePrice:hover {
+    transform: translateX(-10px);
+  }
+  .descriptionHeading {
+    margin-bottom: 5px;
+    font-weight: 450;
+    font-size: 20px;
+  }
+  .detail1 {
+      color: rgb(98, 98, 98);
+      margin-bottom: 10px;
+      font-weight: 450;
+      font-size: 20px;
+      max-width: 100%;
+  }
+  .lineBreak {
+    width: 50%;
+  }
+  .loginProductView {
+      width: 30%;
+      color: white;
+      font-size: 14px;
+      margin-bottom: 4px;
+      margin-right: 7px;
+  }
+  .loginButton_Link {
+      font-size: 16px;
+  }
+  .signUpLink {
+    transition-duration: 200ms;
+  }
+  .signUpLink:hover {
+      color: orangered;
+      text-decoration: underline;
   }

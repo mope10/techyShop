@@ -55,26 +55,27 @@
   <!-- Product View when buy button clicked -->
 
 <div class="row">
-  <div class="single-product-view col-md-8 offset-md-2">
+  <div class="single-product-view col-md-10 offset-md-1">
     <!-- {{brand}} {{name}} {{src}} {{price}} {{detail}}-->
-    <div style="border:1px solid black;">
       <!-- Left Column /Image -->
       <div class="left col-md-6">
         <img class="imgStyle" src = "{{src}}">
       </div>
-      <!-- right side  -->
+      <!-- right Column  -->
       <div class="right col-md-6">
-        <div>{{brand}}</div>
-        <div>{{name}}</div>
-        <div>{{price}}</div>
-        <div>{{src}}</div>
+          <div class="brand1">{{brand}}</div>
+          <div class="name1">{{name}}</div>
+          <div class="price1 movePrice link-custom">Price:  {{price}} Rs</div>
+          <div class="descriptionHeading">Description:</div>
+          <div class="detail1">{{detail}}</div>
+          <hr align="left" width="50%">
+          <div>Note: Login to buy a product: </div>
+          <div class="loginButton_Link" align="right">
+            <button class="btn price1 loginProductView">Login</button>
+            <br>
+            <div class="signUpLink"><a>Create Account!</a></div>
+          </div>
       </div>
-    </div>
-
-    <div class="bottom col-md-8 offset-md-2">
-      <div>Awwal yahan kiya likhna tha yaad nhi yaar!!!</div>
-      <button class="btn link-custom ">Login</button>
-    </div>
 
   </div> 
   

@@ -64,7 +64,7 @@
 
 
 
-.underline {
+ .underline {
     display: inline;
     position: relative;
     padding-left:5px;
@@ -91,6 +91,7 @@
   }
 
 .active {
-    color: orangered !important;
-    // border-bottom: orangered 1px solid;
+    color: orangered !important;    
+    border-top: orangered 1px solid;
+    padding-top: 0px;
 }
