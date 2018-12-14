@@ -17,9 +17,7 @@ form {
         background-color: black;
         margin-top: 5px;
     }
-    .dropdown-item {
-        
-    }
+  
     .dropdown-item:hover {
         background-color: orangered;
         color: white;
@@ -63,23 +61,13 @@ pagination-controls /deep/ .ngx-pagination li.current {
   .single-product-view {
       font-family: "Poppins";
       max-height: 500px;
-      border-radius: 40px;
-      padding: 40px;
     //   display: inline;
     //   border: 2px solid black;
-      background: white;
-      box-shadow: 1px 1px 80px rgba(128, 128, 128, 0.602);
-      margin-top: 20px;
-      margin-bottom: 50px;
       align-content: left;
       transition-duration: 400ms;
 
   }
-  .single-product-view:hover {
-      box-shadow: 1px 1px 50px rgba(59, 59, 59, 0.486);
-      transform: scale(0.98,0.98);
-
-  }
+  
   .imgStyle {
     //   width: 90%;
       max-height: 100%;  
@@ -107,26 +95,14 @@ pagination-controls /deep/ .ngx-pagination li.current {
   }
   .price1 {
       width: 50%;
-      transition-duration: 1000ms;
       padding: 10px;
       border-radius: 20px;
-      background-color: black;
+      background-color: orangered;
       margin-bottom: 20px;
       font-size: 14px;
 
   }
-  .price1:hover {
-    color: white !important;
-    background-color: orangered;
-    cursor: pointer;
-  }
-  .movePrice{
-    transition-duration: 1000ms;
-
-  }
-  .movePrice:hover {
-    transform: translateX(-10px);
-  }
+  
   .descriptionHeading {
     margin-bottom: 5px;
     font-weight: 450;
@@ -158,4 +134,12 @@ pagination-controls /deep/ .ngx-pagination li.current {
   .signUpLink:hover {
       color: orangered;
       text-decoration: underline;
+  }
+  a {
+      color: orangered;
+
+  }
+  a:hover{
+      cursor: pointer;
+      text-decoration: none;
   }
