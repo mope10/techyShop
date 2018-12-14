@@ -35,7 +35,7 @@
       <hr>
       <div class="row">
         <div *ngFor="let x of data | filter:categorySearch | filter:MyFilter | paginate: { itemsPerPage: 4, currentPage: p }" class="col-md-3 col-6">
-          <div class=" item-card" (click)="setItemView(x.owner,x._id,x.brand,x.name,x.price,x.image,x.detail)">
+          <div class=" item-card"  data-toggle="modal" data-target="#exampleModalCenter" (click)="setItemView(x.owner,x._id,x.brand,x.name,x.price,x.image,x.detail)">
             <img src="{{x.image}}" alt="">
             <div class="spaceBetweenPicText"></div>
             <h6>{{x.brand}} {{x.name}}</h6>
@@ -54,29 +54,33 @@
 
   <!-- Product View when buy button clicked -->
 
-<div class="row">
-  <div class="single-product-view col-md-10 offset-md-1">
-    <!-- {{brand}} {{name}} {{src}} {{price}} {{detail}}-->
-      <!-- Left Column /Image -->
-      <div class="left col-md-6">
-        <img class="imgStyle" src = "{{src}}">
-      </div>
-      <!-- right Column  -->
-      <div class="right col-md-6">
-          <div class="brand1">{{brand}}</div>
-          <div class="name1">{{name}}</div>
-          <div class="price1 movePrice link-custom">Price:  {{price}} Rs</div>
-          <div class="descriptionHeading">Description:</div>
-          <div class="detail1">{{detail}}</div>
-          <hr align="left" width="50%">
-          <div>Note: Login to buy a product: </div>
-          <div class="loginButton_Link" align="right">
-            <button class="btn price1 loginProductView">Login</button>
-            <br>
-            <div class="signUpLink"><a>Create Account!</a></div>
-          </div>
-      </div>
 
-  </div> 
-  
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="row">
+        <div class="single-product-view col-md-12">
+          <!-- {{brand}} {{name}} {{src}} {{price}} {{detail}}-->
+            <!-- Left Column /Image -->
+            <div class="left col-md-6">
+              <img class="imgStyle" src = "{{src}}">
+            </div>
+            <!-- right Column  -->
+            <div class="right col-md-6">
+                <div class="brand1">{{brand}}</div>
+                <div class="name1">{{name}}</div>
+                <div class="price1 movePrice link-custom">Price:  {{price}} Rs</div>
+                <div class="descriptionHeading">Description:</div>
+                <div class="detail1">{{detail}}</div>
+                <hr align="left" width="50%">
+                <div>Note: Login to buy a product: </div>
+                <div class="loginButton_Link" align="right">
+                  <button class="btn price1 loginProductView">Login</button>
+                  <br>
+                  <div class="signUpLink"><a>Create Account!</a></div>
+                </div>
+            </div>
+      
+        </div> 
+    </div>
+  </div>
 </div>
