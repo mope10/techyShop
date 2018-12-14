@@ -303,5 +303,9 @@ export class AdminInventoryComponent implements OnInit {
       this.selectedGaming = true;
     console.log(prdName, amnt, price,cat,img,detail);
   }
+
+  deleteRow(id) {
+    console.log(id);
+  }
 }
 

@@ -83,7 +83,8 @@
                     <span [hidden]="!reverse">▲</span>
                 </span>
               </th>
-              <th></th>
+              <th>Edit</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -97,6 +98,7 @@
                 <div id="myImg" data-toggle="modal" data-target="#exampleModalCenter" (click)="changeImage(x.image, x.category)">Image</div>
               </td>
               <td class="link-custom" (click) = "editValues(x.name,x.amount,x.price,x.category,x.image,x.detail,x.brand)">Edit</td> <!--MORE THINGS CAN BE ADDED-->
+              <td class="link-custom" (click) = "deleteRow(x._id)">Delete</td>
             </tr>
           </tbody>
         </table>
@@ -146,11 +148,12 @@
                 </span>
               </th>
               <th>Image</th>
-              <th></th>
+              <th>Edit</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let x of data | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'mobiles', itemsPerPage: 4, currentPage: pMobile } ">
+            <tr *ngFor="let x of data | filter:'mobile' | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'mobiles', itemsPerPage: 4, currentPage: pMobile } ">
               <td>{{x._id}}</td>
               <td>{{x.name}}</td>
               <td>{{x.brand}}</td>
@@ -160,6 +163,7 @@
                 <div id="myImg" data-toggle="modal" data-target="#exampleModalCenter" (click)="changeImage(x.image, x.category)">Image</div>
               </td>
               <td class="link-custom" (click) = "editValues(x.name,x.amount,x.price,x.category,x.image,x.detail,x.brand)">Edit</td>
+              <td class="link-custom deleteButton" (click) = "deleteRow(x._id)">Delete</td>
             </tr>
           </tbody>
         </table>
@@ -209,7 +213,8 @@
                     <span [hidden]="!reverse">▲</span>
                 </span>
               </th>
-              <th></th>
+              <th>Edit</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -220,6 +225,7 @@
               <td>{{x.amount}}</td>
               <td>{{x.price}}</td>
               <td class="link-custom" (click) = "editValues(x.name,x.amount,x.price,x.category,x.image,x.detail,x.brand)">Edit</td>
+              <td class="link-custom deleteButton" (click) = "deleteRow(x._id)">Delete</td>
             </tr> 
           </tbody>
         </table>
@@ -268,7 +274,8 @@
                     <span [hidden]="!reverse">▲</span>
                 </span>
               </th>
-              <th></th>
+              <th>Edit</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -279,6 +286,7 @@
               <td>{{x.amount}}</td>
               <td>{{x.price}}</td>
               <td class="link-custom" (click) = "editValues(x.name,x.amount,x.price,x.category,x.image,x.detail,x.brand)">Edit</td>
+              <td class="link-custom deleteButton" (click) = "deleteRow(x._id)">Delete</td>
             </tr>
           </tbody>
         </table>
@@ -328,7 +336,8 @@
                 </span>
               </th>
               <th>Images</th>
-              <th></th>
+              <th>Edit</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -340,6 +349,7 @@
               <td>{{x.price}}</td>
               <td id="imgshow"><img src="x.image" hidden>Image </td>
               <td class="link-custom" (click) = "editValues(x.name,x.amount,x.price,x.category,x.image,x.detail,x.brand)">Edit</td>
+              <td class="link-custom deleteButton" (click) = "deleteRow(x._id)">Delete</td>
             </tr>
           </tbody>
         </table>
@@ -388,7 +398,8 @@
                     <span [hidden]="!reverse">▲</span>
                 </span>
               </th>
-              <th></th>
+              <th>Edit</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -399,6 +410,7 @@
               <td>{{x.amount}}</td>
               <td>{{x.price}}</td>
               <td class="link-custom" (click) = "editValues(x.name,x.amount,x.price,x.category,x.image,x.detail,x.brand)">Edit</td>
+              <td class="link-custom deleteButton" (click) = "deleteRow(x._id)">Delete</td>
             </tr>
           </tbody>
         </table>
@@ -637,7 +649,7 @@
             <button class="btn link-custom" (click)="goToEditForm()">Back</button>
           </div>
           <div class="col-6">
-            <button class="btn link-custom fright"  [disabled]="EdittingItemForm.invalid || validity" (click)="editItem(EName.value,Ebrand.value,Eprice.value,Edetails.value,Eamnt.value,Ecat.value)">Edit item </button>
+            <button class="btn link-custom fright"  [disabled]="EdittingItemForm.invalid" (click)="editItem(EName.value,Ebrand.value,Eprice.value,Edetails.value,Eamnt.value,Ecat.value)">Edit item </button>
           </div>
         </div>
       </div>
