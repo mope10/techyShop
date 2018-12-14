@@ -1,4 +1,5 @@
 <div class="container">
+  <h2 class="incorrect">{{message}}</h2>
   <form action="">
     <div class="row">
       <div class="form-group col-md-6 offset-lg-2 offset-md-1 offset-0">
@@ -35,7 +36,7 @@
       <hr>
       <div class="row">
         <div *ngFor="let x of data | filter:categorySearch | filter:MyFilter | paginate: { itemsPerPage: 4, currentPage: p }" class="col-md-3 col-6">
-          <div class=" item-card"  data-toggle="modal" data-target="#exampleModalCenter" (click)="setItemView(x.owner,x._id,x.brand,x.name,x.price,x.image,x.detail)">
+          <div class=" item-card"  data-toggle="modal" data-target="#exampleModalCenter" (click)="setItemView(x.owner_id,x._id,x.brand,x.name,x.price,x.image,x.detail)">
             <img src="{{x.image}}" alt="">
             <div class="spaceBetweenPicText"></div>
             <h6>{{x.brand}} {{x.name}}</h6>
@@ -59,7 +60,6 @@
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -76,16 +76,13 @@
                   <div class="right col-md-6">
                       <div class="brand1">{{brand}}</div>
                       <div class="name1">{{name}}</div>
-                      <div class="price1 link-custom">Price:  {{price}} Rs</div>
+                      <div class="price link-custom">Price:  {{price}} Rs</div>
                       <div class="descriptionHeading">Description:</div>
                       <div class="detail1">{{detail}}</div>
-                      <hr align="left" width="50%">
-                      <div><a data-dismiss="modal" routerLink="/login">Login</a> or <a data-dismiss="modal" routerLink="/register">SignUp</a> to buy a product: </div>
-                      <!-- <div class="loginButton_Link" align="right">
-                        <br>
-                        <div class="signUpLink"><a>Create Account!</a></div>
-                      </div> -->
-                  </div>
+                      <hr class="lineBreak">
+                      <div [hidden]="!orderApproval" ><a data-dismiss="modal" routerLink="/login">Login</a> or <a data-dismiss="modal" routerLink="/register">SignUp</a> to buy a product: </div>
+                      <button class="btn custom-button" [hidden]="orderApproval" (click)="order()" data-dismiss="modal" >Order Now</button>
+                    </div>
             
               </div> 
           </div>
