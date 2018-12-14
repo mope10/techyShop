@@ -230,15 +230,16 @@ export class AdminInventoryComponent implements OnInit {
   addItem(productName, brandName, price, details, amount, category){
     price = parseInt(price);
     amount = parseInt(amount);
+    
     let image = this.responses.pop().data.url
     let item: itemData = {
       name: productName,
       brand: brandName,
       price: price,
-      detail: details,
-      image: image,
       amount: amount,
-      category: category
+      category: category,
+      image: image,
+      detail: details
     }
     console.log(item);
     this.dataS.createItem(item).subscribe((e)=>{
