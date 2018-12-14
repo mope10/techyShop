@@ -38,7 +38,7 @@ export interface creation {
 }
 
 export interface itemList {
-  owner: any,
+  owner_id: any,
   _id: any,
   name: any,
   brand: any,
@@ -47,6 +47,17 @@ export interface itemList {
   image: any,
   detail: any,
   amount: Number
+}
+export interface order {
+  owner_id        : Number,
+  productId       : Number,
+  productName     : any,
+  productPrice    : Number,
+  orderStatus     : any,
+  user_id         : Number,
+  username        : any,
+  user_address    : any,
+  user_phoneNumber: any
 }
 
 
@@ -69,12 +80,17 @@ export class DataService {
   }
   createItem(item: itemData){
     var url = environment_url + '/item'+'/create'
-    var condition = false;
     var id = this.auth.getId();
+    console.log('Data service creater id is: ', id);
+    var condition = false;
+    
     let token = this.auth.getToken()
-    const httpOptions = new HttpHeaders({'id': id,'token': token})
+    const httpOptions = new HttpHeaders({'id':id, 'token': token})
     return this.http.post<creation>(url,item,{headers: httpOptions});
     
+  }
+  createOrder(){
+
   }
   getItems():  Observable<itemList[]>{
     let url = environment_url + '/item'
