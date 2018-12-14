@@ -540,11 +540,8 @@
       <div class="row">
         <div class="col-md-6">
           <label for="productName">Name: </label>
-          <input type="text" #EName class="form-control" formControlName="productName" placeholder="Enter Product Name" value="{{name}}" required>
+          <input type="text" #EName class="form-control" formControlName="productName" placeholder="Enter Product Name" value="{{name}}">
           <div class="incorrect" *ngIf="EdittingItemForm.controls['productName'].invalid && (EdittingItemForm.controls['productName'].dirty || EdittingItemForm.controls['productName'].touched)">
-            <div *ngIf="EdittingItemForm.controls['productName'].errors.empty">
-              Product Name is required.
-            </div>
             <div *ngIf="EdittingItemForm.controls['productName'].errors.maxlength">
               Maximum Length is 50.
             </div>
@@ -552,11 +549,9 @@
         </div>
         <div class="col-md-6">
           <label for="brand" >Brand Name: </label>
-          <input type="text" name="brand" #Ebrand id="brand" class="form-control" formControlName="brandName" placeholder="Enter Brand name" value='{{BName}}' required> 
+          <input type="text" name="brand" #Ebrand id="brand" class="form-control" formControlName="brandName" placeholder="Enter Brand name" value='{{BName}}'> 
           <div class="incorrect" *ngIf="EdittingItemForm.controls['brandName'].invalid && (EdittingItemForm.controls['brandName'].dirty || EdittingItemForm.controls['brandName'].touched)">
-            <div *ngIf="EdittingItemForm.controls['brandName'].errors.empty">
-              Brand Name is required.
-            </div>
+
             <div *ngIf="EdittingItemForm.controls['brandName'].errors.maxlength">
               Maximum Length is 50.
             </div>
@@ -568,18 +563,15 @@
             <div class="row">
               <div class="col-md-6">
                 <label for="productName">Price: </label>
-                <input type="number" name="price" #Eprice id="price" class="form-control" formControlName="price" placeholder="Enter Price in Ruppees" value='{{priceS}}' required>
+                <input type="number" name="price" #Eprice id="price" class="form-control" formControlName="price" placeholder="Enter Price in Ruppees" value='{{priceS}}'>
                 <div class="incorrect" *ngIf="EdittingItemForm.controls['price'].invalid  && (EdittingItemForm.controls['price'].dirty || EdittingItemForm.controls['price'].touched)">
-                  <div *ngIf="EdittingItemForm.controls['price'].errors.empty">
-                    Price is required.
-                  </div>
                   <div *ngIf="EdittingItemForm.controls['price'].errors.pattern">
                     Only Numbers are allowed
                   </div>
                 </div>
               </div>
               <div class="col-md-6">
-                <label for="fileupload">Select Image: {{imageProgress}}</label><span id="myImg" data-toggle="modal" data-target="#exampleModalCenter" (click)="changeImage(img, caty)" required> Uploaded Image</span>
+                <label for="fileupload">Select Image: {{imageProgress}}</label><span id="myImg" data-toggle="modal" data-target="#exampleModalCenter" (click)="changeImage(img, caty)" > Uploaded Image</span>
                 <div class="btn link-custom" style="display:block" (click)="image.click()">Choose File</div>
                 <input type="file" id="fileupload" #Eimage formControlName="file" ng2FileSelect [uploader]="uploader" multiple/>
                 <div class="incorrect">{{validityStatement}} </div>
@@ -595,11 +587,8 @@
               <div class="row">
                 <div class="col-md-6">
                   <label for="amount">Amount: </label>
-                  <input type="number" name="amount" #Eamnt id="amount" class="form-control" formControlName="amount" placeholder="Enter No. of Item Available" value='{{amount}}' required>
+                  <input type="number" name="amount" #Eamnt id="amount" class="form-control" formControlName="amount" placeholder="Enter No. of Item Available" value='{{amount}}'>
                   <div class="incorrect" *ngIf="EdittingItemForm.controls['amount'].invalid && (EdittingItemForm.controls['amount'].dirty || EdittingItemForm.controls['amount'].touched)">
-                    <div *ngIf="EdittingItemForm.controls['amount'].errors.empty">
-                      Amount is required.
-                    </div>
                     <div *ngIf="EdittingItemForm.controls['amount'].errors.min">
                       Number must be equal to or greater than 0.
                     </div>
@@ -611,7 +600,7 @@
                 <div class="col-md-6">
                   <label for="category">Choose a Category: </label>
                   <div>
-                  <select class="form-control" name="category" #Ecat formControlName="categoryV" value="{{cat}}" required>
+                  <select class="form-control" name="category" #Ecat formControlName="categoryV" value="{{cat}}">
                     <option value="" >Choose Category</option>
                     <option value="Laptop" [selected]="selectedLaptop">Laptop</option>
                     <option value="Mobile" [selected]="selectedMobile">Mobile</option>
@@ -632,7 +621,7 @@
       <div class="form-group">
         <label for="infoArea">Add Info: </label>
         <textarea name="info" name="infoArea" #Edetails id="infoArea" cols="30" rows="3" class="textArea" formControlName="details"
-          placeholder="Write details about the product" value='{{detail}}' required></textarea>
+          placeholder="Write details about the product" value='{{detail}}'></textarea>
         <div class="incorrect" *ngIf="EdittingItemForm.controls['details'].invalid">
           <div *ngIf="EdittingItemForm.controls['details'].errors.empty">
             Details should be more than 10 characters
