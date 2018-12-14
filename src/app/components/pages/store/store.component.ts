@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConditionalExpr } from '@angular/compiler';
 import { NgxPaginationModule } from 'ngx-pagination'
-import {DataService} from '../../../../services/dataService/data.service'
+import {orderCreating,DataService} from '../../../../services/dataService/data.service'
 import {Router} from '@angular/router'
 import {AuthserviceService} from '../../../../services/auth/authservice.service'; 
 @Component({
@@ -13,8 +13,9 @@ export class StoreComponent implements OnInit {
   category = "All";
   categorySearch = "";
   data;
-  owner = "";
+  owner = 0;
   name = "";
+  message = "";
   price = 0;
   orderApproval = false;
   detail = "";
@@ -58,13 +59,21 @@ export class StoreComponent implements OnInit {
   }
 
   orderButtonCheck(){
-    console.log("in button function");
     this.orderApproval = !this.auth.isauthenticated();
-    console.log('this is the button function',this.orderApproval);
   }
   order(){
-    console.log(localStorage.getItem("userId"));
-    console.log(this.item_id);
+    var order: orderCreating =  {
+      owner_id        : this.owner,
+      item_id       : this.item_id,
+    };
+    this.dataS.createOrder(order).subscribe((e)=>{
+      if(e.message){
+        this.message = "Your order was placed successfully"
+      }
+      else {
+        this.message = "There was some problem, please try later"
+      }
+    });
   }
   
 }

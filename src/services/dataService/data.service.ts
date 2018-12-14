@@ -17,6 +17,11 @@ export interface userData {
   
   
 }
+
+export interface message {
+  message : boolean;
+}
+
 export interface itemData {
   name: any,
   brand: any,
@@ -48,19 +53,25 @@ export interface itemList {
   detail: any,
   amount: Number
 }
-export interface order {
+export interface orderCreating {
   owner_id        : Number,
-  productId       : Number,
-  productName     : any,
-  productPrice    : Number,
-  orderStatus     : any,
-  user_id         : Number,
-  username        : any,
-  user_address    : any,
-  user_phoneNumber: any
+  item_id       : Number,
 }
 
+export interface order {
 
+  orderStatus: String,
+  _id: Number,
+  owner_id: Number,
+  productId: Number,
+  productName: String,
+  productPrice: Number,
+  user_id: Number,
+  username: String,
+  user_address: String,
+  user_phoneNumber: String
+
+}
 
 @Injectable({
   providedIn: 'root'
@@ -89,9 +100,22 @@ export class DataService {
     return this.http.post<creation>(url,item,{headers: httpOptions});
     
   }
-  createOrder(){
+  createOrder(order: orderCreating): Observable<message>{
+    var url = environment_url + '/order' + '/create'
+    var id = this.auth.getId();
+    var token = this.auth.getToken();
+    const httpOptions = new HttpHeaders({'id':id, 'token': token})
+    return this.http.post<message>(url,order,{headers: httpOptions});
 
   }
+  getOrder(): Observable<order[]> {
+    var id = this.auth.getId();
+    var token = this.auth.getToken();
+    var url = environment_url + '/order/' + id;
+    const httpOptions = new HttpHeaders({'id':id, 'token': token})
+    return this.http.get<order[]>(url,{headers: httpOptions});
+  }
+  
   getItems():  Observable<itemList[]>{
     let url = environment_url + '/item'
     return this.http.get<itemList[]>(url);
