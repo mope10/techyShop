@@ -39,7 +39,16 @@ export class NotificationsComponent implements OnInit {
     console.log(owner_id);
   }
   giveStatus(owner_id){
-    console.log(owner_id);
+    this.dataS.upgradeShop(owner_id).subscribe((result)=>{
+      this.auth.setToken(result.token);
+      if(result.result){
+        console.log('staus given');
+        this.getShops();
+      }
+      else {
+        console.log('status not given');
+      }
+    });
   }
   sort(key){
     if (this.key === key) {
