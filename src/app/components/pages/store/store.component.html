@@ -35,7 +35,11 @@
       </div>
       <hr>
       <div class="row">
+<<<<<<< HEAD
         <div *ngFor="let x of data | filter:categorySearch | filter:MyFilter | paginate: { itemsPerPage: 4, currentPage: p }" class="col-lg-3 col-md-4 col-6">
+=======
+        <div *ngFor="let x of data | filterOne:categorySearch | filter:MyFilter | paginate: { itemsPerPage: 4, currentPage: p }" class="col-md-3 col-6">
+>>>>>>> 85f63c6bda5f894c14f03f2866682312006804cb
           <div class=" item-card"  data-toggle="modal" data-target="#exampleModalCenter" (click)="setItemView(x.owner_id,x._id,x.brand,x.name,x.price,x.image,x.detail)">
             <div class="image-view">
               <img src="{{x.image}}" alt="">
