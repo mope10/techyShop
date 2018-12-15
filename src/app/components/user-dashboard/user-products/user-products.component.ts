@@ -45,17 +45,12 @@ export class UserProductsComponent implements OnInit {
   pSpeaker  = 1;
 
   //TO CHANGE
-  data = [{ id: "1", productName: "Dell PC", amount: "10", sellPrice: "15000" },
-  { id: "2", productName: "Dell PC", amount: "10", sellPrice: "15000"},
-  { id: "3", productName: "Dell PC", amount: "10", sellPrice: "15000" },
-  { id: "4", productName: "Dell PC", amount: "10", sellPrice: "15000"},
-  { id: "5", productName: "Dell PC", amount: "10", sellPrice: "15000"},
-  { id: "6", productName: "Dell PC", amount: "10", sellPrice: "15000"},
-  { id: "7", productName: "Dell PC", amount: "10", sellPrice: "15000"},
-  { id: "8", productName: "Dell PC", amount: "10", sellPrice: "15000"},
-  ];
+  dataOrder = [];
+  dataItems = [];
+
   file: File;
   constructor(private fb: FormBuilder, private auth: AuthserviceService,private cloudinary: Cloudinary,private zone : NgZone, private datas: DataService) {
+    this.getOrders();
     this.getData();
     this.createForm();
     this.responses = [];
@@ -261,5 +256,20 @@ export class UserProductsComponent implements OnInit {
       
     })
   }
-
+  getOrders(){
+    this.datas.getOrder().subscribe((orders)=>{
+      //console.log(orders.order);
+      this.auth.setToken(orders.token);
+      this.dataOrder = orders.orders;
+      console.log(this.dataOrder);
+    });
+  }
+  getItems(){
+    console.log("here")
+    this.datas.getItems().subscribe((items)=>{
+      this.dataItems = items;
+      console.log(items)
+      console.log(this.dataItems);
+    })
+  }
 }

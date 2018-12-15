@@ -3,7 +3,7 @@
   <span class="textAdmin">{{confirmation}}</span>
 </div>
 <br>
-<div [hidden]="!showTable">
+<div [hidden]="showTable">
   <div class="custom-body" [hidden]="!formCondition">
     <div class="row">
       <div class="col-6">
@@ -22,50 +22,62 @@
       <table class="table">
         <thead>
           <tr>
-            <th (click)="sort('id')">
+            <th (click)="sort('_id')">
               #
-              <span *ngIf="key == 'id'">
+              <span *ngIf="key == '_id'" >
+                  <span [hidden]="reverse">▼</span>
+                  <span [hidden]="!reverse">▲</span>
+              </span>
+            </th>
+            <th (click)="sort('name')">
+              Product Name
+              <span *ngIf="key == 'name'" >
                 <span [hidden]="reverse">▼</span>
                 <span [hidden]="!reverse">▲</span>
               </span>
             </th>
-            <th (click)="sort('productName')">
-              Product
-              <span *ngIf="key == 'productName'">
+            <th (click)="sort('brand')">
+              Brand Name
+              <span *ngIf="key == 'brand'" >
                 <span [hidden]="reverse">▼</span>
                 <span [hidden]="!reverse">▲</span>
               </span>
             </th>
             <th (click)="sort('amount')">
               Amount Left
-              <span *ngIf="key == 'amount'">
-                <span [hidden]="reverse">▼</span>
-                <span [hidden]="!reverse">▲</span>
+              <span *ngIf="key == 'amount'" >
+                  <span [hidden]="reverse">▼</span>
+                  <span [hidden]="!reverse">▲</span>
               </span>
             </th>
-            <th (click)="sort('sellPrice')">
+            <th (click)="sort('price')">
               Price
-              <span *ngIf="key == 'sellPrice'">
-                <span [hidden]="reverse">▼</span>
-                <span [hidden]="!reverse">▲</span>
+              <span *ngIf="key == 'price'" >
+                  <span [hidden]="reverse">▼</span>
+                  <span [hidden]="!reverse">▲</span>
               </span>
             </th>
-            <th></th>
+            <th>Edit</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let x of data | filter:MyFilter | orderBy: key : reverse | paginate: { id: 'speaker', itemsPerPage: 4, currentPage: pSpeaker }">
-            <td>{{x.id}}</td>
-            <td>{{x.productName}}</td>
+          <tr *ngFor="let x of dataItems | filter:'laptop' | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'laptop', itemsPerPage: 4, currentPage: pLaptop }">
+            <td>{{x._id}}</td>
+            <td>{{x.name}}</td>
+            <td>{{x.brand}}</td>
             <td>{{x.amount}}</td>
-            <td>{{x.sellPrice}}</td>
-
-            <td class="link-custom">Edit</td>
+            <td>{{x.price}}</td>
+            <td>
+              <div id="myImg" data-toggle="modal" data-target="#exampleModalCenter" (click)="changeImage(x.image, x.category)">Image</div>
+            </td>
+            <td class="link-custom" (click) = "editValues(x.name,x.amount,x.price,x.category,x.image,x.detail,x.brand)">Edit</td> <!--MORE THINGS CAN BE ADDED-->
+            <td class="link-custom" (click) = "deleteRow(x._id)">Delete</td>
           </tr>
         </tbody>
       </table>
       <div class="pageControl">
-        <pagination-controls id="speaker" (pageChange)="pSpeaker = $event" autoHide="true" responsive="true"></pagination-controls>
+        <pagination-controls id="laptop" (pageChange)="pLaptop = $event" autoHide="true" responsive="true"></pagination-controls>
       </div>
     </div>
   </div>

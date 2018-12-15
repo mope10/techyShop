@@ -59,7 +59,7 @@ export interface orderCreating {
   item_id       : Number,
 }
 
-export interface order {
+export interface orders {
 
   orderStatus: String,
   _id: Number,
@@ -89,7 +89,7 @@ export interface requestreply{
 export interface validatedOrder {
 
   token: any,
-  order: order[]
+  orders: orders[]
 
 }
 // owner_id: {type: Number, required: true},

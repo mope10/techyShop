@@ -39,13 +39,6 @@
                           <span [hidden]="!reverse">▲</span>
                         </span>
                       </th>
-                      <th (click)="sort('productId')">
-                        Product Id
-                        <span *ngIf="key == 'productId'">
-                          <span [hidden]="reverse">▼</span>
-                          <span [hidden]="!reverse">▲</span>
-                        </span>
-                      </th>
                       <th (click)="sort('productName')">
                         Product Name
                         <span *ngIf="key == 'productName'">
@@ -56,13 +49,6 @@
                       <th (click)="sort('productPrice')">
                         Product Price
                         <span *ngIf="key == 'productPrice'">
-                          <span [hidden]="reverse">▼</span>
-                          <span [hidden]="!reverse">▲</span>
-                        </span>
-                      </th>
-                      <th (click)="sort('user_id')">
-                        User Id
-                        <span *ngIf="key == 'user_id'">
                           <span [hidden]="reverse">▼</span>
                           <span [hidden]="!reverse">▲</span>
                         </span>
@@ -89,6 +75,7 @@
                         </span>
                       </th>
                       <th>Delete</th>
+                      <th></th>
                     </tr>
                   
                   </thead>
@@ -96,14 +83,14 @@
                 <tr *ngFor="let x of data | filterOrder: OrderStatusCurrent | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'pending', itemsPerPage: 4, currentPage: pPending }">
                   <td>{{x._id}}</td>
                   <td>{{x.owner_id}}</td>
-                  <td>{{x.productId}}</td>
                   <td>{{x.productName}}</td>
                   <td>{{x.productPrice}}</td>
-                  <td>{{x.user_id}}</td>
                   <td>{{x.username}}</td>
                   <td>{{x.user_address}}</td>
                   <td>{{x.user_phoneNumber}}</td>
-                  <td class="link-custom deleteButton" (click) = "deleteRow(x._id)">Delete</td>
+                  <td class="link-custom " (click) = "deleteRow(x._id)">Delete</td>
+                  <td></td>
+                  <td class="link-custom " (click) = "deleteRow(x._id)">Processing start</td>
                 </tr>
               </tbody>
           
@@ -133,13 +120,6 @@
                       <span [hidden]="!reverse">▲</span>
                     </span>
                   </th>
-                  <th (click)="sort('productId')">
-                    Product Id
-                    <span *ngIf="key == 'productId'">
-                      <span [hidden]="reverse">▼</span>
-                      <span [hidden]="!reverse">▲</span>
-                    </span>
-                  </th>
                   <th (click)="sort('productName')">
                     Product Name
                     <span *ngIf="key == 'productName'">
@@ -150,13 +130,6 @@
                   <th (click)="sort('productPrice')">
                     Product Price
                     <span *ngIf="key == 'productPrice'">
-                      <span [hidden]="reverse">▼</span>
-                      <span [hidden]="!reverse">▲</span>
-                    </span>
-                  </th>
-                  <th (click)="sort('user_id')">
-                    User Id
-                    <span *ngIf="key == 'user_id'">
                       <span [hidden]="reverse">▼</span>
                       <span [hidden]="!reverse">▲</span>
                     </span>
@@ -183,21 +156,23 @@
                     </span>
                   </th>
                   <th>Delete</th>
+                  <th></th>
                 </tr>
               
               </thead>
           <tbody>
             <tr *ngFor="let x of data | filterOrder: OrderStatusCurrent | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'pending', itemsPerPage: 4, currentPage: pPending }">
+              <td class="link-custom " (click) = "deleteRow(x._id)">Cancel Processing</td>
               <td>{{x._id}}</td>
               <td>{{x.owner_id}}</td>
-              <td>{{x.productId}}</td>
               <td>{{x.productName}}</td>
               <td>{{x.productPrice}}</td>
-              <td>{{x.user_id}}</td>
               <td>{{x.username}}</td>
               <td>{{x.user_address}}</td>
               <td>{{x.user_phoneNumber}}</td>
-              <td class="link-custom deleteButton" (click) = "deleteRow(x._id)">Delete</td>
+              <td class="link-custom " (click) = "deleteRow(x._id)">Delete</td>
+              <td></td>
+              <td class="link-custom " (click) = "deleteRow(x._id)">Compelted</td>
             </tr>
           </tbody>
             </table>
@@ -226,13 +201,6 @@
                       <span [hidden]="!reverse">▲</span>
                     </span>
                   </th>
-                  <th (click)="sort('productId')">
-                    Product Id
-                    <span *ngIf="key == 'productId'">
-                      <span [hidden]="reverse">▼</span>
-                      <span [hidden]="!reverse">▲</span>
-                    </span>
-                  </th>
                   <th (click)="sort('productName')">
                     Product Name
                     <span *ngIf="key == 'productName'">
@@ -243,13 +211,6 @@
                   <th (click)="sort('productPrice')">
                     Product Price
                     <span *ngIf="key == 'productPrice'">
-                      <span [hidden]="reverse">▼</span>
-                      <span [hidden]="!reverse">▲</span>
-                    </span>
-                  </th>
-                  <th (click)="sort('user_id')">
-                    User Id
-                    <span *ngIf="key == 'user_id'">
                       <span [hidden]="reverse">▼</span>
                       <span [hidden]="!reverse">▲</span>
                     </span>
@@ -276,6 +237,7 @@
                     </span>
                   </th>
                   <th>Delete</th>
+                  <th></th>
                 </tr>
               
               </thead>
@@ -283,18 +245,16 @@
             <tr *ngFor="let x of data | filterOrder: OrderStatusCurrent | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'pending', itemsPerPage: 4, currentPage: pPending }">
               <td>{{x._id}}</td>
               <td>{{x.owner_id}}</td>
-              <td>{{x.productId}}</td>
               <td>{{x.productName}}</td>
               <td>{{x.productPrice}}</td>
-              <td>{{x.user_id}}</td>
               <td>{{x.username}}</td>
               <td>{{x.user_address}}</td>
               <td>{{x.user_phoneNumber}}</td>
-              <td class="link-custom deleteButton" (click) = "deleteRow(x._id)">Delete</td>
+              <td class="link-custom" (click) = "deleteRow(x._id)">Delete</td>
             </tr>
           </tbody>
             </table>
-            <div class="pageControl">
+            <div class="pageControl"> 
                 <pagination-controls id="completed" (pageChange)="pCompleted = $event" autoHide="true" responsive="true"></pagination-controls>
               </div>
           </div> 

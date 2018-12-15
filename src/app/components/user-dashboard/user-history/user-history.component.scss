@@ -23,3 +23,15 @@ pagination-controls /deep/ .ngx-pagination li.current {
     margin-left:auto;
     
 }
+.Pending {
+    background-color: rgba(169, 68, 66,0.2);
+    border-bottom: 2px solid #A94442 !important;
+}
+.Processing {
+    background-color: rgba(0, 123, 255,0.2);
+    border-bottom: 2px solid #007BFF !important;
+}
+.Completed{
+    background-color: rgba(66, 169, 72,0.2);
+    border-bottom: 2px solid #42A948 !important;
+}

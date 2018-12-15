@@ -36,7 +36,7 @@ export class AdminOrdersComponent implements OnInit {
     this.dataS.getOrder().subscribe((orders)=>{
       //console.log(orders.order);
       this.auth.setToken(orders.token);
-      this.data = orders.order;
+      this.data = orders.orders;
       console.log(this.data);
     });
   }

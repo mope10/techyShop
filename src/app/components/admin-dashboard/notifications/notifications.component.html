@@ -50,8 +50,8 @@
             <td>{{x.shopOwner}}</td>
             <td>{{x.shopAddress}}</td>
             <td>{{x.shopNumber}}</td>
-            <td class="link-custom" (click)="takeStatus(x.owner_id)" [hidden]='!showShopRequest'>Take Previliges</td>
-            <td class="link-custom" (click)="giveStatus(x.owner_id)" [hidden]='showShopRequest'>Give Previliges</td>
+            <td class="link-custom" (click)="takeStatus(x.owner_id)" [hidden]='showShopRequest'>Take Previliges</td>
+            <td class="link-custom" (click)="giveStatus(x.owner_id)" [hidden]='!showShopRequest'>Give Previliges</td>
           </tr>
         </tbody>
 
