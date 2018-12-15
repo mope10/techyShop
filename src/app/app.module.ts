@@ -34,6 +34,7 @@ import { AdminSettingsComponent } from './components/admin-dashboard/admin-setti
 import { UserHistoryComponent } from './components/user-dashboard/user-history/user-history.component';
 import { UserSettingsComponent } from './components/user-dashboard/user-settings/user-settings.component';
 import { UserProductsComponent } from './components/user-dashboard/user-products/user-products.component';
+import { NotificationsComponent } from './components/admin-dashboard/notifications/notifications.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { UserProductsComponent } from './components/user-dashboard/user-products
     UserSettingsComponent,
     UserProductsComponent,
     FilterPipeCategory,
-    FilterPipeOrder
+    FilterPipeOrder,
+    NotificationsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthserviceService } from '../../../../services/auth/authservice.service';
-import { DataService } from "../../../../services/dataService/data.service";
+import { shopRequest,DataService } from "../../../../services/dataService/data.service";
 import {FileUploader, FileUploaderOptions, ParsedResponseHeaders} from 'ng2-file-upload';
 import {Cloudinary} from '@cloudinary/angular-5.x';
 import { identifierModuleUrl } from '@angular/compiler';
@@ -21,6 +21,15 @@ export class UserProductsComponent implements OnInit {
   private uploader: FileUploader;
   private message = "";
   formCondition   = true;
+
+
+  // For shop request
+
+  shopOwner = "";
+  shopAddress= "";
+  shopNumber = "";
+
+  //end
 
   showTable = false;
   status = "";
@@ -151,6 +160,9 @@ export class UserProductsComponent implements OnInit {
   getData() {
     this.datas.getUserData().subscribe((e) => {
       this.status = e.user.accountType;
+      this.shopAddress = e.user.address;
+      this.shopNumber  = e.user.phoneNumber;
+      this.shopOwner   = e.user.firstName + " " + e.user.lastName;
       this.checkprev();
     });
   }
@@ -229,11 +241,25 @@ export class UserProductsComponent implements OnInit {
 
   checkprev(){
     console.log(this.status);
-    if(this.status == "user") {
+    if(this.status == "shop") {
       this.showTable = true;
     }
-    //ADD REQUEST TO ADMIN HERE
-    this.confirmation = "your request has been passed to the administrator";
+    
+  }
+  makeRequest() {
+    var shopRequest: shopRequest = {
+      shopOwner   : this.shopOwner,
+      shopAddress : this.shopAddress,
+      shopNumber  : this.shopNumber
+
+    }
+    this.datas.makeShopRequest(shopRequest).subscribe((e)=>{
+      this.auth.setToken(e.token);
+      if(e.result){
+        this.confirmation = "your request has been passed to the administrator";
+      }
+      
+    })
   }
 
 }

@@ -74,11 +74,42 @@ export interface order {
 
 }
 
+
+export interface shopRequest{
+  shopOwner: any,
+  shopAddress: any,
+  shopNumber : any
+}
+
+export interface requestreply{
+  token: any,
+  result: boolean
+}
+
 export interface validatedOrder {
 
   token: any,
   order: order[]
 
+}
+// owner_id: {type: Number, required: true},
+//   shopPrivilages: {type: Boolean, required: true, default: false},
+//   shopRequest   : {type: Boolean, required: true, default: true},
+//   shopOwner     : {type: String,required: true},
+//   shopAddress   : {type: String,required: true},
+//   shopNumber    : {type: String, required: true}
+
+export interface adminShop {
+  token: any,
+  shopRequests: adminShopRequests[]
+}
+export interface adminShopRequests {
+  owner_id: any,
+  shopPrivilages: boolean,
+  shopRequest:    boolean,
+  shopOwner  : any,
+  shopAddress: any,
+  shopNumber : any
 }
 
 @Injectable({
@@ -141,4 +172,26 @@ export class DataService {
     let url = environment_url + '/item'+id;
     return this.http.get<itemList>(url);
   }
+
+
+  // Shop code
+
+  makeShopRequest(request: shopRequest): Observable<requestreply>{
+    var id = this.auth.getId();
+    var token = this.auth.getToken();
+    console.log('user id is: ',id);
+    var url = environment_url + '/shop'+'/request';
+    const httpOptions = new HttpHeaders({'id':id, 'token': token});
+    return this.http.post<requestreply>(url,request,{headers: httpOptions});
+
+  }
+
+  getShopRequests(): Observable<adminShop>{
+    var id = this.auth.getId();
+    var token = this.auth.getToken();
+    var url = environment_url + '/shopRequests';
+    const httpOptions = new HttpHeaders({'id':id, 'token': token});
+    return this.http.get<adminShop>(url,{headers: httpOptions});
+  }
+
 }

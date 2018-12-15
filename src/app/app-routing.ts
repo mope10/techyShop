@@ -17,7 +17,8 @@ import { AdminHomeComponent} from "./components/admin-dashboard/admin-home/admin
 import { AdminOrdersComponent} from "./components/admin-dashboard/admin-orders/admin-orders.component";
 import { AdminInventoryComponent} from "./components/admin-dashboard/admin-inventory/admin-inventory.component";
 import {AdminSettingsComponent} from "./components/admin-dashboard/admin-settings/admin-settings.component"
- 
+import { NotificationsComponent } from './components/admin-dashboard/notifications/notifications.component';
+
 //user-dashboard
 import { UserHistoryComponent} from "./components/user-dashboard/user-history/user-history.component";
 import { UserProductsComponent} from "./components/user-dashboard/user-products/user-products.component";
@@ -37,7 +38,9 @@ const routes: Routes = [
         { path: 'home', component: AdminHomeComponent, canActivate: [AuthGuardServiceAdminService]},
         { path: 'orders', component: AdminOrdersComponent, canActivate: [AuthGuardServiceAdminService]},
         { path: 'inventory', component: AdminInventoryComponent, canActivate: [AuthGuardServiceAdminService]},
-        { path: 'settings', component: AdminSettingsComponent, canActivate: [AuthGuardServiceAdminService]}
+        { path: 'settings', component: AdminSettingsComponent, canActivate: [AuthGuardServiceAdminService]},
+        { path: 'notifications', component: NotificationsComponent, canActivate: [AuthGuardServiceAdminService]}
+
     ]},
     {
         path: 'user', canActivate:[AuthGuardService],children:[
