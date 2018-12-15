@@ -17,3 +17,6 @@
 pagination-controls /deep/ .ngx-pagination li.current {
     background: #A94442 !important;    //CHANGE THIS TO CHANGE COLOR OF PAGINATION BUTTON
   }
+.deleteButton {
+    margin: auto;
+}

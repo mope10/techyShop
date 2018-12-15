@@ -7,6 +7,7 @@ import { DataService} from '../../../../services/dataService/data.service';
   styleUrls: ['./admin-orders.component.scss']
 })
 export class AdminOrdersComponent implements OnInit {
+  OrderStatusCurrent = "pending";
   key = "id";
   reverse = false;
   pPending = 1;
@@ -35,5 +36,8 @@ export class AdminOrdersComponent implements OnInit {
       this.data = orders;
       console.log(this.data);
     });
+  }
+  changeStatus(status){
+    this.OrderStatusCurrent = status;
   }
 }

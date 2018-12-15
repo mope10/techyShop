@@ -35,7 +35,7 @@
       </div>
       <hr>
       <div class="row">
-        <div *ngFor="let x of data | filterOne:categorySearch | filter:MyFilter | paginate: { itemsPerPage: 4, currentPage: p }" class="col-md-3 col-6">
+        <div *ngFor="let x of data | filterCategory: categorySearch | filter:MyFilter | paginate: { itemsPerPage: 4, currentPage: p }" class="col-md-3 col-6">
           <div class=" item-card"  data-toggle="modal" data-target="#exampleModalCenter" (click)="setItemView(x.owner_id,x._id,x.brand,x.name,x.price,x.image,x.detail)">
             <img src="{{x.image}}" alt="">
             <div class="spaceBetweenPicText"></div>
