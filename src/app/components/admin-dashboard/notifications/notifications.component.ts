@@ -9,6 +9,8 @@ import { AuthserviceService} from '../../../../services/auth/authservice.service
 })
 export class NotificationsComponent implements OnInit {
   data = [];
+  key = "owner_id";
+  reverse = false;
   showShopRequest = true;
   constructor(private dataS: DataService, private auth: AuthserviceService) {
     this.getShops();
@@ -38,5 +40,14 @@ export class NotificationsComponent implements OnInit {
   }
   giveStatus(owner_id){
     console.log(owner_id);
+  }
+  sort(key){
+    if (this.key === key) {
+      this.reverse = !this.reverse;
+    }
+    else {
+      this.reverse = false;
+    }
+    this.key = key;
   }
 }
