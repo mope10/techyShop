@@ -47,15 +47,6 @@ export class AdminInventoryComponent implements OnInit {
     
     
   }
-  EmptyValidator(control: FormControl){
-    let feild = null;
-    feild = control.value;
-    console.log(feild);
-    if (feild == "" || feild == " ") {
-      return { 'empty': true };
-    }
-    return null;
-  } 
   ngOnInit(): void {
     // Create the file uploader, wire it to upload to your account
     const uploaderOptions: FileUploaderOptions = {

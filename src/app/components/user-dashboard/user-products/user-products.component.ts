@@ -12,7 +12,10 @@ import { identifierModuleUrl } from '@angular/compiler';
   styleUrls: ['./user-products.component.scss']
 })
 export class UserProductsComponent implements OnInit {
+  name; BName; priceS; amount; detail; img; caty;
+  selectedLaptop = false; selectedMobile = false; selectedAccessories = false; selectedGaming = false; selectedDisplay = false; selectedSpeaker = false; 
   AddingItemForm: FormGroup;
+  EdittingItemForm: FormGroup;
   responses: Array<any>;
   imageProgress: any;
   private hasBaseDropZoneOver: boolean = false;
@@ -21,6 +24,7 @@ export class UserProductsComponent implements OnInit {
   private uploader: FileUploader;
   private message = "";
   formCondition   = true;
+  editing = false
 
 
   // For shop request
@@ -34,23 +38,18 @@ export class UserProductsComponent implements OnInit {
   showTable = false;
   status = "";
   confirmation = "";
+  id = "";
+  showOrder = true;
 
   key = "id";
   reverse = false;
-  pLaptop  = 1;
-  pMobile  = 1;
-  pAccessory  = 1;
-  pGaming  = 1;
-  pDisplay  = 1;
-  pSpeaker  = 1;
 
   //TO CHANGE
   dataOrder = [];
-  dataItems = [];
+  dataItems;
 
   file: File;
   constructor(private fb: FormBuilder, private auth: AuthserviceService,private cloudinary: Cloudinary,private zone : NgZone, private datas: DataService) {
-    this.getOrders();
     this.getData();
     this.createForm();
     this.responses = [];
@@ -149,16 +148,21 @@ export class UserProductsComponent implements OnInit {
         }
       );
   }
-  // ngAfterViewInit(){
-  //   this.checkprev();
-  // }
+  changeImage(image, cat){
+    this.img = image;
+    this.caty = cat;
+  }
   getData() {
     this.datas.getUserData().subscribe((e) => {
       this.status = e.user.accountType;
       this.shopAddress = e.user.address;
       this.shopNumber  = e.user.phoneNumber;
       this.shopOwner   = e.user.firstName + " " + e.user.lastName;
+      this.id = e.user._id;
+      console.log(e.user._id, this.id);
       this.checkprev();
+      this.getItems();
+      this.getOrders();
     });
   }
   sort(key){
@@ -196,8 +200,32 @@ export class UserProductsComponent implements OnInit {
       amount: ['', [Validators.required, Validators.min(0)]],
       category: ['', [Validators.required]],
     });
+    this.EdittingItemForm = this.fb.group({
+      productName: ['', [Validators.maxLength(50)]],
+      brandName: ['', [ Validators.maxLength(50)]],
+      price: ['', [Validators.pattern('[0-9]*')]],
+      details: ['', [Validators.minLength(10), Validators.maxLength(255)]],
+      file: ['', []],
+      amount: ['', [Validators.min(0)]],
+      categoryV: ['', []],
+    });
+  }
+  catReset(){
+    this.selectedLaptop = false; 
+    this.selectedMobile = false;
+    this.selectedAccessories = false;
+    this.selectedGaming = false; 
+    this.selectedDisplay = false; 
+    this.selectedSpeaker = false; 
   }
   goToForm(){
+    this.name = "";
+    this.BName = "";
+    this.amount = "";
+    this.priceS = "";
+    this.img = "";
+    this.detail = "";
+
     this.formCondition = !this.formCondition;
   }
   addItem(productName, brandName, price, details, image, amount, category){
@@ -258,18 +286,58 @@ export class UserProductsComponent implements OnInit {
   }
   getOrders(){
     this.datas.getOrder().subscribe((orders)=>{
-      //console.log(orders.order);
+      console.log(orders.orders);
       this.auth.setToken(orders.token);
       this.dataOrder = orders.orders;
-      console.log(this.dataOrder);
+      console.log(this.dataOrder,orders.orders);
     });
   }
   getItems(){
-    console.log("here")
-    this.datas.getItems().subscribe((items)=>{
+    this.datas.getItem(this.id).subscribe((items)=>{
       this.dataItems = items;
+      console.log(this.id);
       console.log(items)
       console.log(this.dataItems);
     })
+  }
+  goToEditForm(){
+    this.catReset();
+    this.editing = !this.editing;
+  } 
+  editValues(prdName, amnt, price,cat,img,detail,brand) {
+    this.name = prdName;
+    this.BName = brand;
+    this.amount = amnt;
+    this.priceS = price;
+    this.img = img;
+    this.detail = detail;
+    this.caty = cat;
+    this.goToEditForm();
+    if(cat=="Mobile")
+      this.selectedMobile = true;
+    else if(cat == "Laptop")
+      this.selectedLaptop = true;
+    else if(cat == "Speaker")
+      this.selectedSpeaker = true;
+    else if(cat == "Accessories")
+      this.selectedAccessories = true;
+    else if(cat == "Display")
+      this.selectedDisplay = true;
+    else if(cat == "Gaming")
+      this.selectedGaming = true;
+    console.log(prdName, amnt, price,cat,img,detail);
+  }
+
+  deleteRow(id) {
+    console.log(id);
+  }
+  showItems(){
+    this.showOrder = true;
+    console.log(this.showOrder);
+  }
+
+  showOrders(){
+    this.showOrder = false;
+    console.log(this.showOrder);
   }
 }

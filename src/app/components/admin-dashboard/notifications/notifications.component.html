@@ -3,12 +3,13 @@
   <h3>Shop Requests</h3>
   <hr>
   <ul class="nav nav-tabs custom-tabs" id="myTab" role="tablist">
-    <li class="nav-item" (click)="showRequests()">
-      <a class="nav-link active" id="ShopRqst-tab" data-toggle="tab" aria-controls="ShopRqst" aria-selected="true">Shop Request</a>
+    <li class="nav-item">
+      <a class="nav-link active" id="ShopRqst-tab" data-toggle="tab" aria-controls="ShopRqst" aria-selected="true" (click)="showRequests()">Shop Request</a>
     </li>
-    <li class="nav-item" (click)="showShops()">
-      <a class="nav-link" id="Shops-tab" data-toggle="tab" aria-controls="Shops" aria-selected="false">Shops</a>
+    <li class="nav-item" >
+      <a class="nav-link" id="Shops-tab" data-toggle="tab" aria-controls="Shops" aria-selected="false" (click)="showShops()">Shops</a>
     </li>
+    </ul>
     <div class="table-responsive">
       <table class="table">
         <thead>
@@ -60,7 +61,6 @@
         <pagination-controls id="pending" (pageChange)="pPending = $event" autoHide="true" responsive="true"></pagination-controls>
       </div>
     </div>
-  </ul>
   
 </div>
 

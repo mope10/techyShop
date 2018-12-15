@@ -68,14 +68,7 @@ pagination-controls /deep/ .ngx-pagination li.current {
     background: #A94442 !important;    //CHANGE THIS TO CHANGE COLOR OF PAGINATION BUTTON
   }
 
-.imgy{
-      display: block;
-      z-index: 1000;
-      position: relative;
-      left:50px;
-      right:50px;
 
-}
 
 #myImg {
     border-radius: 5px;
@@ -85,10 +78,6 @@ pagination-controls /deep/ .ngx-pagination li.current {
   
   #myImg:hover {opacity: 0.7; text-decoration: underline;}
 
-
-  #myImg:hover + .show {
-      display: block;
-  }
 .text-overflow{
   white-space: nowrap; 
   overflow: hidden;

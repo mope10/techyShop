@@ -3,21 +3,31 @@
   <span class="textAdmin">{{confirmation}}</span>
 </div>
 <br>
-<div [hidden]="showTable">
-  <div class="custom-body" [hidden]="!formCondition">
-    <div class="row">
-      <div class="col-6">
-        <button class="btn link-custom" (click)="goToForm()">Add Item</button>
-      </div>
-      <div class="col-6">
-        <div class="form-group2 search-bar">
-          <form>
-            <input class="form-control" type="text" name="search" placeHolder="Search" [(ngModel)]="MyFilter">
-          </form>
-          <i class="fa fa-search"></i>
+<div [hidden]="!showTable" class="custom-body">
+    <ul class="nav nav-tabs custom-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="ShopRqst-tab" data-toggle="tab" aria-controls="ShopRqst" aria-selected="true"
+          (click)="showItems()">Items</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="Shops-tab" data-toggle="tab" aria-controls="Shops" aria-selected="false" (click)="showOrders()">Orders</a>
+      </li>
+    </ul>
+<div [hidden] = "!showOrder">
+  <div [hidden]="!formCondition || editing">
+      <div class="row">
+          <div class="col-6">
+            <button class="btn link-custom" (click)="goToForm()">Add Item</button>
+          </div>
+          <div class="col-6">
+            <div class="form-group2 search-bar">
+              <form>
+                <input class="form-control" type="text" name="search" placeHolder="Search" [(ngModel)]="MyFilter">
+              </form>
+              <i class="fa fa-search"></i>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
     <div class="table-responsive">
       <table class="table">
         <thead>
@@ -57,22 +67,33 @@
                   <span [hidden]="!reverse">▲</span>
               </span>
             </th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th (click)="sort('category')">
+              Category
+              <span *ngIf="key == 'category'" >
+                  <span [hidden]="reverse">▼</span>
+                  <span [hidden]="!reverse">▲</span>
+              </span>
+            </th>
+            <th>Image</th>
+            <th></th>
+            <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let x of dataItems | filter:'laptop' | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'laptop', itemsPerPage: 4, currentPage: pLaptop }">
+          <tr *ngFor="let x of dataItems | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'laptop', itemsPerPage: 4, currentPage: pLaptop }">
             <td>{{x._id}}</td>
             <td>{{x.name}}</td>
             <td>{{x.brand}}</td>
             <td>{{x.amount}}</td>
             <td>{{x.price}}</td>
+            <td>{{x.category}}</td>
             <td>
               <div id="myImg" data-toggle="modal" data-target="#exampleModalCenter" (click)="changeImage(x.image, x.category)">Image</div>
             </td>
-            <td class="link-custom" (click) = "editValues(x.name,x.amount,x.price,x.category,x.image,x.detail,x.brand)">Edit</td> <!--MORE THINGS CAN BE ADDED-->
             <td class="link-custom" (click) = "deleteRow(x._id)">Delete</td>
+            <td class="link-custom" (click) = "editValues(x.name,x.amount,x.price,x.category,x.image,x.detail,x.brand)">Edit</td> <!--MORE THINGS CAN BE ADDED-->
+
           </tr>
         </tbody>
       </table>
@@ -212,4 +233,224 @@
 
     </form>
   </div>
+
+<div class="custom-body itemEditor" [hidden]="!editing">
+  <form action="" class="form" [formGroup]="EdittingItemForm" >
+    <div>
+      <div class="row">
+        <div class="col-md-6">
+          <label for="productName">Name: </label>
+          <input type="text" #EName class="form-control" formControlName="productName" placeholder="Enter Product Name" value="{{name}}">
+          <div class="incorrect" *ngIf="EdittingItemForm.controls['productName'].invalid && (EdittingItemForm.controls['productName'].dirty || EdittingItemForm.controls['productName'].touched)">
+            <div *ngIf="EdittingItemForm.controls['productName'].errors.maxlength">
+              Maximum Length is 50.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="brand" >Brand Name: </label>
+          <input type="text" name="brand" #Ebrand id="brand" class="form-control" formControlName="brandName" placeholder="Enter Brand name" value='{{BName}}'> 
+          <div class="incorrect" *ngIf="EdittingItemForm.controls['brandName'].invalid && (EdittingItemForm.controls['brandName'].dirty || EdittingItemForm.controls['brandName'].touched)">
+
+            <div *ngIf="EdittingItemForm.controls['brandName'].errors.maxlength">
+              Maximum Length is 50.
+            </div>
+          </div>
+          </div>
+          </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="productName">Price: </label>
+                <input type="number" name="price" #Eprice id="price" class="form-control" formControlName="price" placeholder="Enter Price in Ruppees" value='{{priceS}}'>
+                <div class="incorrect" *ngIf="EdittingItemForm.controls['price'].invalid  && (EdittingItemForm.controls['price'].dirty || EdittingItemForm.controls['price'].touched)">
+                  <div *ngIf="EdittingItemForm.controls['price'].errors.pattern">
+                    Only Numbers are allowed
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="fileupload" class="text-overflow">Select Image: {{imageProgress}}</label><span id="myImg" data-toggle="modal" data-target="#exampleModalCenter" (click)="changeImage(img, caty)" > Uploaded Image</span>
+                <div class="btn link-custom" style="display:block" (click)="image.click()">Choose File</div>
+                <input type="file" id="fileupload" #Eimage formControlName="file" ng2FileSelect [uploader]="uploader" multiple/>
+                <div class="incorrect">{{validityStatement}} </div>
+                <div class="incorrect" *ngIf="EdittingItemForm.controls['file'].invalid && (EdittingItemForm.controls['file'].dirty || EdittingItemForm.controls['file'].touched)">
+                  <div *ngIf="EdittingItemForm.controls['file'].errors.empty">
+                    You must select a picture.
+                  </div>
+          
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="amount">Amount: </label>
+                  <input type="number" name="amount" #Eamnt id="amount" class="form-control" formControlName="amount" placeholder="Enter No. of Item Available" value='{{amount}}'>
+                  <div class="incorrect" *ngIf="EdittingItemForm.controls['amount'].invalid && (EdittingItemForm.controls['amount'].dirty || EdittingItemForm.controls['amount'].touched)">
+                    <div *ngIf="EdittingItemForm.controls['amount'].errors.min">
+                      Number must be equal to or greater than 0.
+                    </div>
+                    <div *ngIf="EdittingItemForm.controls['amount'].errors.pattern">
+                        Only Numbers allowed.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="category">Choose a Category: </label>
+                  <div>
+                  <select class="form-control" name="category" #Ecat formControlName="categoryV" value="{{cat}}">
+                    <option value="" >Choose Category</option>
+                    <option value="Laptop" [selected]="selectedLaptop">Laptop</option>
+                    <option value="Mobile" [selected]="selectedMobile">Mobile</option>
+                    <option value="Accessories" [selected]="selectedAccessories">Accessories</option>
+                    <option value="Gaming" [selected]="selectedGaming">Gaming</option>
+                    <option value="Display" [selected]="selectedDisplay">Display</option>
+                    <option value="Speaker" [selected]="selectedSpeaker">Speaker</option>
+                  </select>
+                </div>
+                  <div class="incorrect" *ngIf="EdittingItemForm.controls['categoryV'].invalid && (EdittingItemForm.controls['categoryV'].dirty || EdittingItemForm.controls['categoryV'].touched)">
+                    <div *ngIf="EdittingItemForm.controls['categoryV'].errors.empty">
+                      You Must Select an Option
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      <div class="form-group">
+        <label for="infoArea">Add Info: </label>
+        <textarea name="info" name="infoArea" #Edetails id="infoArea" cols="30" rows="3" class="textArea" formControlName="details"
+          placeholder="Write details about the product" value='{{detail}}'></textarea>
+        <div class="incorrect" *ngIf="EdittingItemForm.controls['details'].invalid">
+          <div *ngIf="EdittingItemForm.controls['details'].errors.empty">
+            Details should be more than 10 characters
+          </div>
+          <div *ngIf="EdittingItemForm.controls['details'].errors.maxlength">
+            Details should be less than 255 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-6">
+            <button class="btn link-custom" (click)="goToEditForm()">Back</button>
+          </div>
+          <div class="col-6">
+            <button class="btn link-custom fright"  [disabled]="EdittingItemForm.invalid" (click)="editItem(EName.value,Ebrand.value,Eprice.value,Edetails.value,Eamnt.value,Ecat.value)">Edit item </button>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </form>
+</div>
+</div>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"> {{caty}} </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img src={{img}} width="100%">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div [hidden] = "showOrder">
+    <div class="row">
+        <div class="col-12">
+          <div class="form-group2 search-bar">
+            <form>
+              <input class="form-control" type="text" name="search" placeHolder="Search" [(ngModel)]="MyFilter">
+            </form>
+            <i class="fa fa-search"></i>
+          </div>
+        </div>
+      </div>
+  <div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+              <th (click)="sort('_id')">
+                #
+                <span *ngIf="key == '_id'">
+                  <span [hidden]="reverse">▼</span>
+                  <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th (click)="sort('productName')">
+                Product Name
+                <span *ngIf="key == 'productName'">
+                  <span [hidden]="reverse">▼</span>
+                  <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th (click)="sort('productPrice')">
+                Product Price
+                <span *ngIf="key == 'productPrice'">
+                  <span [hidden]="reverse">▼</span>
+                  <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th (click)="sort('username')">
+                Username
+                <span *ngIf="key == 'username'">
+                  <span [hidden]="reverse">▼</span>
+                  <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th (click)="sort('user_address')">
+                User Address
+                <span *ngIf="key == 'user_address'">
+                  <span [hidden]="reverse">▼</span>
+                  <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th (click)="sort('user_phoneNumber')">
+                User Phone Number
+                <span *ngIf="key == 'user_phoneNumber'">
+                  <span [hidden]="reverse">▼</span>
+                  <span [hidden]="!reverse">▲</span>
+                </span>
+              </th>
+              <th (click)="sort('orderStatus')">
+                  Order Status
+                  <span *ngIf="key == 'orderStatus'">
+                    <span [hidden]="reverse">▼</span>
+                    <span [hidden]="!reverse">▲</span>
+                  </span>
+                </th>
+              <th>Delete</th>
+              <th></th>
+            </tr>
+          
+          </thead>
+      <tbody>
+        <tr *ngFor="let x of dataOrders | filterID: id | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'pending', itemsPerPage: 4, currentPage: pPending }">
+          <td>{{x._id}}</td>
+          <td>{{x.productName}}</td>
+          <td>{{x.productPrice}}</td>
+          <td>{{x.username}}</td>
+          <td>{{x.user_address}}</td>
+          <td>{{x.user_phoneNumber}}</td>
+          <td>{{x.orderStatus}}</td>
+          <td class="link-custom " (click) = "deleteRow(x._id)">Delete</td>
+          <td></td>
+          <td class="link-custom " (click) = "deleteRow(x._id)">Processing start</td>
+        </tr>
+      </tbody>
+  
+    </table>
+    <div class="pageControl">
+        <pagination-controls id="pending" (pageChange)="pPending = $event" autoHide="true" responsive="true"></pagination-controls>
+      </div>
+  </div>
+</div>
 </div>
