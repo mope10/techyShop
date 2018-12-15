@@ -1,15 +1,64 @@
 <div class="custom-body">
 
   <h3>Shop Requests</h3>
-    <hr>
-  <div class="table-responsive">
-    <table class="table">
-      <thead>
-        <tr>
-          <th></th>
-        </tr>
-      </thead>
-    </table>
-  </div>
+  <hr>
+  <ul class="nav nav-tabs custom-tabs" id="myTab" role="tablist">
+    <li class="nav-item" (click)="showRequests()">
+      <a class="nav-link active" id="ShopRqst-tab" data-toggle="tab" aria-controls="ShopRqst" aria-selected="true">Shop Request</a>
+    </li>
+    <li class="nav-item" (click)="showShops()">
+      <a class="nav-link" id="Shops-tab" data-toggle="tab" aria-controls="Shops" aria-selected="false">Shops</a>
+    </li>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th (click)="sort('owner_id')">
+              Owner ID
+              <span *ngIf="key == 'owner_id'">
+                <span [hidden]="reverse">▼</span>
+                <span [hidden]="!reverse">▲</span>
+              </span>
+            </th>
+            <th (click)="sort('shopOwner')">
+              Shop Owner
+              <span *ngIf="key == 'shopOwner'">
+                <span [hidden]="reverse">▼</span>
+                <span [hidden]="!reverse">▲</span>
+              </span>
+            </th>
+            <th (click)="sort('shopAddress')">
+              Shop Address
+              <span *ngIf="key == 'shopAddress'">
+                <span [hidden]="reverse">▼</span>
+                <span [hidden]="!reverse">▲</span>
+              </span>
+            </th>
+            <th (click)="sort('shopNumber')">
+              Shop PhoneNumber
+              <span *ngIf="key == 'shopNumber'">
+                <span [hidden]="reverse">▼</span>
+                <span [hidden]="!reverse">▲</span>
+              </span>
+            </th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let x of data | filterRequests: !showShopRequest | orderBy: key : reverse | paginate: {id: 'pending', itemsPerPage: 4, currentPage: pPending }">
+            <td>{{x.owner_id}}</td>
+            <td>{{x.shopOwner}}</td>
+            <td>{{x.shopAddress}}</td>
+            <td>{{x.shopNumber}}</td>
+            <td class="link-custom" (click)="takeStatus(x.owner_id)" [hidden]='!showShopRequest'>Take Previliges</td>
+            <td class="link-custom" (click)="giveStatus(x.owner_id)" [hidden]='showShopRequest'>Give Previliges</td>
+          </tr>
+        </tbody>
 
+      </table>
+      <div class="pageControl">
+        <pagination-controls id="pending" (pageChange)="pPending = $event" autoHide="true" responsive="true"></pagination-controls>
+      </div>
+    </div>
+  </ul>
 </div>

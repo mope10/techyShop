@@ -8,7 +8,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { OrderModule } from 'ngx-order-pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter'; 
 import { FilterPipeCategory} from '../pipe/filterCategory.pipe'; //to search for only category
-import { FilterPipeOrder} from '../pipe/filterOrder.pipe'; //to search for only category
+import { FilterPipeOrder} from '../pipe/filterOrder.pipe'; //to search for only order
+import { FilterPipeRequests} from '../pipe/filterRequests.pipe'; //to search for only request
 //FIle upload module
 import {FileUploadModule} from 'ng2-file-upload';
 
@@ -57,6 +58,7 @@ import { NotificationsComponent } from './components/admin-dashboard/notificatio
     UserProductsComponent,
     FilterPipeCategory,
     FilterPipeOrder,
+    FilterPipeRequests,
     NotificationsComponent
   ],
   imports: [
