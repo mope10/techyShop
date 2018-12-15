@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService} from '../../../../services/dataService/data.service';
+import { AuthserviceService} from '../../../../services/auth/authservice.service';
 
 @Component({
   selector: 'app-admin-orders',
@@ -13,7 +14,7 @@ export class AdminOrdersComponent implements OnInit {
   pProcessing = 1;
   pCompleted = 1;
   data = [];
-  constructor(private dataS: DataService) { 
+  constructor(private dataS: DataService,private auth : AuthserviceService) { 
     this.getOrders();
   }
 
@@ -32,7 +33,9 @@ export class AdminOrdersComponent implements OnInit {
 
   getOrders(){
     this.dataS.getOrder().subscribe((orders)=>{
-      this.data = orders;
+      console.log(orders.order);
+      this.auth.setToken(orders.token);
+      this.data = orders.order;
       console.log(this.data);
     });
   }

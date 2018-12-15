@@ -67,6 +67,8 @@ export class StoreComponent implements OnInit {
       item_id       : this.item_id,
     };
     this.dataS.createOrder(order).subscribe((e)=>{
+      console.log(e);
+      this.auth.setToken(e.token);
       if(e.message){
         this.message = "Your order was placed successfully"
       }

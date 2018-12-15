@@ -19,7 +19,8 @@ export interface userData {
 }
 
 export interface message {
-  message : boolean;
+  token: any,
+  message : boolean
 }
 
 export interface itemData {
@@ -73,6 +74,13 @@ export interface order {
 
 }
 
+export interface validatedOrder {
+
+  token: any,
+  order: order[]
+
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -108,12 +116,21 @@ export class DataService {
     return this.http.post<message>(url,order,{headers: httpOptions});
 
   }
-  getOrder(): Observable<order[]> {
+  getOrder(): Observable<validatedOrder> {
     var id = this.auth.getId();
     var token = this.auth.getToken();
     var url = environment_url + '/order/' + id;
     const httpOptions = new HttpHeaders({'id':id, 'token': token})
-    return this.http.get<order[]>(url,{headers: httpOptions});
+    return this.http.get<validatedOrder>(url,{headers: httpOptions});
+  }
+
+  getUserOrders(): Observable<validatedOrder> {
+    var id = this.auth.getId();
+    var token = this.auth.getToken();
+    console.log('user id is: ',id);
+    var url = environment_url + '/order'+ '/user/' + id;
+    const httpOptions = new HttpHeaders({'id':id, 'token': token})
+    return this.http.get<validatedOrder>(url,{headers: httpOptions});
   }
   
   getItems():  Observable<itemList[]>{

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService} from '../../../../services/dataService/data.service'
+import { AuthserviceService} from '../../../../services/auth/authservice.service'
 
 @Component({
   selector: 'app-user-history',
@@ -23,7 +25,9 @@ export class UserHistoryComponent implements OnInit {
   { id: 12, orderNo: "#343", productName: "Laptop-Dell inspiron", amount: "4", address: "Address", datePurchased: new Date(2018,1,19), totalPrice: "500" }
 ];
 
-  constructor() { }
+  constructor(private dataS: DataService, private auth: AuthserviceService) {
+    this.getUserOrders(); 
+   }
 
   ngOnInit() {
   }
@@ -37,4 +41,12 @@ export class UserHistoryComponent implements OnInit {
     }
     this.key = key;
   }
+  getUserOrders() {
+    this.dataS.getUserOrders().subscribe((orders)=>{
+      console.log(orders)
+      // this.auth.setToken(orders.token);
+      console.log(orders.order);
+    })
+  }
+
 }
