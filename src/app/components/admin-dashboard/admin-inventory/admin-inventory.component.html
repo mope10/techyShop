@@ -466,7 +466,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6 text-overflow">
                 <label for="fileupload">Select Image: {{imageProgress}}</label>
                 <div class="btn link-custom" style="display:block" (click)="image.click()">Choose File</div>
                 <input type="file" id="fileupload" #image formControlName="file" ng2FileSelect [uploader]="uploader" multiple/>
@@ -583,7 +583,7 @@
                 </div>
               </div>
               <div class="col-md-6">
-                <label for="fileupload">Select Image: {{imageProgress}}</label><span id="myImg" data-toggle="modal" data-target="#exampleModalCenter" (click)="changeImage(img, caty)" > Uploaded Image</span>
+                <label for="fileupload" class="text-overflow">Select Image: {{imageProgress}}</label><span id="myImg" data-toggle="modal" data-target="#exampleModalCenter" (click)="changeImage(img, caty)" > Uploaded Image</span>
                 <div class="btn link-custom" style="display:block" (click)="image.click()">Choose File</div>
                 <input type="file" id="fileupload" #Eimage formControlName="file" ng2FileSelect [uploader]="uploader" multiple/>
                 <div class="incorrect">{{validityStatement}} </div>

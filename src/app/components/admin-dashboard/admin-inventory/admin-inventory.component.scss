@@ -89,3 +89,8 @@ pagination-controls /deep/ .ngx-pagination li.current {
   #myImg:hover + .show {
       display: block;
   }
+.text-overflow{
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
