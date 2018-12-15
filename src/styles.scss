@@ -202,6 +202,7 @@ table {
         display:inline-block;
         margin-bottom: 30px;
         width: 100%;
+        min-width: 225px;
         border-radius: 10px;
         // border-top: 2px solid #343A40;
         // border-bottom: 2px solid #343A40;
@@ -210,11 +211,16 @@ table {
         background-color:white;
         transition: 600ms;
         text-align: center;
-        img {
-            height:200px;
-            display:block;
-            margin:0 auto;
+        .image-view {
+            height: 300px !important;
+            overflow: hidden;
+            img {
+                width: 100%;
+                display:block;
+                margin:0 auto;
+            }
         }
+        
         p {
             margin-bottom:5px;
         }
