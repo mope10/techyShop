@@ -89,15 +89,9 @@ export interface requestreply{
 export interface validatedOrder {
 
   token: any,
-  order: order[]
+  orders: order[]
 
 }
-// owner_id: {type: Number, required: true},
-//   shopPrivilages: {type: Boolean, required: true, default: false},
-//   shopRequest   : {type: Boolean, required: true, default: true},
-//   shopOwner     : {type: String,required: true},
-//   shopAddress   : {type: String,required: true},
-//   shopNumber    : {type: String, required: true}
 
 export interface adminShop {
   token: any,
@@ -110,6 +104,11 @@ export interface adminShopRequests {
   shopOwner  : any,
   shopAddress: any,
   shopNumber : any
+}
+
+export interface shopItems {
+  shopItems: itemList[],
+  token: any
 }
 
 @Injectable({
@@ -192,6 +191,21 @@ export class DataService {
     var url = environment_url + '/shopRequests';
     const httpOptions = new HttpHeaders({'id':id, 'token': token});
     return this.http.get<adminShop>(url,{headers: httpOptions});
+  }
+  getShopItems() : Observable<shopItems>{
+    var id = this.auth.getId();
+    var token = this.auth.getToken();
+    var url = environment_url + '/shopItems';
+    const httpOptions = new HttpHeaders({'id':id, 'token': token});
+    return this.http.get<shopItems>(url,{headers: httpOptions});
+  }
+
+  upgradeShop(owner_id):Observable<requestreply>{
+    var id = this.auth.getId();
+    var token = this.auth.getToken();
+    var url = environment_url + '/shop'+'/upgrade/'+owner_id;
+    const httpOptions = new HttpHeaders({'id':id, 'token': token});
+    return this.http.post<requestreply>(url,{owner_id: owner_id},{headers: httpOptions});
   }
 
 }

@@ -44,8 +44,8 @@ export class UserHistoryComponent implements OnInit {
   getUserOrders() {
     this.dataS.getUserOrders().subscribe((orders)=>{
       console.log(orders)
-      // this.auth.setToken(orders.token);
-      console.log(orders.order);
+      this.auth.setToken(orders.token);
+      console.log(orders.orders);
     })
   }
 
