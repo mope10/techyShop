@@ -1,7 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthserviceService } from '../../../../services/auth/authservice.service';
-import { shopRequest,DataService } from "../../../../services/dataService/data.service";
+import { shopRequest,DataService, itemData } from "../../../../services/dataService/data.service";
 import {FileUploader, FileUploaderOptions, ParsedResponseHeaders} from 'ng2-file-upload';
 import {Cloudinary} from '@cloudinary/angular-5.x';
 import { identifierModuleUrl } from '@angular/compiler';
@@ -16,6 +16,7 @@ export class UserProductsComponent implements OnInit {
   selectedLaptop = false; selectedMobile = false; selectedAccessories = false; selectedGaming = false; selectedDisplay = false; selectedSpeaker = false; 
   AddingItemForm: FormGroup;
   EdittingItemForm: FormGroup;
+  itemCreated: boolean;
   responses: Array<any>;
   imageProgress: any;
   private hasBaseDropZoneOver: boolean = false;
@@ -228,9 +229,27 @@ export class UserProductsComponent implements OnInit {
 
     this.formCondition = !this.formCondition;
   }
-  addItem(productName, brandName, price, details, image, amount, category){
-    console.log(productName, brandName, price, details, image, amount, category);
-    console.log(this.responses.pop().data.public_id,"seomthigndsjbksdf");
+  addItem(productName, brandName, price, details, amount, category){
+    console.log(productName, brandName, price, details,amount, category);
+    price = parseInt(price);
+    amount = parseInt(amount);
+    
+    let image = this.responses.pop().data.url
+    let item: itemData = {
+      name: productName,
+      brand: brandName,
+      price: price,
+      amount: amount,
+      category: category,
+      image: image,
+      detail: details
+    }
+    console.log(item);
+    this.datas.createItem(item).subscribe((e)=>{
+      this.auth.setToken(e.token);
+      this.itemCreated = e.creation;
+    });
+    this.goToForm();
   }
   editItem(productName, brandName, price, details, image){
     //TODO: ADD LOGIC HERE
@@ -293,7 +312,7 @@ export class UserProductsComponent implements OnInit {
     });
   }
   getItems(){
-    this.datas.getItem(this.id).subscribe((items)=>{
+    this.datas.getItems().subscribe((items)=>{
       this.dataItems = items;
       console.log(this.id);
       console.log(items)

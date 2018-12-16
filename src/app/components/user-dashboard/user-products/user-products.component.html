@@ -3,7 +3,7 @@
   <span class="textAdmin">{{confirmation}}</span>
 </div>
 <br>
-<div [hidden]="!showTable" class="custom-body">
+<div [hidden]="showTable" class="custom-body">
     <ul class="nav nav-tabs custom-tabs" id="myTab" role="tablist">
       <li class="nav-item">
         <a class="nav-link active" id="ShopRqst-tab" data-toggle="tab" aria-controls="ShopRqst" aria-selected="true"
@@ -81,7 +81,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let x of dataItems | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'laptop', itemsPerPage: 4, currentPage: pLaptop }">
+          <tr *ngFor="let x of dataItems | filterID: id | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'laptop', itemsPerPage: 4, currentPage: pLaptop }">
             <td>{{x._id}}</td>
             <td>{{x.name}}</td>
             <td>{{x.brand}}</td>
