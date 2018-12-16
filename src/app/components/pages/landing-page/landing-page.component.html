@@ -26,7 +26,7 @@
         <h1 class="title">Categories</h1>
         <hr>
         <div class="row">
-            <div class="col-lg-2 col-md-4 col-sm-12">
+            <div class="col-lg-2 col-md-4 col-sm-12" (click)="categoryChange('Laptop')" routerLink="store">
                 <div class="category-card" id="category01">
                     <div class="catBack cat01BackColor">
                         <div><i class="fa fa-laptop" aria-hidden="true"></i></div>
@@ -35,37 +35,37 @@
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-4 col-sm-12">
+            <div class="col-lg-2 col-md-4 col-sm-12" (click)="categoryChange('Mobile')" routerLink="store">
                 <div class="category-card" id="category02">
                     <div class="catBack cat02BackColor">
-                        <div><i class="fa fa-laptop" aria-hidden="true"></i></div>
+                        <div><i class="fa fa-mobile" aria-hidden="true"></i></div>
                         <div>MOBILE</div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-4 col-sm-12">
+            <div class="col-lg-2 col-md-4 col-sm-12" (click)="categoryChange('Accessories')" routerLink="store">
                 <div class="category-card" id="category03">
                     <div class="catBack cat03BackColor">
-                        <div><i class="fa fa-laptop" aria-hidden="true"></i></div>
+                        <div><i class="fa fa-headphones" aria-hidden="true"></i></div>
                         <div>ACCESSORIES</div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-4 col-sm-12">
+            <div class="col-lg-2 col-md-4 col-sm-12" (click)="categoryChange('Gaming')" routerLink="store">
                 <div class="category-card" id="category04">
                     <div class="catBack cat04BackColor">
-                        <div><i class="fa fa-laptop" aria-hidden="true"></i></div>
+                        <div><i class="fa fa-gamepad" aria-hidden="true"></i></div>
                         <div>GAMING</div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-4 col-sm-12">
+            <div class="col-lg-2 col-md-4 col-sm-12" (click)="categoryChange('Display')" routerLink="store">
                 <div class="category-card" id="category05">
                     <div class="catBack cat05BackColor">
-                        <div><i class="fa fa-laptop" aria-hidden="true"></i></div>
+                        <div><i class="fa fa-television" aria-hidden="true"></i></div>
                         <div>DISPLAY</div>
 
                     </div>
@@ -73,61 +73,16 @@
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-4 col-sm-12">
+            <div class="col-lg-2 col-md-4 col-sm-12" (click)="categoryChange('Speaker')" routerLink="store">
                 <div class="category-card" id="category06">
                     <div class="catBack cat06BackColor">
-                        <div><i class="fa fa-laptop" aria-hidden="true"></i></div>
-                        <div>DISPLAY</div>
+                        <div><i class="fa fa-volume-up" aria-hidden="true"></i></div>
+                        <div>Speaker</div>
                     </div>
                 </div>
             </div>
 
         </div>
-
-        <!-- <div class="row">
-          <div class="col-3">
-            <a class="cat laptop">
-                <p><i class="fa fa-laptop" aria-hidden="true"></i> laptop</p>
-            </a>
-            
-          </div>
-          <div class="col-3">
-            <a class="cat mobile">
-                <p><i class="fa fa-mobile" aria-hidden="true"></i> mobile</p>
-            </a>  
-            
-          </div>
-          
-      </div>
-
-      <div class="row">
-          
-          <div class="offset-md-1 col-md-5 col-6">
-            <a class="cat accessories">
-              <p><i class="fa fa-headphones" aria-hidden="true"></i> accessories</p>
-            </a>  
-          </div>
-          <div class="col-md-5 col-6">
-            <a class="cat gaming">
-                <p><i class="fa fa-gamepad" aria-hidden="true"></i> gaming</p>
-            </a>  
-          </div>
-      </div>  
-
-      
-      <div class="row">
-          <div class="col-7">
-            <a class="cat lcd">
-                <p><i class="fa fa-television" aria-hidden="true"></i> display</p>
-            </a>  
-            
-          </div>
-          <div class="col-5">
-              <a class="cat speakers">
-                <p><i class="fa fa-volume-up" aria-hidden="true"></i> Speakers</p>
-              </a>
-          </div>
-      </div>  -->
 
     </div>
 
@@ -174,56 +129,24 @@
             <div class="product-view">
                 <div class="top-bar">
                     <h2>Top 4</h2>
-                    <a class="link-custom ml-auto">View All</a>
+                    <a class="link-custom ml-auto" (click)="categoryChange('All')" routerLink="store">View All</a>
                 </div>
                 <hr>
 
                 <div class="row">
-
-                    <div class="col-md-3 col-6">
-                        <div class=" item-card">
-                            <img src="https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg" alt="">
-                            <div class="spaceBetweenPicText"></div>
-                            <h6>HTC one</h6>
-                            <p class="details">FHD 6" Display</p>
-                            <p class="price">Rs.5000</p>
-                            <a class="link-custom">Buy Now</a>
-                        </div>
+                    <div *ngFor="let x of data | filterCategory: '' | slice:0:4" class="col-md-3 col-6">
+                      <div class=" item-card"  data-toggle="modal" data-target="#exampleModalCenter" (click)="setItemView(x.owner_id,x._id,x.brand,x.name,x.price,x.image,x.detail)">
+                        <div class="image-view">
+                          <img src="{{x.image}}" alt="">
+                        </div>  
+                        <div class="spaceBetweenPicText"></div>
+                        <h6>{{x.brand}} {{x.name}}</h6>
+                        <p class="details">{{x.detail}}</p>
+                        <p class="price">Rs: {{x.price}}</p>
+                        <a class="link-custom">Buy Now</a>
+                      </div>
                     </div>
-
-
-                    <div class="col-md-3 col-6">
-                        <div class=" item-card">
-                            <img src="https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg" alt="">
-                            <hr>
-                            <h6>HTC one</h6>
-                            <p class="details">FHD 6" Display</p>
-                            <p class="price">Rs.5000</p>
-                            <a class="link-custom">Buy Now</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6">
-                        <div class=" item-card">
-                            <img src="https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg" alt="">
-                            <hr>
-                            <h6>HTC one</h6>
-                            <p class="details">FHD 6" Display</p>
-                            <p class="price">Rs.5000</p>
-                            <a class="link-custom">Buy Now</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6">
-                        <div class=" item-card">
-                            <img src="https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg" alt="">
-                            <hr>
-                            <h6>HTC one</h6>
-                            <p class="details">FHD 6" Display</p>
-                            <p class="price">Rs.5000</p>
-                            <a class="link-custom">Buy Now</a>
-                        </div>
-                    </div>
-
-                </div>
+                  </div>
 
 
             </div>
@@ -232,52 +155,23 @@
             <div class="product-view">
                 <div class="top-bar">
                     <h2>Top 4 Laptops</h2>
-                    <a class="link-custom ml-auto">View All</a>
+                    <a class="link-custom ml-auto" (click)="categoryChange('Laptop')" routerLink="store">View All</a>
                 </div>
                 <hr>
                 <div class="row">
-                    <div class="col-md-3 col-6">
-                        <div class=" item-card">
-                            <img src="https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg" alt="">
-                            <hr>
-                            <h6>HTC one</h6>
-                            <p class="details">FHD 6" Display</p>
-                            <p class="price">Rs.5000</p>
-                            <a class="link-custom">Buy Now</a>
-                        </div>
+                    <div *ngFor="let x of data | filterCategory: 'Laptop' | slice:0:4" class="col-md-3 col-6">
+                      <div class=" item-card"  data-toggle="modal" data-target="#exampleModalCenter" (click)="setItemView(x.owner_id,x._id,x.brand,x.name,x.price,x.image,x.detail)">
+                        <div class="image-view">
+                          <img src="{{x.image}}" alt="">
+                        </div>  
+                        <div class="spaceBetweenPicText"></div>
+                        <h6>{{x.brand}} {{x.name}}</h6>
+                        <p class="details">{{x.detail}}</p>
+                        <p class="price">Rs: {{x.price}}</p>
+                        <a class="link-custom">Buy Now</a>
+                      </div>
                     </div>
-                    <div class="col-md-3 col-6">
-                        <div class=" item-card">
-                            <img src="https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg" alt="">
-                            <hr>
-                            <h6>HTC one</h6>
-                            <p class="details">FHD 6" Display</p>
-                            <p class="price">Rs.5000</p>
-                            <a class="link-custom">Buy Now</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6">
-                        <div class=" item-card">
-                            <img src="https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg" alt="">
-                            <hr>
-                            <h6>HTC one</h6>
-                            <p class="details">FHD 6" Display</p>
-                            <p class="price">Rs.5000</p>
-                            <a class="link-custom">Buy Now</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6">
-                        <div class=" item-card">
-                            <img src="https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg" alt="">
-                            <hr>
-                            <h6>HTC one</h6>
-                            <p class="details">FHD 6" Display</p>
-                            <p class="price">Rs.5000</p>
-                            <a class="link-custom">Buy Now</a>
-                        </div>
-                    </div>
-
-                </div>
+                  </div>
 
 
             </div>
@@ -286,52 +180,23 @@
             <div class="product-view">
                 <div class="top-bar">
                     <h2>Top 4 Mobiles</h2>
-                    <a class="link-custom ml-auto">View All</a>
+                    <a class="link-custom ml-auto" (click)="categoryChange('Mobile')" routerLink="store">View All</a>
                 </div>
                 <hr>
                 <div class="row">
-                    <div class="col-md-3 col-6">
-                        <div class=" item-card">
-                            <img src="https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg" alt="">
-                            <hr>
-                            <h6>HTC one</h6>
-                            <p class="details">FHD 6" Display</p>
-                            <p class="price">Rs.5000</p>
-                            <a class="link-custom">Buy Now</a>
-                        </div>
+                    <div *ngFor="let x of data | filterCategory: 'Mobile' | slice:0:4" class="col-md-3 col-6">
+                      <div class=" item-card"  data-toggle="modal" data-target="#exampleModalCenter" (click)="setItemView(x.owner_id,x._id,x.brand,x.name,x.price,x.image,x.detail)">
+                        <div class="image-view">
+                          <img src="{{x.image}}" alt="">
+                        </div>  
+                        <div class="spaceBetweenPicText"></div>
+                        <h6>{{x.brand}} {{x.name}}</h6>
+                        <p class="details">{{x.detail}}</p>
+                        <p class="price">Rs: {{x.price}}</p>
+                        <a class="link-custom">Buy Now</a>
+                      </div>
                     </div>
-                    <div class="col-md-3 col-6">
-                        <div class=" item-card">
-                            <img src="https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg" alt="">
-                            <hr>
-                            <h6>HTC one</h6>
-                            <p class="details">FHD 6" Display</p>
-                            <p class="price">Rs.5000</p>
-                            <a class="link-custom">Buy Now</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6">
-                        <div class=" item-card">
-                            <img src="https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg" alt="">
-                            <hr>
-                            <h6>HTC one</h6>
-                            <p class="details">FHD 6" Display</p>
-                            <p class="price">Rs.5000</p>
-                            <a class="link-custom">Buy Now</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6">
-                        <div class=" item-card">
-                            <img src="https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg" alt="">
-                            <hr>
-                            <h6>HTC one</h6>
-                            <p class="details">FHD 6" Display</p>
-                            <p class="price">Rs.5000</p>
-                            <a class="link-custom">Buy Now</a>
-                        </div>
-                    </div>
-
-                </div>
+                  </div>
 
 
 
@@ -341,52 +206,23 @@
             <div class="product-view">
                 <div class="top-bar">
                     <h2>Top 4 Accessories</h2>
-                    <a class="link-custom ml-auto">View All</a>
+                    <a class="link-custom ml-auto" (click)="categoryChange('Accessories')" routerLink="store">View All</a>
                 </div>
                 <hr>
                 <div class="row">
-                    <div class="col-md-3 col-6">
-                        <div class=" item-card">
-                            <img src="https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg" alt="">
-                            <hr>
-                            <h6>HTC one</h6>
-                            <p class="details">FHD 6" Display</p>
-                            <p class="price">Rs.5000</p>
-                            <a class="link-custom">Buy Now</a>
-                        </div>
+                    <div *ngFor="let x of data | filterCategory: 'Accessories' | slice:0:4" class="col-md-3 col-6">
+                      <div class=" item-card"  data-toggle="modal" data-target="#exampleModalCenter" (click)="setItemView(x.owner_id,x._id,x.brand,x.name,x.price,x.image,x.detail)">
+                        <div class="image-view">
+                          <img src="{{x.image}}" alt="">
+                        </div>  
+                        <div class="spaceBetweenPicText"></div>
+                        <h6>{{x.brand}} {{x.name}}</h6>
+                        <p class="details">{{x.detail}}</p>
+                        <p class="price">Rs: {{x.price}}</p>
+                        <a class="link-custom">Buy Now</a>
+                      </div>
                     </div>
-                    <div class="col-md-3 col-6">
-                        <div class=" item-card">
-                            <img src="https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg" alt="">
-                            <hr>
-                            <h6>HTC one</h6>
-                            <p class="details">FHD 6" Display</p>
-                            <p class="price">Rs.5000</p>
-                            <a class="link-custom">Buy Now</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6">
-                        <div class=" item-card">
-                            <img src="https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg" alt="">
-                            <hr>
-                            <h6>HTC one</h6>
-                            <p class="details">FHD 6" Display</p>
-                            <p class="price">Rs.5000</p>
-                            <a class="link-custom">Buy Now</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6">
-                        <div class=" item-card">
-                            <img src="https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg" alt="">
-                            <hr>
-                            <h6>HTC one</h6>
-                            <p class="details">FHD 6" Display</p>
-                            <p class="price">Rs.5000</p>
-                            <a class="link-custom">Buy Now</a>
-                        </div>
-                    </div>
-
-                </div>
+                  </div>
 
 
 
@@ -396,52 +232,23 @@
             <div class="product-view">
                 <div class="top-bar">
                     <h2>Top 4 Gaming</h2>
-                    <a class="link-custom ml-auto">View All</a>
+                    <a class="link-custom ml-auto" (click)="categoryChange('Gaming')" routerLink="store">View All</a>
                 </div>
                 <hr>
                 <div class="row">
-                    <div class="col-lg-3 col-md-4 col-6">
-                        <div class=" item-card">
-                            <img src="https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg" alt="">
-                            <hr>
-                            <h6>HTC one</h6>
-                            <p class="details">FHD 6" Display</p>
-                            <p class="price">Rs.5000</p>
-                            <a class="link-custom">Buy Now</a>
-                        </div>
+                    <div *ngFor="let x of data | filterCategory: 'Gaming' | slice:0:4" class="col-md-3 col-6">
+                      <div class=" item-card"  data-toggle="modal" data-target="#exampleModalCenter" (click)="setItemView(x.owner_id,x._id,x.brand,x.name,x.price,x.image,x.detail)">
+                        <div class="image-view">
+                          <img src="{{x.image}}" alt="">
+                        </div>  
+                        <div class="spaceBetweenPicText"></div>
+                        <h6>{{x.brand}} {{x.name}}</h6>
+                        <p class="details">{{x.detail}}</p>
+                        <p class="price">Rs: {{x.price}}</p>
+                        <a class="link-custom">Buy Now</a>
+                      </div>
                     </div>
-                    <div class="col-lg-3 col-md-4 col-6">
-                        <div class=" item-card">
-                            <img src="https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg" alt="">
-                            <hr>
-                            <h6>HTC one</h6>
-                            <p class="details">FHD 6" Display</p>
-                            <p class="price">Rs.5000</p>
-                            <a class="link-custom">Buy Now</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-6">
-                        <div class=" item-card">
-                            <img src="https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg" alt="">
-                            <hr>
-                            <h6>HTC one</h6>
-                            <p class="details">FHD 6" Display</p>
-                            <p class="price">Rs.5000</p>
-                            <a class="link-custom">Buy Now</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-6">
-                        <div class=" item-card">
-                            <img src="https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg" alt="">
-                            <hr>
-                            <h6>HTC one</h6>
-                            <p class="details">FHD 6" Display</p>
-                            <p class="price">Rs.5000</p>
-                            <a class="link-custom">Buy Now</a>
-                        </div>
-                    </div>
-
-                </div>
+                  </div>
 
 
 
@@ -451,52 +258,23 @@
             <div class="product-view">
                 <div class="top-bar">
                     <h2>Top 4 Displays</h2>
-                    <a class="link-custom ml-auto">View All</a>
+                    <a class="link-custom ml-auto" (click)="categoryChange('Display')" routerLink="store">View All</a>
                 </div>
                 <hr>
                 <div class="row">
-                    <div class="col-md-3 col-6">
-                        <div class=" item-card">
-                            <img src="https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg" alt="">
-                            <hr>
-                            <h6>HTC one</h6>
-                            <p class="details">FHD 6" Display</p>
-                            <p class="price">Rs.5000</p>
-                            <a class="link-custom">Buy Now</a>
-                        </div>
+                    <div *ngFor="let x of data | filterCategory: 'Display' | slice:0:4" class="col-md-3 col-6">
+                      <div class=" item-card"  data-toggle="modal" data-target="#exampleModalCenter" (click)="setItemView(x.owner_id,x._id,x.brand,x.name,x.price,x.image,x.detail)">
+                        <div class="image-view">
+                          <img src="{{x.image}}" alt="">
+                        </div>  
+                        <div class="spaceBetweenPicText"></div>
+                        <h6>{{x.brand}} {{x.name}}</h6>
+                        <p class="details">{{x.detail}}</p>
+                        <p class="price">Rs: {{x.price}}</p>
+                        <a class="link-custom">Buy Now</a>
+                      </div>
                     </div>
-                    <div class="col-md-3 col-6">
-                        <div class=" item-card">
-                            <img src="https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg" alt="">
-                            <hr>
-                            <h6>HTC one</h6>
-                            <p class="details">FHD 6" Display</p>
-                            <p class="price">Rs.5000</p>
-                            <a class="link-custom">Buy Now</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6">
-                        <div class=" item-card">
-                            <img src="https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg" alt="">
-                            <hr>
-                            <h6>HTC one</h6>
-                            <p class="details">FHD 6" Display</p>
-                            <p class="price">Rs.5000</p>
-                            <a class="link-custom">Buy Now</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6">
-                        <div class=" item-card">
-                            <img src="https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg" alt="">
-                            <hr>
-                            <h6>HTC one</h6>
-                            <p class="details">FHD 6" Display</p>
-                            <p class="price">Rs.5000</p>
-                            <a class="link-custom">Buy Now</a>
-                        </div>
-                    </div>
-
-                </div>
+                  </div>
 
 
 
@@ -506,52 +284,23 @@
             <div class="product-view">
                 <div class="top-bar">
                     <h2>Top 4 Speakers</h2>
-                    <a class="link-custom ml-auto">View All</a>
+                    <a class="link-custom ml-auto" (click)="categoryChange('Speaker')" routerLink="store">View All</a>
                 </div>
                 <hr>
                 <div class="row">
-                    <div class="col-md-3 col-6">
-                        <div class=" item-card">
-                            <img src="https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg" alt="">
-                            <hr>
-                            <h6>HTC one</h6>
-                            <p class="details">FHD 6" Display</p>
-                            <p class="price">Rs.5000</p>
-                            <a class="link-custom">Buy Now</a>
-                        </div>
+                    <div *ngFor="let x of data | filterCategory: 'Speaker' | slice:0:4" class="col-md-3 col-6">
+                      <div class=" item-card"  data-toggle="modal" data-target="#exampleModalCenter" (click)="setItemView(x.owner_id,x._id,x.brand,x.name,x.price,x.image,x.detail)">
+                        <div class="image-view">
+                          <img src="{{x.image}}" alt="">
+                        </div>  
+                        <div class="spaceBetweenPicText"></div>
+                        <h6>{{x.brand}} {{x.name}}</h6>
+                        <p class="details">{{x.detail}}</p>
+                        <p class="price">Rs: {{x.price}}</p>
+                        <a class="link-custom">Buy Now</a>
+                      </div>
                     </div>
-                    <div class="col-md-3 col-6">
-                        <div class=" item-card">
-                            <img src="https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg" alt="">
-                            <hr>
-                            <h6>HTC one</h6>
-                            <p class="details">FHD 6" Display</p>
-                            <p class="price">Rs.5000</p>
-                            <a class="link-custom">Buy Now</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6">
-                        <div class=" item-card">
-                            <img src="https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg" alt="">
-                            <hr>
-                            <h6>HTC one</h6>
-                            <p class="details">FHD 6" Display</p>
-                            <p class="price">Rs.5000</p>
-                            <a class="link-custom">Buy Now</a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6">
-                        <div class=" item-card">
-                            <img src="https://cdn2.gsmarena.com/vv/bigpic/htc-desire-650.jpg" alt="">
-                            <hr>
-                            <h6>HTC one</h6>
-                            <p class="details">FHD 6" Display</p>
-                            <p class="price">Rs.5000</p>
-                            <a class="link-custom">Buy Now</a>
-                        </div>
-                    </div>
-
-                </div>
+                  </div>
 
 
 

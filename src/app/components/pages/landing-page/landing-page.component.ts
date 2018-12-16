@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {orderCreating,DataService} from '../../../../services/dataService/data.service'
 
 @Component({
   selector: 'app-landing-page',
@@ -6,10 +7,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./landing-page.component.scss']
 })
 export class LandingPageComponent implements OnInit {
+  data =[];
+  parentMessage = "All";
+  category;
+  constructor(private dataS: DataService) {
+    this.getItems();
 
-  constructor() { }
+   }
 
   ngOnInit() {
+    this.dataS.currentMessage.subscribe(message => this.category = message)
   }
+  getItems(){
+    this.dataS.getItems().subscribe((items)=>{
+      this.data = items;
+    })
+  }
+  categoryChange(category) {
+    this.dataS.changeMessage(category)
+  }
+  
 
 }

@@ -22,13 +22,16 @@ export class StoreComponent implements OnInit {
   item_id = 0;
   brand = "";
 
+ 
+
   constructor(private dataS: DataService,private router : Router, private auth: AuthserviceService) { 
     this.getItems();
     this.orderButtonCheck();
   }
 
   ngOnInit() {
-
+    this.dataS.currentMessage.subscribe(message => this.category = message)
+    this.search(this.category);
   }
   search(query) {
     if (query == "All")
@@ -37,6 +40,7 @@ export class StoreComponent implements OnInit {
       this.categorySearch = query;
     console.log(query);
     this.category = query;
+
   }
   p = 1;
 
