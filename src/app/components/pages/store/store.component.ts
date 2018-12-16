@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ConditionalExpr } from '@angular/compiler';
-import { NgxPaginationModule } from 'ngx-pagination'
 import {orderCreating,DataService} from '../../../../services/dataService/data.service'
 import {Router} from '@angular/router'
 import {AuthserviceService} from '../../../../services/auth/authservice.service'; 
