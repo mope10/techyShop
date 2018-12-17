@@ -315,11 +315,9 @@ export class UserProductsComponent implements OnInit {
     });
   }
   getItems(){
-    this.datas.getItems().subscribe((items)=>{
-      this.dataItems = items;
-      console.log(this.id);
-      console.log(items)
-      console.log(this.dataItems);
+    this.datas.getShopItems().subscribe((items)=>{
+      this.dataItems = items.shopItems;
+      console.log(items);
     })
   }
   goToEditForm(){
