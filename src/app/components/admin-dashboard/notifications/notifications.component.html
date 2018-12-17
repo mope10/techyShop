@@ -46,7 +46,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let x of data | filterRequests: !showShopRequest | orderBy: key : reverse | paginate: {id: 'pending', itemsPerPage: 4, currentPage: pPending }">
+          <tr *ngFor="let x of data | filterRequests: !showShopRequest | orderBy: key : reverse | paginate: {itemsPerPage: 4, currentPage: p }">
             <td>{{x.owner_id}}</td>
             <td>{{x.shopOwner}}</td>
             <td>{{x.shopAddress}}</td>
@@ -58,7 +58,7 @@
 
       </table>
       <div class="pageControl">
-        <pagination-controls id="pending" (pageChange)="pPending = $event" autoHide="true" responsive="true"></pagination-controls>
+        <pagination-controls (pageChange)="p = $event" autoHide="true" responsive="true"></pagination-controls>
       </div>
     </div>
   

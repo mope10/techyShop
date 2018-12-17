@@ -21,6 +21,7 @@ export class StoreComponent implements OnInit {
   src = "";
   item_id = 0;
   brand = "";
+  MyFilter;
 
  
 

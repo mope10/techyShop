@@ -21,12 +21,12 @@ export class AdminInventoryComponent implements OnInit {
   responses: Array<any>;
   imageProgress: any;
   itemCreated: boolean;
-  private hasBaseDropZoneOver: boolean = false;
-  private password: string;
+  hasBaseDropZoneOver: boolean = false;
+  password: string;
   validityStatement = "";
-  private validity = true;
-  private uploader: FileUploader;
-  private message = "";
+  validity = true;
+  uploader: FileUploader;
+  message = "";
   formCondition   = true;
   editing = false;
   key = "id";
@@ -37,6 +37,7 @@ export class AdminInventoryComponent implements OnInit {
   pGaming  = 1;
   pDisplay  = 1;
   pSpeaker  = 1;
+  MyFilter;
   //TO CHANGE
   data;
   file: File;
@@ -240,9 +241,9 @@ export class AdminInventoryComponent implements OnInit {
     this.goToForm();
     
   }
-  editItem(productName, brandName, price, details, image,  amount, category){
+  editItem(productName, brandName, price, details,  amount, category){
     //TODO: ADD LOGIC HERE
-    console.log(productName, brandName, price, details, image,  amount, category)
+    console.log(productName, brandName, price, details,  amount, category)
   }
   fileOverBase(e: any): void {
     this.hasBaseDropZoneOver = e;

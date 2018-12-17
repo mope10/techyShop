@@ -10,11 +10,11 @@ import { Router } from '@angular/router'
 })
 export class RegisterComponent implements OnInit {
   registrationForm: FormGroup;
-  private password: string;
+  password: string;
   validityStatement = "";
-  private validity = false;
-  private User: user;
-  private message = "";
+  validity = false;
+  User: user;
+  message = "";
 
   constructor(private fb: FormBuilder, private auth: AuthserviceService, private router: Router) {
     this.createForm();

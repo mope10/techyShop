@@ -11,6 +11,7 @@ export class UserHistoryComponent implements OnInit {
   key = "id";
   reverse = false;
   p = 1;
+  MyFilter;
   data = [];
 
   constructor(private dataS: DataService, private auth: AuthserviceService) {
