@@ -88,9 +88,9 @@
                   <td>{{x.username}}</td>
                   <td>{{x.user_address}}</td>
                   <td>{{x.user_phoneNumber}}</td>
-                  <td class="link-custom " (click) = "deleteRow(x._id)">Delete</td>
+                  <td class="link-custom " (click) = "DeleteOrder(x._id,x.productId)">Delete</td>
                   <td></td>
-                  <td class="link-custom " (click) = "deleteRow(x._id)">Processing start</td>
+                  <td class="link-custom " (click) = "updateStatus(x._id,'processing')">Processing start</td>
                 </tr>
               </tbody>
           
@@ -162,7 +162,7 @@
               </thead>
           <tbody>
             <tr *ngFor="let x of data | filterOrder: OrderStatusCurrent | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'pending', itemsPerPage: 4, currentPage: pPending }">
-              <td class="link-custom " (click) = "deleteRow(x._id)">Cancel Processing</td>
+              <td class="link-custom " (click) = "updateStatus(x._id,'pending')">Cancel Processing</td>
               <td>{{x._id}}</td>
               <td>{{x.owner_id}}</td>
               <td>{{x.productName}}</td>
@@ -170,9 +170,9 @@
               <td>{{x.username}}</td>
               <td>{{x.user_address}}</td>
               <td>{{x.user_phoneNumber}}</td>
-              <td class="link-custom " (click) = "deleteRow(x._id)">Delete</td>
+              <td class="link-custom " (click) = "DeleteOrder(x._id,productId)">Delete</td>
               <td></td>
-              <td class="link-custom " (click) = "deleteRow(x._id)">Compelted</td>
+              <td class="link-custom " (click) = "updateStatus(x._id,'completed')">Compelted</td>
             </tr>
           </tbody>
             </table>
@@ -236,8 +236,6 @@
                       <span [hidden]="!reverse">▲</span>
                     </span>
                   </th>
-                  <th>Delete</th>
-                  <th></th>
                 </tr>
               
               </thead>
@@ -250,7 +248,6 @@
               <td>{{x.username}}</td>
               <td>{{x.user_address}}</td>
               <td>{{x.user_phoneNumber}}</td>
-              <td class="link-custom" (click) = "deleteRow(x._id)">Delete</td>
             </tr>
           </tbody>
             </table>

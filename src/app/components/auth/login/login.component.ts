@@ -10,9 +10,9 @@ import {Router} from '@angular/router'
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  private account: account;
-  private condition = false;
-  private notification = "";
+  account: account;
+  condition = false;
+  notification = "";
   
   
   constructor(private fb: FormBuilder,private auth : AuthserviceService,private router: Router) {

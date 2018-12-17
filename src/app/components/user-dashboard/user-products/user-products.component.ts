@@ -19,13 +19,16 @@ export class UserProductsComponent implements OnInit {
   itemCreated: boolean;
   responses: Array<any>;
   imageProgress: any;
-  private hasBaseDropZoneOver: boolean = false;
+  hasBaseDropZoneOver: boolean = false;
   validityStatement = "";
-  private validity = false;
-  private uploader: FileUploader;
-  private message = "";
+  validity = false;
+  uploader: FileUploader;
+  message = "";
   formCondition   = true;
   editing = false
+  MyFilter;
+  pOrder = 1;
+  pItem =1;
 
 
   // For shop request
@@ -251,7 +254,7 @@ export class UserProductsComponent implements OnInit {
     });
     this.goToForm();
   }
-  editItem(productName, brandName, price, details, image){
+  editItem(productName, brandName, price, details, amount, category){
     //TODO: ADD LOGIC HERE
   }
   fileOverBase(e: any): void {

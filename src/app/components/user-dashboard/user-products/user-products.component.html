@@ -81,7 +81,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let x of dataItems | filterID: id | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'laptop', itemsPerPage: 4, currentPage: pLaptop }">
+          <tr *ngFor="let x of dataItems | filterID: id | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'item', itemsPerPage: 4, currentPage: pItem }">
             <td>{{x._id}}</td>
             <td>{{x.name}}</td>
             <td>{{x.brand}}</td>
@@ -98,7 +98,7 @@
         </tbody>
       </table>
       <div class="pageControl">
-        <pagination-controls id="laptop" (pageChange)="pLaptop = $event" autoHide="true" responsive="true"></pagination-controls>
+        <pagination-controls id="item" (pageChange)="pItem = $event" autoHide="true" responsive="true"></pagination-controls>
       </div>
     </div>
   </div>
@@ -224,7 +224,7 @@
               <button class="btn link-custom" (click)="goToForm()">Back</button>
             </div>
             <div class="col-6">
-              <button class="btn link-custom fright" [disabled]="AddingItemForm.invalid" (click)="addItem(Name.value,brand.value,price.value,details.value,image.value,amnt.value,cat.value)">Add
+              <button class="btn link-custom fright" [disabled]="AddingItemForm.invalid" (click)="addItem(Name.value,brand.value,price.value,details.value,amnt.value,cat.value)">Add
                 item </button>
             </div>
           </div>
@@ -433,7 +433,7 @@
           
           </thead>
       <tbody>
-        <tr *ngFor="let x of dataOrders | filterID: id | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'pending', itemsPerPage: 4, currentPage: pPending }">
+        <tr *ngFor="let x of dataOrder | filterID: id | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'order', itemsPerPage: 4, currentPage: pOrder }">
           <td>{{x._id}}</td>
           <td>{{x.productName}}</td>
           <td>{{x.productPrice}}</td>
@@ -449,7 +449,7 @@
   
     </table>
     <div class="pageControl">
-        <pagination-controls id="pending" (pageChange)="pPending = $event" autoHide="true" responsive="true"></pagination-controls>
+        <pagination-controls id="order" (pageChange)="pOrder = $event" autoHide="true" responsive="true"></pagination-controls>
       </div>
   </div>
 </div>
