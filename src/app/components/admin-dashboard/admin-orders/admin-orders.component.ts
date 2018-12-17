@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService} from '../../../../services/dataService/data.service';
+import { orderDelete,orderUpdate,DataService, order} from '../../../../services/dataService/data.service';
 import { AuthserviceService} from '../../../../services/auth/authservice.service';
+import { subscribeOn } from 'rxjs/operators';
 
 @Component({
   selector: 'app-admin-orders',
@@ -43,5 +44,28 @@ export class AdminOrdersComponent implements OnInit {
   }
   changeStatus(status){
     this.OrderStatusCurrent = status;
+  }
+  updateStatus(id,status){
+    var updatedOrder: orderUpdate = {
+      orderStatus: status,
+      order_id         : id
+    }
+    this.dataS.changeOrderStatus(updatedOrder).subscribe((e)=>{
+      this.auth.setToken(e.token);
+      this.getOrders();
+    });
+    console.log(id,status);
+  }
+  DeleteOrder(id,productId){
+    console.log(id);
+    var orderDelete: orderDelete = {
+      order_id: id,
+      item_id: productId
+    }
+    this.dataS.deleteOrder(orderDelete).subscribe((e)=>{
+      console.log('subscribed')
+      this.auth.setToken(e.token);
+      this.getOrders();
+    });
   }
 }

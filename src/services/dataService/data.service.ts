@@ -111,6 +111,18 @@ export interface shopItems {
   token: any
 }
 
+
+export interface orderUpdate {
+  orderStatus: any,
+  order_id   : any
+}
+
+export interface orderDelete {
+  item_id : any,
+  order_id: any
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -159,6 +171,27 @@ export class DataService {
     var url = environment_url + '/order/' + id;
     const httpOptions = new HttpHeaders({'id':id, 'token': token})
     return this.http.get<validatedOrder>(url,{headers: httpOptions});
+  }
+
+  changeOrderStatus(orderUpdate: orderUpdate):Observable<requestreply>{
+
+    var id = this.auth.getId();
+    var token = this.auth.getToken();
+    var url = environment_url + '/order' + '/update';
+    const httpOptions = new HttpHeaders({'id':id, 'token': token})
+    return this.http.post<requestreply>(url,orderUpdate,{headers: httpOptions});    
+
+  }
+
+  deleteOrder(order:orderDelete):Observable<requestreply>{
+    console.log('in delete order');
+    var id = this.auth.getId();
+    var token = this.auth.getToken();
+    var url = environment_url + '/order' + '/delete';
+    console.log(url)
+    const httpOptions = new HttpHeaders({'id':id, 'token': token})
+    return this.http.post<requestreply>(url,order,{headers: httpOptions});    
+
   }
 
   getUserOrders(): Observable<validatedOrder> {
