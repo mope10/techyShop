@@ -12,6 +12,7 @@ export class NotificationsComponent implements OnInit {
   key = "owner_id";
   reverse = false;
   showShopRequest = true;
+  p= 1;
   constructor(private dataS: DataService, private auth: AuthserviceService) {
     this.getShops();
    }

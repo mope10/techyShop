@@ -10,6 +10,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FilterPipeCategory} from '../pipe/filterCategory.pipe'; //to search for only category
 import { FilterPipeOrder} from '../pipe/filterOrder.pipe'; //to search for only order
 import { FilterPipeRequests} from '../pipe/filterRequests.pipe'; //to search for only request
+import { FilterPipeID } from '../pipe/filterID.pipe'; //to search for only request
+import { FilterPipeAmount} from '../pipe/filterAmount.pipe'; //to search for only amount
 //FIle upload module
 import {FileUploadModule} from 'ng2-file-upload';
 
@@ -59,6 +61,8 @@ import { NotificationsComponent } from './components/admin-dashboard/notificatio
     FilterPipeCategory,
     FilterPipeOrder,
     FilterPipeRequests,
+    FilterPipeID,
+    FilterPipeAmount,
     NotificationsComponent
   ],
   imports: [

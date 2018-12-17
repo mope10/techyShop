@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import {shareReplay, throwIfEmpty,map} from 'rxjs/operators';
-import {Router} from '@angular/router'
+import {Router} from '@angular/router';
 import {environment_url} from "../../environments/environment";
 import {AuthserviceService} from "../auth/authservice.service";
 
@@ -59,7 +59,7 @@ export interface orderCreating {
   item_id       : Number,
 }
 
-export interface orders {
+export interface order {
 
   orderStatus: String,
   _id: Number,
@@ -89,7 +89,7 @@ export interface requestreply{
 export interface validatedOrder {
 
   token: any,
-  orders: orders[]
+  orders: order[]
 
 }
 
@@ -116,7 +116,14 @@ export interface shopItems {
 })
 
 export class DataService {
+  private messageSource = new BehaviorSubject('All');
+  currentMessage = this.messageSource.asObservable();
+
+
   constructor(private http: HttpClient, private router: Router,private auth: AuthserviceService) { 
+  }
+  changeMessage(message: string) {
+    this.messageSource.next(message)
   }
   
   getUserData(){

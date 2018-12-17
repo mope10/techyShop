@@ -14,6 +14,7 @@ export class AdminOrdersComponent implements OnInit {
   pPending = 1;
   pProcessing = 1;
   pCompleted = 1;
+  MyFilter;
   data = [];
   constructor(private dataS: DataService,private auth : AuthserviceService) { 
     this.getOrders();

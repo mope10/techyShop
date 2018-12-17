@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ConditionalExpr } from '@angular/compiler';
-import { NgxPaginationModule } from 'ngx-pagination'
 import {orderCreating,DataService} from '../../../../services/dataService/data.service'
 import {Router} from '@angular/router'
 import {AuthserviceService} from '../../../../services/auth/authservice.service'; 
@@ -22,6 +21,9 @@ export class StoreComponent implements OnInit {
   src = "";
   item_id = 0;
   brand = "";
+  MyFilter;
+
+ 
 
   constructor(private dataS: DataService,private router : Router, private auth: AuthserviceService) { 
     this.getItems();
@@ -29,7 +31,8 @@ export class StoreComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.dataS.currentMessage.subscribe(message => this.category = message)
+    this.search(this.category);
   }
   search(query) {
     if (query == "All")
@@ -38,6 +41,7 @@ export class StoreComponent implements OnInit {
       this.categorySearch = query;
     console.log(query);
     this.category = query;
+
   }
   p = 1;
 

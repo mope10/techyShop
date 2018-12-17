@@ -49,8 +49,17 @@
     align-self: center;
     text-align: center; 
     transition: 300ms;
+    margin-left: 0px;
  
     
+}
+.activeSignup{
+    background: orangered;
+    width: 110px;
+    .textNavSignup{
+        color:white;
+
+    }
 }
 .backSignUp:Hover{
     background: orangered;
@@ -60,9 +69,6 @@
 
     }
 }
-
-
-
 
  .underline {
     display: inline;

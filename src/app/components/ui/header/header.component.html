@@ -19,8 +19,8 @@
         <a class="nav-link" routerLink="login" routerLinkActive="active"><span class="textNav underline">LOGIN</span></a>
       </li>
       <li class="nav-item" *ngIf = "!accountApproval()">
-        <div class="backSignUp">  
-          <a class="nav-link" routerLink="register" routerLinkActive="active"><span class="textNavSignup">SIGN UP</span></a>
+        <div class="backSignUp" routerLinkActive="activeSignup">  
+          <a class="nav-link" routerLink="register" ><span class="textNavSignup">SIGN UP</span></a>
         </div>
       
       </li>

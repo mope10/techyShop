@@ -71,3 +71,16 @@ pagination-controls /deep/ .ngx-pagination li.current {
  font-size: 20px;
  color: rgb(93, 216, 93);
 }
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  #myImg:hover {opacity: 0.7; text-decoration: underline;}
+
+.text-overflow{
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
