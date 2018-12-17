@@ -37,7 +37,7 @@ export class AdminOrdersComponent implements OnInit {
       //console.log(orders.order);
       this.auth.setToken(orders.token);
       this.data = orders.orders;
-      console.log(this.data);
+      console.log('this orders: ',this.data);
     });
   }
   changeStatus(status){
