@@ -122,6 +122,11 @@ export interface orderDelete {
   order_id: any
 }
 
+export interface ownerShopData {
+  token: any,
+  shop: adminShopRequests
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -246,6 +251,23 @@ export class DataService {
     var url = environment_url + '/shop'+'/upgrade/'+owner_id;
     const httpOptions = new HttpHeaders({'id':id, 'token': token});
     return this.http.post<requestreply>(url,{owner_id: owner_id},{headers: httpOptions});
+  }
+
+  downgradeShop(owner_id):Observable<requestreply>{
+    var id = this.auth.getId();
+    var token = this.auth.getToken();
+    var url = environment_url + '/shop'+'/downgrade/'+owner_id;
+    const httpOptions = new HttpHeaders({'id':id, 'token': token});
+    return this.http.post<requestreply>(url,{owner_id: owner_id},{headers: httpOptions});
+  }
+
+  getShop(): Observable<ownerShopData> {
+    var id = this.auth.getId();
+    var token = this.auth.getToken();
+    var url = environment_url + '/shop';
+    const httpOptions = new HttpHeaders({'id':id, 'token': token});
+    return this.http.get<ownerShopData>(url,{headers: httpOptions});
+
   }
 
 }

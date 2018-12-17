@@ -1,9 +1,10 @@
-<div class="col-12" [hidden]="showTable">
+<div class="col-12" *ngIf="requestCondition" [hidden]="showTable">
   <button class="btn link-custom" (click)="makeRequest()">Request Shop Privileges</button><br>  
-  <span class="textAdmin">{{confirmation}}</span>
 </div>
+<span class="textAdmin">{{confirmation}}</span>
+
 <br>
-<div [hidden]="showTable" class="custom-body">
+<div [hidden]="!showTable" class="custom-body">
     <ul class="nav nav-tabs custom-tabs" id="myTab" role="tablist">
       <li class="nav-item">
         <a class="nav-link active" id="ShopRqst-tab" data-toggle="tab" aria-controls="ShopRqst" aria-selected="true"

@@ -5,6 +5,7 @@ import { shopRequest,DataService, itemData } from "../../../../services/dataServ
 import {FileUploader, FileUploaderOptions, ParsedResponseHeaders} from 'ng2-file-upload';
 import {Cloudinary} from '@cloudinary/angular-5.x';
 import { identifierModuleUrl } from '@angular/compiler';
+import { fakeAsync } from '@angular/core/testing';
 
 @Component({
   selector: 'app-user-products',
@@ -30,6 +31,9 @@ export class UserProductsComponent implements OnInit {
   pOrder = 1;
   pItem =1;
 
+
+  //for confirmation condition
+  requestCondition = true;
 
   // For shop request
 
@@ -285,10 +289,20 @@ export class UserProductsComponent implements OnInit {
   }
 
   checkprev(){
-    console.log(this.status);
-    if(this.status == "shop") {
-      this.showTable = true;
-    }
+    this.datas.getShop().subscribe((e)=>{
+      this.auth.setToken(e.token);
+      console.log(e);
+      if(e.shop.shopPrivilages) {
+        this.showTable = true;
+        this.requestCondition = false;
+      }
+      else if (e.shop.shopRequest){
+        console.log('asdasdasdasasdasdasdasdas');
+        this.confirmation = "Request has been made waiting for response";
+        this.requestCondition = false;
+      }
+      
+    })
     
   }
   makeRequest() {

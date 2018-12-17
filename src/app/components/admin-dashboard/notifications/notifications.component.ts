@@ -37,7 +37,16 @@ export class NotificationsComponent implements OnInit {
     console.log(this.showShopRequest);
   }
   takeStatus(owner_id){
-    console.log(owner_id);
+    this.dataS.downgradeShop(owner_id).subscribe((result)=>{
+      this.auth.setToken(result.token);
+      if(result.result){
+        console.log('staus given');
+        this.getShops();
+      }
+      else {
+        console.log('status not given');
+      }
+    });
   }
   giveStatus(owner_id){
     this.dataS.upgradeShop(owner_id).subscribe((result)=>{
