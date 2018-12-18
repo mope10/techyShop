@@ -88,12 +88,11 @@
                   <td>{{x.username}}</td>
                   <td>{{x.user_address}}</td>
                   <td>{{x.user_phoneNumber}}</td>
-                  <td class="link-custom " (click) = "DeleteOrder(x._id,x.productId)">Delete</td>
+                  <td class="link-custom " (click)="DeleteOrder(x._id,x.productId)">Delete</td>
                   <td></td>
-                  <td class="link-custom " (click) = "updateStatus(x._id,'processing')">Processing start</td>
+                  <td class="link-custom " (click)="updateStatus(x._id,'processing')">Processing start</td>
                 </tr>
               </tbody>
-          
             </table>
             <div class="pageControl">
                 <pagination-controls id="pending" (pageChange)="pPending = $event" autoHide="true" responsive="true"></pagination-controls>

@@ -227,6 +227,9 @@ table {
         }
         .details {
             font-size: 13px;
+            white-space: nowrap; 
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .price {
             font-weight: 500;
