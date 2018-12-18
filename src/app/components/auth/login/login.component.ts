@@ -30,14 +30,19 @@ export class LoginComponent implements OnInit {
     });
   }
   login(email, password) {
-    this.account = {
+    return new Promise(resolve => {
+      this.account = {
       email: email,
       password: password
     }
     this.auth.login(this.account);
-    if (!localStorage.getItem("token")){
-      this.notification = "Your username or password is wrong"
-    }
-  }
 
+  });
+}
+giveerror(){
+  if (!localStorage.getItem("token")){
+    this.notification = "Your username or password is wrong"
+  }
+  return false;
+}
 }

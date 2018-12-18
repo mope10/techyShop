@@ -83,7 +83,7 @@
                   </div>
                 </div>
                 <div class="button-login">
-                  <button class="link-custom btn" (click)="login(email.value,password.value)" [disabled]="loginForm.invalid">Login</button>
+                  <button class="link-custom btn" (click)="login(email.value,password.value).then(giveerror)" [disabled]="loginForm.invalid">Login</button>
                 </div>
             </form>
             <hr> 

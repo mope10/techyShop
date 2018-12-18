@@ -1,10 +1,11 @@
-<div class="col-12" *ngIf="requestCondition" [hidden]="showTable">
+<div class="spinner" [hidden]="!spinner"><img src="../../../../assets/photos/spinner.gif" /></div>
+<div [hidden]="spinner"><div class="col-12" *ngIf="requestCondition" [hidden]="showTable">
   <button class="btn link-custom" (click)="makeRequest()">Request Shop Privileges</button><br>  
 </div>
 <span class="textAdmin">{{confirmation}}</span>
 
 <br>
-<div [hidden]="showTable" class="custom-body">
+<div [hidden]="!showTable" class="custom-body">
     <ul class="nav nav-tabs custom-tabs" id="myTab" role="tablist">
       <li class="nav-item">
         <a class="nav-link active" id="ShopRqst-tab" data-toggle="tab" aria-controls="ShopRqst" aria-selected="true"
@@ -102,6 +103,8 @@
         <pagination-controls id="item" (pageChange)="pItem = $event" autoHide="true" responsive="true"></pagination-controls>
       </div>
     </div>
+    <div class="spinner" [hidden]="!spinner"><img src="../../../../assets/photos/spinner.gif" /></div>
+
   </div>
 
   <div class="custom-body itemEditor" [hidden]="formCondition">
@@ -445,7 +448,7 @@
           <td>{{x.user_phoneNumber}}</td>
           <td>{{x.orderStatus}}</td>
           <td class="link-custom " (click) = "deleteRow(x._id)">Delete</td>
-          <td class="link-custom " (click) = "updateStatus(x._id,'complete')" [hidden]="x.orderStatus!='processing'">Completed</td>
+          <td class="link-custom " (click) = "updateStatus(x._id,'completed')" [hidden]="x.orderStatus!='processing'">Completed</td>
           <td class="link-custom " (click) = "updateStatus(x._id,'processing')" [hidden]="x.orderStatus!='Pending'">Processing start</td>
         </tr>
       </tbody>
@@ -455,5 +458,7 @@
         <pagination-controls id="order" (pageChange)="pOrder = $event" autoHide="true" responsive="true"></pagination-controls>
       </div>
   </div>
+
+</div>
 </div>
 </div>

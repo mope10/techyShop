@@ -13,13 +13,12 @@ export class UserHistoryComponent implements OnInit {
   p = 1;
   MyFilter;
   data = [];
-  spinner = false;
+  spinner;
+  
 
   constructor(private dataS: DataService, private auth: AuthserviceService) {
     this.spinner = true;
-    this.getUserOrders().then(function(value) {
-      console.log("i am already here");
-    });
+    this.getUserOrders();
 
 
    }

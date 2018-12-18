@@ -9,6 +9,7 @@ import { subscribeOn } from 'rxjs/operators';
   styleUrls: ['./admin-orders.component.scss']
 })
 export class AdminOrdersComponent implements OnInit {
+  spinner; //load spinner
   OrderStatusCurrent = "pending";
   key = "id";
   reverse = false;
@@ -17,7 +18,8 @@ export class AdminOrdersComponent implements OnInit {
   pCompleted = 1;
   MyFilter;
   data = [];
-  constructor(private dataS: DataService,private auth : AuthserviceService) { 
+  constructor(private dataS: DataService,private auth : AuthserviceService) {
+    this.spinner = true; //spinner enabled
     this.getOrders();
   }
 
@@ -35,11 +37,14 @@ export class AdminOrdersComponent implements OnInit {
   }
 
   getOrders(){
+    return new Promise(resolve => {
     this.dataS.getOrder().subscribe((orders)=>{
       //console.log(orders.order);
       this.auth.setToken(orders.token);
       this.data = orders.orders;
       console.log('this orders: ',this.data);
+      resolve(this.spinner = false);
+    });
     });
   }
   changeStatus(status){

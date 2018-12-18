@@ -1,5 +1,7 @@
   <div class="custom-body settings">
-    <div class="row">
+      <div class="spinner" [hidden]="!spinner"><img src="../../../../assets/photos/spinner.gif" /></div>
+
+    <div class="row" [hidden]="spinner">
       <div class="col-8 account-info">
         <div class="row">
           <div class="col-7 heading">

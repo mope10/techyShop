@@ -14,6 +14,7 @@ import { fakeAsync } from '@angular/core/testing';
 })
 export class UserProductsComponent implements OnInit {
   name; BName; priceS; amount; detail; img; caty;
+  spinner; //load spinner
   selectedLaptop = false; selectedMobile = false; selectedAccessories = false; selectedGaming = false; selectedDisplay = false; selectedSpeaker = false; 
   AddingItemForm: FormGroup;
   EdittingItemForm: FormGroup;
@@ -58,6 +59,7 @@ export class UserProductsComponent implements OnInit {
 
   file: File;
   constructor(private fb: FormBuilder, private auth: AuthserviceService,private cloudinary: Cloudinary,private zone : NgZone, private datas: DataService) {
+    this.spinner = true; //spinner enabled
     this.getData();
     this.createForm();
     this.responses = [];
@@ -161,6 +163,7 @@ export class UserProductsComponent implements OnInit {
     this.caty = cat;
   }
   getData() {
+    return new Promise(resolve => {
     this.datas.getUserData().subscribe((e) => {
       this.status = e.user.accountType;
       this.shopAddress = e.user.address;
@@ -168,11 +171,11 @@ export class UserProductsComponent implements OnInit {
       this.shopOwner   = e.user.firstName + " " + e.user.lastName;
       this.id = e.user._id;
       console.log(e.user._id, this.id);
-      this.checkprev();
       this.getItems();
-      this.getOrders();
+
     });
-  }
+  });
+}
   sort(key){
     if (this.key === key) {
       this.reverse = !this.reverse;
@@ -229,7 +232,7 @@ export class UserProductsComponent implements OnInit {
   updateStatus(id,status){
     var updatedOrder: orderUpdate = {
       orderStatus: status,
-      order_id         : id
+      order_id: id
     }
     this.datas.changeOrderStatus(updatedOrder).subscribe((e)=>{
       this.auth.setToken(e.token);
@@ -314,7 +317,7 @@ export class UserProductsComponent implements OnInit {
       }
       
     })
-    
+    return false;
   }
   makeRequest() {
     var shopRequest: shopRequest = {
@@ -332,18 +335,26 @@ export class UserProductsComponent implements OnInit {
     })
   }
   getOrders(){
-    this.datas.getOrder().subscribe((orders)=>{
+    return new Promise(resolve => {
+      this.datas.getOrder().subscribe((orders)=>{
       console.log(orders.orders);
       this.auth.setToken(orders.token);
       this.dataOrder = orders.orders;
       console.log(this.dataOrder,orders.orders);
+      resolve(this.spinner = false);
+      resolve(this.checkprev());
+      return false;
     });
+  });
   }
   getItems(){
-    this.datas.getShopItems().subscribe((items)=>{
+    return new Promise(resolve => {
+      this.datas.getShopItems().subscribe((items)=>{
       this.dataItems = items.shopItems;
       console.log(items);
-    })
+      resolve(this.getOrders());
+    });
+  });
   }
   goToEditForm(){
     this.catReset();

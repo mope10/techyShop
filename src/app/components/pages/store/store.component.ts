@@ -10,6 +10,7 @@ import {AuthserviceService} from '../../../../services/auth/authservice.service'
 })
 export class StoreComponent implements OnInit {
   category = "All";
+  spinner; //load spinner
   categorySearch = "";
   data;
   owner = 0;
@@ -26,6 +27,7 @@ export class StoreComponent implements OnInit {
  
 
   constructor(private dataS: DataService,private router : Router, private auth: AuthserviceService) { 
+    this.spinner = true; //spinner enabled    
     this.getItems();
     this.orderButtonCheck();
   }
@@ -46,9 +48,12 @@ export class StoreComponent implements OnInit {
   p = 1;
 
   getItems(){
-    this.dataS.getItems().subscribe((items)=>{
+    return new Promise(resolve => {
+      this.dataS.getItems().subscribe((items)=>{
       this.data = items;
-    })
+      resolve(this.spinner = false);
+    });
+  });
   }
 
   setItemView(owner,id,brand,name,price,image,detail){

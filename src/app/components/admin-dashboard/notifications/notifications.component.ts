@@ -8,12 +8,14 @@ import { AuthserviceService} from '../../../../services/auth/authservice.service
   styleUrls: ['./notifications.component.scss']
 })
 export class NotificationsComponent implements OnInit {
+  spinner; //load spinner
   data = [];
   key = "owner_id";
   reverse = false;
   showShopRequest = true;
   p= 1;
   constructor(private dataS: DataService, private auth: AuthserviceService) {
+    this.spinner = true; //spinner enabled
     this.getShops();
    }
 
@@ -21,11 +23,14 @@ export class NotificationsComponent implements OnInit {
   }
 
   getShops() {
+    return new Promise(resolve => {
     this.dataS.getShopRequests().subscribe((shops)=>{
       this.auth.setToken(shops.token);
       this.data =shops.shopRequests;
       console.log(shops.shopRequests);
+      resolve(this.spinner = false);
     })
+  });
   }
   showShops(){
     this.showShopRequest = false;

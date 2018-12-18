@@ -7,10 +7,12 @@ import {orderCreating,DataService} from '../../../../services/dataService/data.s
   styleUrls: ['./landing-page.component.scss']
 })
 export class LandingPageComponent implements OnInit {
+  spinner; //load spinner
   data =[];
   parentMessage = "All";
   category;
   constructor(private dataS: DataService) {
+    this.spinner = true; //spinner enabled
     this.getItems();
 
    }
@@ -19,9 +21,12 @@ export class LandingPageComponent implements OnInit {
     this.dataS.currentMessage.subscribe(message => this.category = message)
   }
   getItems(){
-    this.dataS.getItems().subscribe((items)=>{
+    return new Promise(resolve => {
+      this.dataS.getItems().subscribe((items)=>{
       this.data = items;
-    })
+      resolve(this.spinner = false)
+    });
+  });
   }
   categoryChange(category) {
     this.dataS.changeMessage(category)

@@ -14,8 +14,9 @@ import { THROW_IF_NOT_FOUND } from '@angular/core/src/di/injector';
   styleUrls: ['./admin-inventory.component.scss']
 })
 export class AdminInventoryComponent implements OnInit {
-  name; BName; priceS; amount; detail; img; caty;
-  selectedLaptop = false; selectedMobile = false; selectedAccessories = false; selectedGaming = false; selectedDisplay = false; selectedSpeaker = false; 
+  spinner; //load spinner
+  name; BName; priceS; amount; detail; img; caty; //editing fields
+  selectedLaptop = false; selectedMobile = false; selectedAccessories = false; selectedGaming = false; selectedDisplay = false; selectedSpeaker = false; //cat select
   AddingItemForm: FormGroup;
   EdittingItemForm: FormGroup;
   responses: Array<any>;
@@ -42,6 +43,7 @@ export class AdminInventoryComponent implements OnInit {
   data;
   file: File;
   constructor(private dataS : DataService,private fb: FormBuilder, private auth: AuthserviceService,private cloudinary: Cloudinary,private zone : NgZone) {
+    this.spinner = true;
     this.createForm();
     this.getItems();
     this.responses = [];
@@ -154,11 +156,14 @@ export class AdminInventoryComponent implements OnInit {
     this.key = key;
   }
   getItems(){
+    return new Promise(resolve => {
     console.log("here")
     this.dataS.getItems().subscribe((items)=>{
       this.data = items;
       console.log(items)
-    })
+      resolve(this.spinner = false);
+    });
+    });
   }
   fileNameChecker(fileName: string) {
 

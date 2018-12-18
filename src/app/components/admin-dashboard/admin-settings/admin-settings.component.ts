@@ -8,6 +8,7 @@ import { DataService } from "../../../../services/dataService/data.service";
   styleUrls: ['./admin-settings.component.scss']
 })
 export class AdminSettingsComponent implements OnInit {
+  spinner;
   firstName = "";
   lastName = "";
   status = "";
@@ -21,6 +22,7 @@ export class AdminSettingsComponent implements OnInit {
   EditingAdminInfo: FormGroup;
   editDisabled = true;
   constructor(private data: DataService, private fb: FormBuilder) {
+    this.spinner = true; //spinner enabled
     this.getData();
     this.createForm();
   }
@@ -38,13 +40,17 @@ export class AdminSettingsComponent implements OnInit {
   }
 
   getData() {
+    return new Promise(resolve => {
     this.data.getUserData().subscribe((e) => {
       this.firstName = e.user.firstName;
       this.lastName = e.user.lastName;
       this.address = e.user.address;
       this.status = e.user.accountType;
       this.number = e.user.phoneNumber;
+      resolve(this.spinner = false);
     });
+  });
+
   }
   editEnable(firstName, lastName, number, address) {
     this.fname = firstName;

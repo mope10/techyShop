@@ -13,6 +13,8 @@ export class UserSettingsComponent implements OnInit {
   status = "";
   address = "";
   number = "";
+  spinner; //load spinner
+
 
   fname = "";
   lname = "";
@@ -22,6 +24,7 @@ export class UserSettingsComponent implements OnInit {
   editDisabled = true;
 
   constructor(private data: DataService, private fb: FormBuilder) {
+    this.spinner = true; //spinner enabled    
     this.getData();
     this.createForm();
 
@@ -42,13 +45,16 @@ export class UserSettingsComponent implements OnInit {
   }
 
   getData() {
-    this.data.getUserData().subscribe((e) => {
+    return new Promise(resolve => {
+      this.data.getUserData().subscribe((e) => {
       this.firstName = e.user.firstName;
       this.lastName = e.user.lastName;
       this.address = e.user.address;
       this.status = e.user.accountType;
       this.number = e.user.phoneNumber;
+      resolve(this.spinner = false);      
     });
+  });
   }
   editEnable(firstName, lastName, number, address) {
     this.fname = firstName;

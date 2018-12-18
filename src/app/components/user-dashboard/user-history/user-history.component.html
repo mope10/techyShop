@@ -69,8 +69,9 @@
       </tr>
     
     </thead>
+
 <tbody><!--ORderSTatusCurret REmoved-->
-  <img src="../../../../assets/photos/spinner.gif" class="spinner" [hidden]="!spinner"/>
+
   <tr *ngFor="let x of data | filter:MyFilter | orderBy: key : reverse | paginate: {itemsPerPage: 4, currentPage: p }" class="{{x.orderStatus}}">
     <td>{{x._id}}</td>
     <td>{{x.owner_id}}</td>
@@ -83,7 +84,7 @@
   </tr>
 </tbody>
   </table>
-
+  <div class="spinner" [hidden]="!spinner"><img src="../../../../assets/photos/spinner.gif" /></div>
 <div class="pageControl">
   <pagination-controls (pageChange)="p = $event" autoHide="true" responsive="true"></pagination-controls>
 </div>
