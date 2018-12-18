@@ -13,9 +13,18 @@ export class UserHistoryComponent implements OnInit {
   p = 1;
   MyFilter;
   data = [];
+  spinner = false;
 
   constructor(private dataS: DataService, private auth: AuthserviceService) {
-    this.getUserOrders(); 
+    this.spinner = true;
+    this.getUserOrders().then(function(value) {
+      console.log("i am already here");
+    });
+
+
+   }
+   spinnerChange() {
+    this.spinner = false;
    }
 
   ngOnInit() {
@@ -31,12 +40,15 @@ export class UserHistoryComponent implements OnInit {
     this.key = key;
   }
   getUserOrders() {
-    this.dataS.getUserOrders().subscribe((orders)=>{
-      console.log(orders)
-      this.auth.setToken(orders.token);
-      this.data = orders.orders
-      console.log(orders.orders);
-    })
+    return new Promise(resolve => {
+      this.dataS.getUserOrders().subscribe((orders) => {
+        console.log(orders)
+        this.auth.setToken(orders.token);
+        this.data = orders.orders
+        console.log(orders.orders);
+        resolve(this.spinner = false);
+      });
+    });
   }
 
 }
