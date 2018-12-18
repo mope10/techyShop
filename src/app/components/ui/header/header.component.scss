@@ -97,7 +97,12 @@
   }
 
 .active {
-    color: orangered !important;    
     border-top: orangered 1px solid;
     padding-top: 0px;
+}
+@media only screen and (max-width: 600px) {
+    .active { 
+        border-top: none !important;
+        padding-top: 10px;
+    }
 }

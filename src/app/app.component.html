@@ -1,7 +1,7 @@
 <div  class="wrapper">
-    <app-header *ngIf="headerApproval()" ></app-header>
+    <app-header ></app-header><!--*ngIf="headerApproval()"-->
     <app-side-nav *ngIf="!headerApproval()"></app-side-nav>
-    <app-account-header *ngIf="!headerApproval()"></app-account-header>
+    <!--<app-account-header *ngIf="!headerApproval()"></app-account-header>-->
     <div [ngClass]="accountWrapper">
         <router-outlet></router-outlet>
     </div>
