@@ -4,7 +4,7 @@
 <span class="textAdmin">{{confirmation}}</span>
 
 <br>
-<div [hidden]="!showTable" class="custom-body">
+<div [hidden]="showTable" class="custom-body">
     <ul class="nav nav-tabs custom-tabs" id="myTab" role="tablist">
       <li class="nav-item">
         <a class="nav-link active" id="ShopRqst-tab" data-toggle="tab" aria-controls="ShopRqst" aria-selected="true"
@@ -430,11 +430,13 @@
                 </th>
               <th>Delete</th>
               <th></th>
+              <th></th>
             </tr>
           
           </thead>
       <tbody>
         <tr *ngFor="let x of dataOrder | filterID: id | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'order', itemsPerPage: 4, currentPage: pOrder }">
+          <td class="link-custom " (click) = "updateStatus(x._id,'Pending')" [hidden]="x.orderStatus!='processing'">Processing Cancel</td>
           <td>{{x._id}}</td>
           <td>{{x.productName}}</td>
           <td>{{x.productPrice}}</td>
@@ -443,8 +445,8 @@
           <td>{{x.user_phoneNumber}}</td>
           <td>{{x.orderStatus}}</td>
           <td class="link-custom " (click) = "deleteRow(x._id)">Delete</td>
-          <td></td>
-          <td class="link-custom " (click) = "deleteRow(x._id)">Processing start</td>
+          <td class="link-custom " (click) = "updateStatus(x._id,'complete')" [hidden]="x.orderStatus!='processing'">Completed</td>
+          <td class="link-custom " (click) = "updateStatus(x._id,'processing')" [hidden]="x.orderStatus!='Pending'">Processing start</td>
         </tr>
       </tbody>
   

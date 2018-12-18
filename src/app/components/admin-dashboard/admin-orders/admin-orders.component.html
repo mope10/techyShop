@@ -162,7 +162,7 @@
               </thead>
           <tbody>
             <tr *ngFor="let x of data | filterOrder: OrderStatusCurrent | filter:MyFilter | orderBy: key : reverse | paginate: {id: 'pending', itemsPerPage: 4, currentPage: pPending }">
-              <td class="link-custom " (click) = "updateStatus(x._id,'pending')">Cancel Processing</td>
+              <td class="link-custom " (click) = "updateStatus(x._id,'Pending')">Cancel Processing</td>
               <td>{{x._id}}</td>
               <td>{{x.owner_id}}</td>
               <td>{{x.productName}}</td>

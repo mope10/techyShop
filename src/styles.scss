@@ -30,9 +30,10 @@ a:hover {
     background-color: #353535;
     color:white !important;
     border-radius:5px;
-    min-width:120px !important;
+    min-width:100px !important;
     text-align:center;
     font-size: 13px;
+    border-radius: 5px; 
 }
 
 .link-custom:hover {
@@ -296,6 +297,7 @@ table {
 }
 .spinner {
     position: relative;
+    margin: auto;
 }
 
 input[type=number]::-webkit-inner-spin-button, 

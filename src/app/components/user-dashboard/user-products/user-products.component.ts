@@ -1,7 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthserviceService } from '../../../../services/auth/authservice.service';
-import { shopRequest,DataService, itemData } from "../../../../services/dataService/data.service";
+import { shopRequest,DataService, itemData,orderUpdate } from "../../../../services/dataService/data.service";
 import {FileUploader, FileUploaderOptions, ParsedResponseHeaders} from 'ng2-file-upload';
 import {Cloudinary} from '@cloudinary/angular-5.x';
 import { identifierModuleUrl } from '@angular/compiler';
@@ -225,6 +225,17 @@ export class UserProductsComponent implements OnInit {
     this.selectedGaming = false; 
     this.selectedDisplay = false; 
     this.selectedSpeaker = false; 
+  }
+  updateStatus(id,status){
+    var updatedOrder: orderUpdate = {
+      orderStatus: status,
+      order_id         : id
+    }
+    this.datas.changeOrderStatus(updatedOrder).subscribe((e)=>{
+      this.auth.setToken(e.token);
+      this.getOrders();
+    });
+    console.log(id,status);
   }
   goToForm(){
     this.name = "";
