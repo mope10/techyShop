@@ -7,14 +7,14 @@ var bcrypt = require('bcrypt-nodejs');
 var autoIncrement = require('mongoose-auto-increment');
 
 
-var corsOptions = {
-  origin: 'https://localhost:4200/',
-}
+// var corsOptions = {
+//   origin: 'https://localhost:4200/',
+// }
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/dist'));
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 mongoose.connect("mongodb+srv://mustafa:lambghini@techshop-namus.mongodb.net/test?retryWrites=true",{ useNewUrlParser: true});
 // mongoose.connect("mongodb://localhost:27017");
 var db = mongoose.connection;
