@@ -7,13 +7,13 @@ var bcrypt = require('bcrypt-nodejs');
 var autoIncrement = require('mongoose-auto-increment');
 
 
-var corsOptions = {
-  origin: 'https://techshops.herokuapp.com/',
-}
+// var corsOptions = {
+//   origin: 'https://techshops.herokuapp.com/',
+// }
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors(corsOptions))
+app.use(express.static(__dirname + '/dist'))
 mongoose.connect("mongodb+srv://mustafa:lambghini@techshop-namus.mongodb.net/test?retryWrites=true",{ useNewUrlParser: true});
 // mongoose.connect("mongodb://localhost:27017");
 var db = mongoose.connection;
@@ -535,7 +535,7 @@ app.get("/user",verification,function(req,res){
   });
 });
 app.get('*',function(req,res){
-  res.send("Cannot find the specified link").json();
+  res.sendFile(path.join(__dirname+ '/dist/index.html'));
 });
 
 app.listen("8000", () => console.log('Listening on port'));
