@@ -3,12 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --set --prod"
   },
+  "license": "ISC",
   "private": true,
   "dependencies": {
     "@angular/animations": "^6.1.0",
@@ -40,7 +42,17 @@
     "rxjs": "~6.2.0",
     "rxjs-compat": "^6.3.3",
     "typeface-poppins": "0.0.54",
-    "zone.js": "~0.8.26"
+    "zone.js": "~0.8.26",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "fs": "0.0.1-security",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.3.9",
+    "mongoose-auto-increment": "^5.0.1",
+    "nan": "^2.11.1",
+    "node-pre-gyp": "^0.11.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.8.0",
@@ -62,5 +74,9 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
     "typescript": "~2.9.2"
+  },
+  "engines": {
+    "node" : "~10.11.0",
+    "npm" : "~6.4.1"
   }
 }
