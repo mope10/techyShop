@@ -5,6 +5,7 @@ var jwt        = require('jsonwebtoken')
 const cors     = require('cors')
 var bcrypt = require('bcrypt-nodejs');
 var autoIncrement = require('mongoose-auto-increment');
+var path = require("path");
 
 
 // var corsOptions = {
