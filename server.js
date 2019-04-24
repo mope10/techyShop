@@ -13,7 +13,7 @@ var autoIncrement = require('mongoose-auto-increment');
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(__dirnameher +'/dist'));
+app.use(express.static(__dirname +'/dist'));
 // app.use(cors(corsOptions));
 mongoose.connect("mongodb+srv://mustafa:lambghini@techshop-namus.mongodb.net/test?retryWrites=true",{ useNewUrlParser: true});
 // mongoose.connect("mongodb://localhost:27017");
