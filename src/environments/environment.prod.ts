@@ -1,4 +1,4 @@
 export const environment = {
   production: false
 };
-export const environment_url = 'localhost:8000';
+export const environment_url = 'http://localhost:8000';
