@@ -13,7 +13,7 @@ var autoIncrement = require('mongoose-auto-increment');
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(__dirname));
+app.use(express.static(__dirnameher));
 // app.use(cors(corsOptions));
 mongoose.connect("mongodb+srv://mustafa:lambghini@techshop-namus.mongodb.net/test?retryWrites=true",{ useNewUrlParser: true});
 // mongoose.connect("mongodb://localhost:27017");
@@ -539,4 +539,4 @@ app.get('*',function(req,res){
   res.sendFile(path.join(__dirname+ 'index.html'));
 });
 
-app.listen("8080", () => console.log('Listening on port'));
+app.listen(process.env.PORT || "8080", () => console.log('Listening on port'));
