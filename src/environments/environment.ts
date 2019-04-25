@@ -5,7 +5,7 @@
 export const environment = {
   production: false
 };
-export const environment_url = "https://techshops.herokuapp.com/"
+export const environment_url = "/"
 
 /*
  * For easier debugging in development mode, you can import the following file
