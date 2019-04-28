@@ -41,7 +41,6 @@ export class StoreComponent implements OnInit {
       this.categorySearch = "";
     else
       this.categorySearch = query;
-    console.log(query);
     this.category = query;
 
   }

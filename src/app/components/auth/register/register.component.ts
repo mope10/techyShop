@@ -70,7 +70,7 @@ export class RegisterComponent implements OnInit {
       number: phoneNumber,
       address: address
     }
-    console.log(this.User);
+
     this.auth.createUser(this.User).subscribe((value) => {
       console.log(value);
       if (value.creation == false) {

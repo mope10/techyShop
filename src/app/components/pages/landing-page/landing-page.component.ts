@@ -24,6 +24,7 @@ export class LandingPageComponent implements OnInit {
     return new Promise(resolve => {
       this.dataS.getItems().subscribe((items)=>{
       this.data = items;
+      console.log(this.data);
       resolve(this.spinner = false)
     });
   });

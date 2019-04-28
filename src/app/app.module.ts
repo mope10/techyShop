@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthserviceService } from '../services/auth/authservice.service'
+import { AuthserviceService } from '../services/auth/authservice.service';
+import { HttpModule } from '@angular/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { OrderModule } from 'ngx-order-pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter'; 
@@ -38,6 +39,9 @@ import { UserHistoryComponent } from './components/user-dashboard/user-history/u
 import { UserSettingsComponent } from './components/user-dashboard/user-settings/user-settings.component';
 import { UserProductsComponent } from './components/user-dashboard/user-products/user-products.component';
 import { NotificationsComponent } from './components/admin-dashboard/notifications/notifications.component';
+import { AuthGuardService } from 'src/services/authguard/auth-guard.service';
+import { AuthGuardServiceAdminService } from 'src/services/authGuardServiceAdmin/auth-guard-service-admin.service';
+import { DataService } from 'src/services/dataService/data.service';
 
 @NgModule({
   declarations: [
@@ -78,7 +82,10 @@ import { NotificationsComponent } from './components/admin-dashboard/notificatio
     Ng2SearchPipeModule 
   ],
   providers: [
-   
+   AuthserviceService,
+   AuthGuardService,
+   AuthGuardServiceAdminService,
+   DataService
   ],
   bootstrap: [AppComponent]
 })
