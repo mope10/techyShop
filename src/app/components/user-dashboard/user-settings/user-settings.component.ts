@@ -62,7 +62,6 @@ export class UserSettingsComponent implements OnInit {
     this.phNo = number;
     this.add = address;
     this.editDisabled = false;
-    console.log(this.fname, this.lname, this.phNo, this.add);
 
   }
   editDisable() {
@@ -71,13 +70,11 @@ export class UserSettingsComponent implements OnInit {
     this.address = this.add;
     this.number = this.phNo;
     this.editDisabled = true;
-    // console.log(this.firstName, this.lastName, this.address, this.number);
 
   }
 
   save(firstName, lastName, number, address) {
     //TODO: ADD LOGIC HERE
-    console.log(firstName, lastName, number, address);
     this.editDisabled = true;
   }
 

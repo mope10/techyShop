@@ -42,7 +42,6 @@ export class AdminOrdersComponent implements OnInit {
       //console.log(orders.order);
       this.auth.setToken(orders.token);
       this.data = orders.orders;
-      console.log('this orders: ',this.data);
       resolve(this.spinner = false);
     });
     });

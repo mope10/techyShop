@@ -4,7 +4,7 @@ import { SideNavComponent } from './side-nav.component';
 import { DataService } from 'src/services/dataService/data.service';
 import { DataServiceMock } from 'src/app/mock/data.service.mock';
 
-describe('StoreComponent', () => {
+describe('SideNavComponent', () => {
     let fixture: ComponentFixture<SideNavComponent>;
     let comp: SideNavComponent;
     let de : DebugElement;

@@ -154,7 +154,6 @@ export class DataService {
   createItem(item: itemData){
     var url = environment_url + '/item'+'/create'
     var id = this.auth.getId();
-    console.log('Data service creater id is: ', id);
     var condition = false;
     
     let token = this.auth.getToken()
@@ -189,11 +188,9 @@ export class DataService {
   }
 
   deleteOrder(order:orderDelete):Observable<requestreply>{
-    console.log('in delete order');
     var id = this.auth.getId();
     var token = this.auth.getToken();
     var url = environment_url + '/order' + '/delete';
-    console.log(url)
     const httpOptions = new HttpHeaders({'id':id, 'token': token})
     return this.http.post<requestreply>(url,order,{headers: httpOptions});    
 
@@ -202,7 +199,6 @@ export class DataService {
   getUserOrders(): Observable<validatedOrder> {
     var id = this.auth.getId();
     var token = this.auth.getToken();
-    console.log('user id is: ',id);
     var url = environment_url + '/order'+ '/user/' + id;
     const httpOptions = new HttpHeaders({'id':id, 'token': token})
     return this.http.get<validatedOrder>(url,{headers: httpOptions});
@@ -223,7 +219,6 @@ export class DataService {
   makeShopRequest(request: shopRequest): Observable<requestreply>{
     var id = this.auth.getId();
     var token = this.auth.getToken();
-    console.log('user id is: ',id);
     var url = environment_url + '/shop'+'/request';
     const httpOptions = new HttpHeaders({'id':id, 'token': token});
     return this.http.post<requestreply>(url,request,{headers: httpOptions});

@@ -157,7 +157,7 @@
           <div class="col-md-6">
             <label for="fileupload">Select Image: {{imageProgress}}</label>
             <div class="btn link-custom" style="display:block" (click)="image.click()">Choose File</div>
-            <input type="file" id="fileupload" #image formControlName="file" ng2FileSelect [uploader]="uploader"
+            <input type="file" id="fileupload" #image formControlName="file" ng2FileSelect
               multiple />
             <div class="incorrect">{{validityStatement}} </div>
             <div class="incorrect" *ngIf="AddingItemForm.controls['file'].invalid && (AddingItemForm.controls['file'].dirty || AddingItemForm.controls['file'].touched)">
@@ -277,7 +277,7 @@
               <div class="col-md-6">
                 <label for="fileupload" class="text-overflow">Select Image: {{imageProgress}}</label><span id="myImg" data-toggle="modal" data-target="#exampleModalCenter" (click)="changeImage(img, caty)" > Uploaded Image</span>
                 <div class="btn link-custom" style="display:block" (click)="image.click()">Choose File</div>
-                <input type="file" id="fileupload" #Eimage formControlName="file" ng2FileSelect [uploader]="uploader" multiple/>
+                <input type="file" id="fileupload" #Eimage formControlName="file" ng2FileSelect  multiple/>
                 <div class="incorrect">{{validityStatement}} </div>
                 <div class="incorrect" *ngIf="EdittingItemForm.controls['file'].invalid && (EdittingItemForm.controls['file'].dirty || EdittingItemForm.controls['file'].touched)">
                   <div *ngIf="EdittingItemForm.controls['file'].errors.empty">

@@ -79,7 +79,7 @@ import { DataService } from 'src/services/dataService/data.service';
     FileUploadModule,
     CloudinaryModule.forRoot(cloudinary, cloudinaryConfiguration as CloudinaryConfiguration),
     OrderModule,
-    Ng2SearchPipeModule 
+    Ng2SearchPipeModule
   ],
   providers: [
    AuthserviceService,

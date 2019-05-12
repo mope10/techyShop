@@ -27,19 +27,16 @@ export class NotificationsComponent implements OnInit {
     this.dataS.getShopRequests().subscribe((shops)=>{
       this.auth.setToken(shops.token);
       this.data =shops.shopRequests;
-      console.log(shops.shopRequests);
       resolve(this.spinner = false);
     })
   });
   }
   showShops(){
     this.showShopRequest = false;
-    console.log(this.showShopRequest);
   }
 
   showRequests(){
     this.showShopRequest = true;
-    console.log(this.showShopRequest);
   }
   takeStatus(owner_id){
     this.dataS.downgradeShop(owner_id).subscribe((result)=>{
@@ -57,11 +54,9 @@ export class NotificationsComponent implements OnInit {
     this.dataS.upgradeShop(owner_id).subscribe((result)=>{
       this.auth.setToken(result.token);
       if(result.result){
-        console.log('staus given');
         this.getShops();
       }
       else {
-        console.log('status not given');
       }
     });
   }
